@@ -1,0 +1,7 @@
+.next
+node_modules
+
+docs/
+CAPSIGHT_CONTEXT.md
+AGENTS.md
+README.md
