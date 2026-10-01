@@ -302,7 +302,7 @@ CapSight code is organized around the approved dependency boundaries: `app`, `pr
 - Environment-variable access is centralized; secrets are never committed.
 
 ### Testing/tooling boundary
-The Stage 12 testing strategy remains binding, but **the unit/domain/application testing framework is OPEN**. Vitest is explicitly not locked. Select a tool during implementation that the team can understand and maintain while supporting the golden case, rule tests, regressions, and domain verification. Playwright remains the preferred later E2E direction for a small set of critical competition workflows, subject to implementation confirmation.
+The Stage 12 testing strategy remains binding. **Vitest is approved for Domain/Application unit tests and future Capacity Engine unit/regression tests.** Golden-case expectations still require authoritative Knowles evidence. Unit stubs do not establish PostgreSQL or browser correctness; real persistence verification and future browser/E2E testing remain distinct layers. The browser/E2E framework is not selected; Playwright remains the preferred later direction for a small set of critical competition workflows, subject to implementation confirmation.
 
 ### Repository workflow
 Both codebases implement the same CapSight V1 contracts. Prince's independent repo may use a lighter solo Git workflow; the team repo should use short-lived feature branches and lightweight review for substantial changes. Keep `main` reasonably runnable, use meaningful commits, and synchronize product truth through the shared contracts rather than automatic source copying.

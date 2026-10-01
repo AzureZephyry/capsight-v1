@@ -377,7 +377,7 @@ Do not casually rename core concepts such as Capacity Assessment, Baseline, Scen
 Exact cosmetic rules remain scaffold-time choices. Use a simple import-alias strategy and avoid unnecessary barrel complexity.
 
 ## D100 — Testing remains mandatory but the unit/domain testing framework is OPEN
-**Status:** Active — V1
+**Status:** Superseded by D146 — earlier framework decision retained for history
 Vitest is **not** locked. Select a testing framework during implementation based on team familiarity, maintainability, and ability to support the Stage 12 golden-case/domain/regression strategy. Playwright remains the preferred later E2E direction for critical competition flows, subject to confirmation.
 
 ## D101 — Node/npm environment is reproducible
@@ -475,7 +475,7 @@ Populate validated formula/definition/unit/rounding/dependency truth before aski
 Understand, implement, and verify validated rules incrementally before combining them into the golden end-to-end calculation case.
 
 ## D124 — Testing framework selection remains implementation-time and familiarity-driven
-**Status:** Active — V1
+**Status:** Superseded by D146 — earlier framework decision retained for history
 Automated verification remains required, but the unit/domain/application test framework is not pre-locked. Select a tool the team can understand and maintain while supporting the golden case, rule tests, and regressions.
 
 ## D125 — Baseline Calculation is the first complete domain vertical slice
@@ -561,4 +561,11 @@ The selected competition build must be **Correct, Stable, Explainable, Responsiv
 ## D145 — Stage 18 completes the planned V1 architecture/planning cycle
 **Status:** Active — V1
 Stages 1–18 are the completed V1 planning cycle. Future Knowles discoveries revise existing authoritative contracts rather than automatically producing endless new planning stages. The next work is Implementation Phase 0, not Stage 19.
+
+## D146 — Vitest is approved for Domain/Application and Capacity Engine unit/regression tests
+**Status:** Active — V1; supersedes D100 and D124 framework selection
+
+The user explicitly approves Vitest during the third, unnumbered Pre-Alignment Product Experience increment — Automated Verification Foundation. Use deterministic Node tests for authoritative Domain/Application behavior and future Capacity Engine unit/regression tests. `npm test` runs once and is included in CI without PostgreSQL or secrets.
+
+This decision does not select browser/E2E tooling; Playwright remains preferred subject to confirmation. Test-only stores do not prove Prisma/PostgreSQL behavior, and synthetic lifecycle states do not replace the Knowles golden sample. Real persistence verification remains manual/local; golden-sample acceptance and calculation expectations remain gated by authoritative Knowles evidence.
 

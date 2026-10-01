@@ -101,7 +101,7 @@ Every confirmed calculation bug should receive a regression test.
 
 Testing depth follows calculation risk and domain correctness, not a vanity coverage target.
 
-The exact test framework remains OPEN.
+Vitest is approved for Domain/Application tests and future Capacity Engine unit/regression tests. Browser/E2E framework selection remains separate; calculation expectations still require authoritative Knowles validation.
 
 ## Test Data / Confidentiality
 Do not commit sensitive Knowles production data, costs, internal identifiers, or operational records to a public repository without permission. Prefer Knowles-approved sanitized test cases.
@@ -126,7 +126,6 @@ AI may accelerate implementation, but Team KnowLarps must understand the calcula
 - module boundaries and execution order;
 - unit type strategy;
 - numeric precision strategy/library;
-- testing framework;
 - exact structured success/failure representation;
 - partial-result semantics;
 - performance requirements.

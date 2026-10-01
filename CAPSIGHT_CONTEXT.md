@@ -1621,7 +1621,6 @@ AI may accelerate implementation and testing, but the team must understand and b
 - exact TypeScript rule representation;
 - exact engine input/output types;
 - exact structured success/failure type;
-- testing framework;
 - numeric precision library/strategy;
 - unit type strategy;
 - module boundaries;
@@ -2106,7 +2105,7 @@ Editable shared records retain optimistic-concurrency revision checking. Multi-r
 
 ## Stage 17 — Project Structure, Engineering Standards & AI Development Workflow — APPROVED V1
 
-Stage 17 is approved with one explicit correction: **Vitest is NOT locked. The unit/domain/application testing framework remains OPEN until implementation.** The rest of the Stage 17 direction is approved.
+Stage 17 is approved. The later, explicitly approved Automated Verification Foundation decision resolves its earlier OPEN framework choice: **Vitest is approved for Domain/Application unit tests and future Capacity Engine unit/regression tests.** Browser/E2E framework selection remains separate. The rest of the Stage 17 direction is preserved.
 
 ### Project structure direction
 CapSight uses a layered source structure centered on:
@@ -2142,8 +2141,9 @@ Supporting project areas may include `prisma/`, `docs/`, `tests/e2e/`, and `publ
 
 ### Testing direction
 - Automated tests remain required for the Capacity Engine/domain behaviors defined in the Stage 12 testing contract.
-- **The unit/domain/application testing framework remains OPEN. Vitest is not an approved/locked dependency.**
-- Choose the smallest testing tool the team can understand and maintain while still supporting plain-TypeScript domain tests, the Knowles golden case, regression tests, and required workflow verification.
+- **The unit/domain/application testing framework is Vitest**, including future Capacity Engine unit/regression tests.
+- Run deterministic Node tests with `npm test` locally and in CI, without PostgreSQL, secrets, network, or browser requirements. Synthetic lifecycle fixtures and test-only store stubs are not proof of persistence or manufacturing correctness.
+- Real PostgreSQL verification remains manual/local; future golden-sample tests require authoritative Knowles evidence; browser/E2E selection remains a separate decision. See `docs/features/capacity-engine-testing-strategy.md` for these layers.
 - Playwright remains the preferred later E2E option for a small set of critical competition workflows, subject to implementation-time confirmation.
 - Compilation alone is not evidence of manufacturing/calculation correctness.
 
@@ -2254,7 +2254,7 @@ Before real Capacity Engine implementation:
 5. keep unresolved items explicitly OPEN / `TODO(KNOWLES)` rather than filling gaps with assumptions.
 
 ### Capacity Engine build order
-Implement validated rules incrementally, understand each rule, verify it, then combine them into the golden end-to-end calculation case. The unit/domain/application testing framework remains OPEN and is selected during implementation based on understandability and project needs.
+Implement validated rules incrementally, understand each rule, verify it with the approved Vitest unit/regression framework, then combine them into the golden end-to-end calculation case. Framework selection does not supply missing Knowles rules or expected results.
 
 ### First complete vertical slice
 The first complete domain slice is:
