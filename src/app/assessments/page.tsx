@@ -1,22 +1,41 @@
-import { listCapacityAssessments } from "@/application/assessment-operations";
+import { Suspense } from "react";
+import { getAssessmentWorkspace } from "@/application/get-assessment-workspace";
 import { prismaAssessmentStore } from "@/infrastructure/prisma-assessment-store";
-import { AssessmentEntry } from "@/presentation/assessment/AssessmentEntry";
+import {
+  AssessmentEntry,
+  AssessmentWorkspace,
+  WorkspaceLoading,
+} from "@/presentation/assessment/AssessmentEntry";
 import { createAssessmentAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
-export default async function AssessmentsPage({
+export default function AssessmentsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  return (
+    <AssessmentEntry>
+      <Suspense fallback={<WorkspaceLoading />}>
+        <WorkspaceRecords searchParams={searchParams} />
+      </Suspense>
+    </AssessmentEntry>
+  );
+}
+
+async function WorkspaceRecords({
   searchParams,
 }: {
   searchParams: Promise<{ status?: string }>;
 }) {
   const [result, query] = await Promise.all([
-    listCapacityAssessments(prismaAssessmentStore),
+    getAssessmentWorkspace(prismaAssessmentStore),
     searchParams,
   ]);
 
   return (
-    <AssessmentEntry
+    <AssessmentWorkspace
       assessments={result.kind === "listed" ? result.assessments : null}
       createAction={createAssessmentAction}
       createFailed={query.status === "unavailable"}

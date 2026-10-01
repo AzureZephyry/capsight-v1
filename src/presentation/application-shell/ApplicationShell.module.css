@@ -208,6 +208,12 @@
   gap: 4px;
 }
 
+.productControls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .locationOverline {
   color: var(--color-accent-blue);
   font-size: 0.67rem;
@@ -345,6 +351,14 @@
 }
 
 @media (max-width: 680px) {
+  .topbar {
+    flex-wrap: wrap;
+  }
+  .productControls {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
   .topbar {
     min-height: 75px;
     padding: 12px 22px;

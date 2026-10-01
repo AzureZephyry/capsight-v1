@@ -72,6 +72,20 @@ The **Capacity Assessment** answers: "What is happening with this specific capac
 ## Shared Workspace
 The Shared Workspace is a work-first entry point, not a vanity analytics dashboard. It should be ready to support assessment discovery through search, filtering, sorting, status, and other validated assessment fields. Exact KPIs, charts, and aggregate intelligence remain OPEN until Knowles confirms what is useful.
 
+### Pre-Alignment Product Experience Sprint — Shared Workspace + How CapSight Works
+
+This bounded increment is not a new numbered CapSight Implementation Phase. `/assessments` is the Shared Workspace entry point, using the existing Application/Infrastructure read path for the latest 20 persisted Assessments, newest first. It supports intentional blank creation and reopening without introducing manufacturing fields, dashboards, search/filter controls, or schema changes.
+
+Assessment discovery uses scannable rows: saved state, created/updated dates in Philippine time, persisted request completeness/validation, Domain-derived lifecycle stage, and the first open Baseline prerequisite with a contextual Request Context or Baseline readiness link. Visible identity is the neutral “Assessment”; dates provide context, not a business identifier. Technical UUIDs remain routing/persistence keys. The existing request/planning/calculation readiness rules remain authoritative.
+
+Empty workspaces explain the Assessment and offer creation without example records. Localized loading preserves the page context. Unavailable records and create failures use scoped product-language feedback without database diagnostics; retry reloads the read query. Creation remains a deliberate action that persists incomplete/unvalidated work and opens its saved route.
+
+`/how-capsight-works` is a separate explanation experience in product navigation, alongside Workspace. These links sit in the broader header; the six numbered Assessment workflow steps remain unchanged. The explanation page presents the designed operational loop **Calculate → Explain → Simulate → Compare → Validate → Adjust**, distinct from the tagline **Calculate. Explain. Simulate. Validate. Decide.**
+
+An “Available today” section describes saved blank Assessments and readiness review. Decision Trace, Scenario Studio, Change Explanation, Version-Aware Profiles, and Reality Loop are explained as planned capabilities with their prerequisites; the page does not simulate calculations or actual observations. The six-step loop uses keyboard/touch-accessible buttons and a selected explanation. Its desktop circular composition becomes an ordered two-column sequence on phones. Feature explanations use editorial sections rather than repeated feature cards. Motion is limited to tactile controls and a 220 ms explanation reveal, with reduced-motion alternatives.
+
+Both experiences preserve light/dark tokens, native links/buttons, visible focus, text labels for status, and narrow layouts. Theme persistence/system preference, advanced discovery, analytics/reporting, and Knowles-dependent features remain deferred.
+
 ## Assessment Context
 Once an Assessment is opened, its context remains visible while the IE moves through Request/Planning Context, Baseline, Scenarios, Comparison, Solution Evaluation, Reality, and reporting/handoff surfaces.
 

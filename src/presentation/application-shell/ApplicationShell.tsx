@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { AssessmentSection } from "@/domain/assessment-lifecycle";
 import { assessmentNavigation } from "@/presentation/assessment/section-presentation";
 import { ThemeToggle } from "@/presentation/theme-toggle/ThemeToggle";
+import { ProductNavigation } from "@/presentation/product-navigation/ProductHeader";
 import styles from "./ApplicationShell.module.css";
 
 export function ApplicationShell({
@@ -64,11 +65,14 @@ export function ApplicationShell({
         <header className={styles.topbar}>
           <div className={styles.location}>
             <span className={styles.locationOverline}>
-              <Link href="/assessments">Assessments</Link> / Assessment workflow
+              <Link href="/assessments">Workspace</Link> / Assessment workflow
             </span>
             <span className={styles.locationTitle}>{current.label}</span>
           </div>
-          <ThemeToggle />
+          <div className={styles.productControls}>
+            <ProductNavigation />
+            <ThemeToggle />
+          </div>
         </header>
 
         <main className={styles.main} id={section}>
