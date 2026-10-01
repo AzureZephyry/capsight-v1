@@ -2,7 +2,7 @@
 
 ## Status
 
-Approved Phase 2 working contract. Request field definitions and persistent Assessment records remain pending.
+Approved lifecycle contract. Phase 3 Assessment persistence is implemented; database migration, persisted reads, and revision conflict handling have been verified. Browser create/reload/reopen verification remains pending.
 
 ## Purpose
 
@@ -33,14 +33,14 @@ Capacity Assessment is the central work object. Request Context belongs to it. B
 - Incomplete request context may exist and remain visible.
 - Incomplete or unvalidated request context never becomes calculation-ready.
 - All six Assessment sections remain navigable. Unavailable sections explain their prerequisite and give a relevant path back.
-- The current Phase 2 shell has no saved Assessment record and reports request context as incomplete and unvalidated.
+- A newly created Phase 3 Assessment shell stores incomplete and unvalidated Request Context state. Until a database is configured and migrated, the application reports records as unavailable rather than implying they are saved.
 - Completeness, validation, and calculation readiness are distinct concepts. No field-level completeness rule is implemented before Knowles defines the required fields.
 
 ## Open Questions
 
 - Exact Request Context fields, definitions, requiredness, and validation rules.
 - The validated transition from request completeness to request validation.
-- Persistent Assessment identity and editable data shape for Phase 3.
+- Validated Request Context fields and editable data shape.
 
 ## Do Not Assume
 
@@ -60,4 +60,4 @@ Verify that each route renders, active navigation identifies location, incomplet
 
 ## Current Implementation State
 
-Phase 2 implements the routed lifecycle shell and honest incomplete/unvalidated state. Persistent Assessment operations are deferred to Phase 3. The required request field map is TODO(KNOWLES).
+Phase 2's routed lifecycle shell now loads a Phase 3 Assessment by technical UUID. The Application layer derives readiness from persisted request state; no user-facing completeness or validation control has been added. PostgreSQL inspection and the Application/Infrastructure concurrency probe confirmed incomplete/unvalidated state remains intact when revision 1 advances to 2, Baseline remains blocked, and a repeated expected revision 1 returns a conflict without changing the stored revision. Browser create/reload/reopen verification was not repeated during this check. The required request field map and transition rules remain TODO(KNOWLES).

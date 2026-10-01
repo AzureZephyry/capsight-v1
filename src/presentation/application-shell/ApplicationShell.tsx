@@ -7,15 +7,16 @@ import styles from "./ApplicationShell.module.css";
 
 export function ApplicationShell({
   section,
+  assessmentId,
   children,
 }: {
   section: AssessmentSection;
+  assessmentId: string;
   children: ReactNode;
 }) {
-  const sectionIndex = assessmentNavigation.findIndex(
-    (item) => item.section === section,
-  );
-  const current = assessmentNavigation[sectionIndex];
+  const navigation = assessmentNavigation(assessmentId);
+  const sectionIndex = navigation.findIndex((item) => item.section === section);
+  const current = navigation[sectionIndex];
 
   return (
     <div className={styles.shell}>
@@ -33,7 +34,7 @@ export function ApplicationShell({
         <nav className={styles.navigation} aria-label="Capacity Assessment">
           <p className={styles.navHeading}>Assessment workflow</p>
           <ol className={styles.navList}>
-            {assessmentNavigation.map((item, index) => (
+            {navigation.map((item, index) => (
               <li className={styles.navItem} key={item.section}>
                 <Link
                   aria-current={section === item.section ? "page" : undefined}
@@ -63,7 +64,7 @@ export function ApplicationShell({
         <header className={styles.topbar}>
           <div className={styles.location}>
             <span className={styles.locationOverline}>
-              CapSight / Assessment workflow
+              <Link href="/assessments">Assessments</Link> / Assessment workflow
             </span>
             <span className={styles.locationTitle}>{current.label}</span>
           </div>

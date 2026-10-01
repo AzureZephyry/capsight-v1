@@ -312,3 +312,7 @@ New ideas during implementation are accepted only if justified by Knowles requir
 ## Planning Cycle Complete
 
 **Stages 1–18 are approved.** Future validated discoveries update the relevant existing contract. The next work is **Implementation Phase 0 — Repository & Development Foundation**, not Stage 19.
+
+## Current Implementation Checkpoint
+
+Implementation Phase 3 has configured the minimal Assessment persistence slice: Prisma/PostgreSQL schema, generated client, data-access boundary, Application operations, and ID-scoped Assessment routes. PostgreSQL is now reachable, the initial migration is confirmed applied, and two incomplete/unvalidated Assessments exist. The actual Application/Infrastructure update path advanced one existing record from revision 1 to 2 and rejected a repeated expected revision 1 as a conflict; the second record remained unchanged. Browser create/reload/reopen verification remains pending. This checkpoint does not advance the manufacturing schema or calculation phases.

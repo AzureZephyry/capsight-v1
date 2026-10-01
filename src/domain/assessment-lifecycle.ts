@@ -20,6 +20,16 @@ export type AssessmentSection =
 
 export type RequestCompleteness = "incomplete" | "complete";
 export type RequestValidation = "unvalidated" | "validated";
+
+export function initialRequestState(): {
+  requestCompleteness: RequestCompleteness;
+  requestValidation: RequestValidation;
+} {
+  return {
+    requestCompleteness: "incomplete",
+    requestValidation: "unvalidated",
+  };
+}
 export type SectionPrerequisite =
   | "request-validation"
   | "valid-baseline"

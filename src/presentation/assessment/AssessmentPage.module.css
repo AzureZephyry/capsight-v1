@@ -26,6 +26,12 @@
   background: var(--color-rose);
 }
 
+.recordId {
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
 .sectionHeading {
   display: flex;
   align-items: end;

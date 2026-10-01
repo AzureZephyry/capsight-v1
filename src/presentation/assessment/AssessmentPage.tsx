@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAssessmentLifecycle } from "@/application/get-assessment-lifecycle";
+import type { CapacityAssessmentRecord } from "@/application/assessment-store";
 import type {
   AssessmentLifecycle,
   AssessmentSection,
@@ -45,24 +46,44 @@ const downstreamSections: AssessmentSection[] = [
   "reality",
 ];
 
-export function AssessmentPage({ section }: { section: AssessmentSection }) {
-  const lifecycle = getAssessmentLifecycle();
+export function AssessmentPage({
+  section,
+  assessment,
+}: {
+  section: AssessmentSection;
+  assessment: CapacityAssessmentRecord;
+}) {
+  const lifecycle = getAssessmentLifecycle(assessment);
+  const navigation = assessmentNavigation(assessment.id);
+  const requestContextHref = `/assessments/${assessment.id}/request-context`;
 
   return (
-    <ApplicationShell section={section}>
+    <ApplicationShell assessmentId={assessment.id} section={section}>
       <div className={styles.content}>
         <p className={styles.recordNotice}>
           <span className={styles.recordNoticeMark} aria-hidden="true" />
-          No saved Assessment is open. This workspace shows the current request
-          gate while the required information is being confirmed.
+          Saved Assessment · Technical ID:{" "}
+          <span className={styles.recordId}>{assessment.id}</span>
         </p>
         <LifecycleIndicator lifecycle={lifecycle} />
         {section === "overview" ? (
-          <Overview lifecycle={lifecycle} />
+          <Overview
+            lifecycle={lifecycle}
+            navigation={navigation}
+            requestContextHref={requestContextHref}
+          />
         ) : section === "request-context" ? (
-          <RequestContext lifecycle={lifecycle} />
+          <RequestContext
+            lifecycle={lifecycle}
+            overviewHref={navigation[0].href}
+          />
         ) : (
-          <BlockedSection section={section} lifecycle={lifecycle} />
+          <BlockedSection
+            section={section}
+            lifecycle={lifecycle}
+            navigation={navigation}
+            requestContextHref={requestContextHref}
+          />
         )}
       </div>
     </ApplicationShell>
@@ -105,7 +126,15 @@ function LifecycleIndicator({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
   );
 }
 
-function Overview({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
+function Overview({
+  lifecycle,
+  navigation,
+  requestContextHref,
+}: {
+  lifecycle: AssessmentLifecycle;
+  navigation: ReturnType<typeof assessmentNavigation>;
+  requestContextHref: string;
+}) {
   const requestIncomplete = lifecycle.requestCompleteness === "incomplete";
 
   return (
@@ -126,10 +155,7 @@ function Overview({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
         <div className={styles.nextAction}>
           <span className={styles.stateTag}>Blocks Baseline</span>
           <p>Next step</p>
-          <Link
-            className={styles.actionLink}
-            href="/assessment/request-context"
-          >
+          <Link className={styles.actionLink} href={requestContextHref}>
             Review Request Context <span aria-hidden="true">↗</span>
           </Link>
         </div>
@@ -148,9 +174,7 @@ function Overview({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
         <ul className={styles.sectionList}>
           {downstreamSections.map((section) => {
             const readiness = lifecycle.sections[section];
-            const item = assessmentNavigation.find(
-              (entry) => entry.section === section,
-            );
+            const item = navigation.find((entry) => entry.section === section);
             if (!item || readiness.status !== "blocked") return null;
 
             return (
@@ -169,7 +193,13 @@ function Overview({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
   );
 }
 
-function RequestContext({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
+function RequestContext({
+  lifecycle,
+  overviewHref,
+}: {
+  lifecycle: AssessmentLifecycle;
+  overviewHref: string;
+}) {
   return (
     <div className={styles.requestGrid}>
       <section className={styles.requestMain} aria-labelledby="request-title">
@@ -217,7 +247,7 @@ function RequestContext({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
               : "Validated"}
           </strong>
         </div>
-        <Link className={styles.textLink} href="/assessment">
+        <Link className={styles.textLink} href={overviewHref}>
           Return to Overview <span aria-hidden="true">↗</span>
         </Link>
       </aside>
@@ -228,11 +258,15 @@ function RequestContext({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
 function BlockedSection({
   section,
   lifecycle,
+  navigation,
+  requestContextHref,
 }: {
   section: AssessmentSection;
   lifecycle: AssessmentLifecycle;
+  navigation: ReturnType<typeof assessmentNavigation>;
+  requestContextHref: string;
 }) {
-  const item = assessmentNavigation.find((entry) => entry.section === section);
+  const item = navigation.find((entry) => entry.section === section);
   const readiness = lifecycle.sections[section];
   if (!item) return null;
 
@@ -254,7 +288,7 @@ function BlockedSection({
           results are available yet.
         </p>
       </div>
-      <Link className={styles.actionLink} href="/assessment/request-context">
+      <Link className={styles.actionLink} href={requestContextHref}>
         Review Request Context <span aria-hidden="true">↗</span>
       </Link>
     </section>

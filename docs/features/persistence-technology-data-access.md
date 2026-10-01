@@ -54,7 +54,7 @@ JSON may be appropriate selectively for immutable calculation snapshots/evidence
 
 ## Identity & Timestamps
 - Technical database IDs have no assumed business meaning.
-- Exact UUID/CUID/ULID/etc. strategy remains OPEN.
+- The Phase 3 Assessment spike uses a generated PostgreSQL UUID as a technical route/database ID. This does not define a human-readable business identifier or prescribe IDs for later entities.
 - Human-readable assessment/request identifiers remain separate and must follow Knowles terminology if one exists.
 - Add timestamps according to explicit semantic purpose (`created`, `updated`, `calculated`, `observed`, `effective`, etc.) rather than automatically adding every possible timestamp to every record.
 
@@ -138,7 +138,7 @@ This validates the Next.js + Prisma + PostgreSQL stack without depending on unkn
 Do not yet lock:
 - PostgreSQL provider/hosting;
 - authentication provider;
-- exact technical ID strategy;
+- technical ID strategies beyond the Phase 3 Assessment UUID;
 - final human-readable identifier format;
 - full manufacturing schema;
 - exact JSON snapshot/evidence boundaries;
@@ -148,4 +148,6 @@ Do not yet lock:
 - staging/preview topology.
 
 ## Implementation State
-Not started. Stage 16 defines the approved V1 direction; implementation begins after the planning sequence and proceeds without inventing unknown Knowles calculation fields.
+Phase 3 adds a minimal `CapacityAssessment` Prisma model, generated Prisma Client, a PostgreSQL adapter, a focused Infrastructure store, and Application operations for create, load, recent list, and revision-checked update. Request completeness and validation are persisted; lifecycle/readiness are derived from those states by Domain rules. The update uses a conditional `id + revision` write and reports a stale revision as a conflict. It is a technical probe only until validated Request Context fields support meaningful edits.
+
+The schema validates and Prisma Client generates. PostgreSQL is now reachable and its migration ledger confirms successful application of `20261001021931_init`. On October 1, 2026, the actual Application/Infrastructure concurrency path was exercised against one of two existing Assessments: expected revision 1 advanced to 2; reusing revision 1 returned `conflict`. Direct PostgreSQL inspection confirmed no further revision change, preserved incomplete/unvalidated lifecycle state, and no changes to the other Assessment. The reproducible development probe is `scripts/verify-assessment-concurrency.mjs`; each successful run advances one existing record once. Browser create/reload/reopen behavior was not reverified during this concurrency check.

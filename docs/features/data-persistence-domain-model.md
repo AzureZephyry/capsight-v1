@@ -141,14 +141,14 @@ CapSight must not casually destroy historical calculation evidence required by D
 Stage 16 supersedes the earlier OPEN status for database/ORM direction:
 - **PostgreSQL** is the preferred V1 relational database technology.
 - **Prisma** is the preferred V1 ORM/data-access technology, subject to a small implementation spike.
-- Provider/hosting, final schema shape, exact ID strategy, and exact relational-vs-JSON boundaries remain OPEN.
+- Provider/hosting, final schema shape, ID strategies beyond the Phase 3 Assessment UUID, and exact relational-vs-JSON boundaries remain OPEN.
 - This technology choice does not change the domain boundaries in this contract.
 
 ## Do Not Assume
 Do not yet lock:
 - PostgreSQL hosting/provider;
 - final table/schema shape;
-- exact ID format;
+- ID formats beyond the Phase 3 Assessment technical UUID;
 - exact JSON vs relational representation for snapshots/evidence;
 - retention periods;
 - deletion semantics;

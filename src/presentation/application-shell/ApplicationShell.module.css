@@ -216,6 +216,11 @@
   text-transform: uppercase;
 }
 
+.locationOverline a {
+  text-decoration-color: var(--color-powder-blue);
+  text-underline-offset: 3px;
+}
+
 .locationTitle {
   color: var(--color-text-primary);
   font-size: 0.92rem;
