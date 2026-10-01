@@ -2,7 +2,7 @@
 
 ## Status
 
-Approved lifecycle contract. Phase 3 Assessment persistence is implemented; database migration, persisted reads, and revision conflict handling have been verified. Browser create/reload/reopen verification remains pending.
+Approved lifecycle contract. Phase 3 Assessment persistence is implemented; database migration, persisted reads, and revision conflict handling have been verified. A bounded local Chromium journey against real PostgreSQL in an isolated temporary verification database has now verified persisted create/list/open/navigation/reload/reopen behavior. This check is outside default database-free E2E CI and does not validate Knowles calculations.
 
 ## Purpose
 
@@ -63,3 +63,7 @@ Verify that each route renders, active navigation identifies location, incomplet
 ## Current Implementation State
 
 Phase 2's routed lifecycle shell now loads a Phase 3 Assessment by technical UUID. The Application layer derives readiness from persisted request state; no user-facing completeness or validation control has been added. PostgreSQL inspection and the Application/Infrastructure concurrency probe confirmed incomplete/unvalidated state remains intact when revision 1 advances to 2, Baseline remains blocked, and a repeated expected revision 1 returns a conflict without changing the stored revision. Browser create/reload/reopen verification was not repeated during this check. The required request field map and transition rules remain TODO(KNOWLES).
+
+On October 1, 2026, a separate bounded local Playwright/Chromium check against the current production build and real PostgreSQL completed: empty Workspace → create exactly one blank Assessment through the UI → persisted Workspace listing → open → navigate all six workflow areas → real Baseline reload → return to Workspace → reopen the same Assessment. Its technical UUID, request completeness `INCOMPLETE`, request validation `UNVALIDATED`, revision **1**, and stored timestamps remained unchanged after creation. Baseline planning and calculation readiness stayed blocked by the incomplete/unvalidated request and unresolved planning inputs/calculation truth; downstream sections remained gated. No duplicate Assessment or product defect was found.
+
+Only the existing committed migration was deployed to the unique temporary verification database. The temporary application/browser processes and verification files were removed, and the exact temporary database was dropped after rechecking its identity. Read-only data/schema comparisons confirmed the normal development database was unchanged, and `.env.local` was unchanged. This is local verification evidence, not permanent database-backed browser automation or default E2E CI coverage; no manufacturing data or calculation correctness was tested. Editable request transitions and later Knowles-dependent workflows remain unverified.
