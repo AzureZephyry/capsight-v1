@@ -4,10 +4,10 @@ CapSight is an in-progress capacity assessment application. The current implemen
 
 ## Local setup
 
-1. Run `npm install`.
+1. Use Node.js from `.nvmrc` and run `npm ci`.
 2. Provide a reachable PostgreSQL development database. Copy `.env.example` to ignored `.env.local` and replace its placeholder `DATABASE_URL` with a real connection URL. Keep credentials out of source control.
 3. Run `npm run db:generate`.
-4. Run `npm run db:migrate -- --name init` to create and apply the initial migration against that development database. Commit the resulting migration with this code when it has run successfully.
+4. Run `npm run db:migrate` to apply the committed migration against that development database. Create further migrations only for approved schema changes.
 5. Run `npm run dev` and open `http://localhost:3000/assessments`.
 
 The Prisma CLI reads `DATABASE_URL` from the process environment or `.env.local`; Next.js reads `.env.local` at runtime. Generating the client and validating the schema do not prove database connectivity. The development database now has the successfully applied `20261001021931_init` migration. New development databases still require migration setup.
@@ -18,9 +18,15 @@ When PostgreSQL is configured and migrated, `/assessments` creates a blank saved
 
 Without a database, the app shows a safe unavailable message. An invalid Assessment ID shows a not-found page. Database or Prisma error details are not shown in the UI.
 
+Missing or invalid `DATABASE_URL` configuration emits a static server-side developer diagnostic. Runtime reads and writes remain lazy; compiling the app does not need database access. Never use a production database for verification scripts.
+
+Light is the default theme. Explicit Light/Dark choices persist as a browser preference across reloads, direct/client navigation, and reopening. Blocked browser storage leaves switching available for the current document. `/how-capsight-works` is available without database access.
+
 ## Checks
 
 Run `npm run typecheck`, `npm run lint`, `npm run format:check`, and `npm run build`. Run `npm exec prisma validate` for schema validation. Persistence behavior and migration success must be checked against a reachable PostgreSQL database.
+
+`.github/workflows/ci.yml` runs install, Prisma Client generation, and the four project checks for pushes and pull requests to `main`, using `.nvmrc`. A clean checkout must run `npm run db:generate` before typecheck/build because the generated client is ignored. These compilation checks need neither `.env.local` nor `DATABASE_URL`; CI runs no migrations, database tests, or deployment. Use `npm audit` to inspect the locked dependency graph; do not force upgrades automatically.
 
 Run `node scripts/verify-baseline-workflow.mjs` to check Baseline request, planning, and calculation-readiness gates using the existing TypeScript compiler. This performs no calculation or database writes and does not select a testing framework.
 

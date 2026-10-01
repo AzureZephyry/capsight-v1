@@ -112,7 +112,7 @@ Neither marker may justify shipping missing critical calculation truth.
 Synthetic/demo data must identify itself clearly and must not be named or presented as validated Knowles data.
 
 ## CI
-After the scaffold stabilizes, add lightweight CI using the established toolchain. It should check enough to catch integration/reproducibility failures without introducing enterprise ceremony.
+The lightweight GitHub Actions workflow runs for pushes to `main` and pull requests targeting `main`. It uses first-party checkout/setup-node, the pinned `.nvmrc`, and committed npm lockfile. Checks are `npm ci`, generated Prisma Client setup, typecheck, lint, format check, and production build. Compilation requires no database URL, PostgreSQL service, or deployment credentials; CI does not migrate or write to a database.
 
 ## Documentation Boundary
 - `README.md`: installation, setup, environment, commands, testing/run instructions.
@@ -126,4 +126,6 @@ After the scaffold stabilizes, add lightweight CI using the established toolchai
 - Do not treat the two codebases as separate CapSight products.
 
 ## Current Implementation State
-Planning contract approved. Implementation has not yet begun under this stage.
+The scaffold uses strict TypeScript, npm, ESLint, Prettier, and the approved layer boundaries. Product Hardening establishes compilation CI and centralizes runtime database URL validation in Infrastructure. Missing/invalid configuration produces a static developer diagnostic; connection URLs and parser errors are never included in it or in normal UI.
+
+Existing Baseline gate verification remains a read-only script. The concurrency script deliberately advances one existing Assessment's actual current revision and must only run when persistence verification is needed. No testing framework is selected by these scripts or CI.

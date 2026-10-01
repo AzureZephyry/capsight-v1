@@ -1,4 +1,5 @@
 import { PrismaPg } from "@prisma/adapter-pg";
+import { getDatabaseUrl } from "./database-environment";
 import {
   CapacityAssessment as PrismaAssessment,
   PrismaClient,
@@ -14,8 +15,7 @@ import type {
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 function getPrismaClient(): PrismaClient {
-  const connectionString = process.env.DATABASE_URL;
-  if (!connectionString) throw new Error("Assessment database unavailable");
+  const connectionString = getDatabaseUrl();
 
   if (!globalForPrisma.prisma) {
     globalForPrisma.prisma = new PrismaClient({

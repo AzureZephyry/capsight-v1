@@ -41,7 +41,7 @@ These are useful abstraction levels, not a requirement to generalize every compo
 - Brand palette: Midnight / Ink `#102233`, Petrol / Slate `#26425A`, Powder Blue `#86A8CF`, Dusty Rose `#C38EB4`, and Soft Lilac `#E1C8D7`.
 - Light is the initial theme, with canvas `#F2F4F7`, surface `#F8FAFC`, strong surface `#FFFFFF`, and inset surface `#EDF1F5`.
 - Dark is an alternate design, with canvas `#0D1824`, surface `#132230`, strong surface `#17293A`, and inset surface `#0F1D29`.
-- Both themes use the same semantic token vocabulary and components. Theme preference persistence and system preference behavior are deferred.
+- Both themes use the same semantic token vocabulary and components. Explicit Light/Dark choices persist in browser local storage under `capsight:theme`; Light remains the default when no valid preference exists. System preference behavior remains deferred.
 - Visual identity is a high-end professional engineering application with soft editorial composition, strong typography hierarchy, disciplined spacing, and restrained color.
 - Neumorphism is selective: tactile controls and chosen elevated or inset surfaces may use it; ordinary content should not be wrapped in heavy shadows.
 - The Phase 1 shell separates the canvas, navigation, header, content, and control surfaces with subtle contrast. Selected navigation is inset; the compact theme switch has a raised thumb and pressed response.
@@ -49,6 +49,12 @@ These are useful abstraction levels, not a requirement to generalize every compo
 - Motion is fast and purposeful, usually about 150–300 ms for normal interactions. It should express origin, state, or feedback and respect reduced-motion preferences.
 
 These are current Phase 1 implementation decisions and may be refined.
+
+## Product Hardening Interaction Decisions
+- Theme preference is presentation state, separate from Assessment persistence. A fixed inline script restores a valid choice before content paints; the toggle stays synchronized during navigation and across tabs. If storage is blocked, switching still works in the current document, but persistence is unavailable.
+- Loading and recovery use concise text and existing controls, without decorative progress. Unavailable work offers a retry and Workspace return; a missing Assessment is distinct from a temporary failure.
+- Shared product navigation remains separate from the six Assessment workflow steps. A keyboard skip link reaches each page's main content. Theme, workflow navigation, and primary actions have touch targets at least 44px high.
+- Existing 220ms tactile transitions and loop detail feedback remain; reduced-motion preferences remove their animation/transition durations.
 
 ## Visual Decisions Intentionally OPEN
 - final typography;

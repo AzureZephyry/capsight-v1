@@ -3,7 +3,10 @@ import Link from "next/link";
 import type { AssessmentSection } from "@/domain/assessment-lifecycle";
 import { assessmentNavigation } from "@/presentation/assessment/section-presentation";
 import { ThemeToggle } from "@/presentation/theme-toggle/ThemeToggle";
-import { ProductNavigation } from "@/presentation/product-navigation/ProductHeader";
+import {
+  ProductNavigation,
+  SkipToContent,
+} from "@/presentation/product-navigation/ProductHeader";
 import styles from "./ApplicationShell.module.css";
 
 export function ApplicationShell({
@@ -21,6 +24,7 @@ export function ApplicationShell({
 
   return (
     <div className={styles.shell}>
+      <SkipToContent target={section} />
       <aside className={styles.sidebar}>
         <div className={styles.brand} aria-label="CapSight">
           <span className={styles.brandMark} aria-hidden="true">
@@ -75,7 +79,7 @@ export function ApplicationShell({
           </div>
         </header>
 
-        <main className={styles.main} id={section}>
+        <main className={styles.main} id={section} tabIndex={-1}>
           <div className={styles.introduction}>
             <div className={styles.introCopy}>
               <p className={styles.eyebrow}>

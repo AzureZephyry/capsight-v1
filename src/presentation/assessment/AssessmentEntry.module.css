@@ -93,7 +93,8 @@
   box-shadow: var(--shadow-inset);
   transform: translateY(0);
 }
-.createButton:disabled {
+.createButton:disabled,
+.returnLink:disabled {
   cursor: wait;
   color: var(--color-text-secondary);
   transform: none;
@@ -253,6 +254,11 @@
 }
 .returnLink {
   margin-top: 25px;
+}
+.recovery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
 }
 .error {
   margin: 0 0 25px;

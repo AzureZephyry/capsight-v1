@@ -235,7 +235,7 @@
 
 .actionLink {
   display: inline-flex;
-  min-height: 41px;
+  min-height: 44px;
   align-items: center;
   justify-content: space-between;
   gap: 14px;

@@ -4,6 +4,7 @@ import type { AssessmentSection } from "@/domain/assessment-lifecycle";
 import { prismaAssessmentStore } from "@/infrastructure/prisma-assessment-store";
 import { AssessmentPage } from "@/presentation/assessment/AssessmentPage";
 import { AssessmentProblem } from "@/presentation/assessment/AssessmentEntry";
+import { RetryWorkspaceButton } from "@/presentation/assessment/RetryWorkspaceButton";
 
 export async function AssessmentRoute({
   assessmentId,
@@ -22,8 +23,10 @@ export async function AssessmentRoute({
     return (
       <AssessmentProblem
         title="Assessment temporarily unavailable"
-        message="This Assessment could not be loaded right now. Check the database connection and try again."
-      />
+        message="This Assessment could not be loaded right now. Try again in a moment or return to the Workspace."
+      >
+        <RetryWorkspaceButton />
+      </AssessmentProblem>
     );
   }
 

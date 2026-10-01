@@ -32,9 +32,7 @@ export function ProductHeader({
 }) {
   return (
     <>
-      <a className={styles.skipLink} href="#main-content">
-        Skip to content
-      </a>
+      <SkipToContent />
       <header className={styles.header}>
         <Link
           className={styles.brand}
@@ -50,5 +48,17 @@ export function ProductHeader({
         <ThemeToggle />
       </header>
     </>
+  );
+}
+
+export function SkipToContent({
+  target = "main-content",
+}: {
+  target?: string;
+}) {
+  return (
+    <a className={styles.skipLink} href={`#${target}`}>
+      Skip to content
+    </a>
   );
 }

@@ -1,14 +1,27 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useLayoutEffect, useSyncExternalStore } from "react";
+import {
+  applyTheme,
+  readStoredTheme,
+  themeChangeEvent,
+  themeStorageKey,
+  type Theme,
+} from "./theme-preference";
 import styles from "./ThemeToggle.module.css";
 
-type Theme = "light" | "dark";
-const themeChangeEvent = "capsight:theme-change";
-
 function subscribeToTheme(onChange: () => void) {
+  function onStorage(event: StorageEvent) {
+    if (event.key === themeStorageKey || event.key === null) {
+      applyTheme(event.newValue === "dark" ? "dark" : "light");
+    }
+  }
   window.addEventListener(themeChangeEvent, onChange);
-  return () => window.removeEventListener(themeChangeEvent, onChange);
+  window.addEventListener("storage", onStorage);
+  return () => {
+    window.removeEventListener(themeChangeEvent, onChange);
+    window.removeEventListener("storage", onStorage);
+  };
 }
 
 function getTheme(): Theme {
@@ -27,10 +40,20 @@ export function ThemeToggle() {
   );
   const isDark = theme === "dark";
 
+  useLayoutEffect(() => {
+    // Also restore the preference after React's development-mode remount.
+    const storedTheme = readStoredTheme();
+    if (storedTheme) applyTheme(storedTheme);
+  }, []);
+
   function toggleTheme() {
-    const nextTheme = isDark ? "light" : "dark";
-    document.documentElement.dataset.theme = nextTheme;
-    window.dispatchEvent(new Event(themeChangeEvent));
+    const nextTheme = getTheme() === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem(themeStorageKey, nextTheme);
+    } catch {
+      // An unavailable preference store must not disable the control.
+    }
+    applyTheme(nextTheme);
   }
 
   return (

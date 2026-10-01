@@ -113,7 +113,7 @@
 .navCurrent,
 .navFuture {
   display: flex;
-  min-height: 43px;
+  min-height: 44px;
   align-items: center;
   gap: 17px;
   padding: 0 13px;
@@ -344,7 +344,7 @@
 
   .navCurrent,
   .navFuture {
-    min-height: 39px;
+    min-height: 44px;
     gap: 8px;
     padding: 0 11px;
   }

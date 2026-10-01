@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { AssessmentWorkspaceItem } from "@/application/get-assessment-workspace";
 import type { BaselineCalculationBlocker } from "@/domain/baseline-workflow";
 import { ProductHeader } from "@/presentation/product-navigation/ProductHeader";
-import { CreateAssessmentButton } from "./CreateAssessmentButton";
+import { CreateAssessmentForm } from "./CreateAssessmentButton";
 import { RetryWorkspaceButton } from "./RetryWorkspaceButton";
 import styles from "./AssessmentEntry.module.css";
 
@@ -27,7 +27,7 @@ export function AssessmentEntry({ children }: { children: ReactNode }) {
   return (
     <div className={styles.page}>
       <ProductHeader active="workspace" />
-      <main className={styles.main} id="main-content">
+      <main className={styles.main} id="main-content" tabIndex={-1}>
         <div className={styles.introduction}>
           <p className={styles.kicker}>Capacity intelligence · Shared work</p>
           <h1>
@@ -91,9 +91,7 @@ export function AssessmentWorkspace({
                 : ""}
             </p>
           </div>
-          <form action={createAction}>
-            <CreateAssessmentButton />
-          </form>
+          <CreateAssessmentForm createAction={createAction} />
         </div>
         {assessments.length === 0 ? (
           <div className={styles.empty}>
@@ -125,11 +123,12 @@ export function AssessmentWorkspace({
                     <Link
                       className={styles.assessmentLink}
                       href={`/assessments/${assessment.id}`}
+                      aria-describedby={`created-${assessment.id}`}
                     >
                       Assessment <span aria-hidden="true">↗</span>
                     </Link>
                     <dl className={styles.dates}>
-                      <div>
+                      <div id={`created-${assessment.id}`}>
                         <dt>Created</dt>
                         <dd>
                           <time dateTime={assessment.createdAt.toISOString()}>
@@ -177,7 +176,11 @@ export function AssessmentWorkspace({
                         ? gateLabels[blocker]
                         : "Calculation prerequisites satisfied"}
                     </p>
-                    <Link className={styles.nextLink} href={nextHref}>
+                    <Link
+                      className={styles.nextLink}
+                      href={nextHref}
+                      aria-describedby={`created-${assessment.id}`}
+                    >
                       {requestGate
                         ? "Review Request Context"
                         : "Review Baseline readiness"}
@@ -201,20 +204,25 @@ export function AssessmentWorkspace({
 export function AssessmentProblem({
   title,
   message,
+  children,
 }: {
   title: string;
   message: string;
+  children?: ReactNode;
 }) {
   return (
     <div className={styles.page}>
       <ProductHeader />
-      <main className={styles.main} id="main-content">
+      <main className={styles.main} id="main-content" tabIndex={-1}>
         <p className={styles.kicker}>Capacity Assessment</p>
         <h1>{title}</h1>
         <p className={styles.intro}>{message}</p>
-        <Link className={styles.returnLink} href="/assessments">
-          Back to Workspace <span aria-hidden="true">↗</span>
-        </Link>
+        <div className={styles.recovery}>
+          {children}
+          <Link className={styles.returnLink} href="/assessments">
+            Back to Workspace <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
       </main>
     </div>
   );

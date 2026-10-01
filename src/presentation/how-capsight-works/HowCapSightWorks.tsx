@@ -7,7 +7,7 @@ export function HowCapSightWorks() {
   return (
     <div className={styles.page}>
       <ProductHeader active="how-it-works" />
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" className={styles.main} tabIndex={-1}>
         <div className={styles.hero}>
           <div className={styles.heroCopy}>
             <p className={styles.kicker}>How CapSight Works</p>
