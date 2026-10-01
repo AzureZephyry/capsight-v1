@@ -15,7 +15,7 @@ Before substantial implementation work:
 9. Do not introduce meaningful new dependencies without explicit approval.
 10. Keep Presentation, Application, Domain, and Infrastructure responsibilities separated according to the approved architecture.
 11. The Capacity Engine and domain calculation logic must remain independent of React, Next.js, Prisma, database access, and browser APIs.
-12. Verify substantial changes using the relevant project checks before considering the task complete.
+12. Run `npm run verify` for substantial changes; run relevant browser/integration checks separately. Architecture boundaries are enforced by the existing lint step; do not bypass them.
 
 ## Documentation Entry Point
 

@@ -292,6 +292,10 @@ CapSight code is organized around the approved dependency boundaries: `app`, `pr
 - Prisma records remain infrastructure representations and require deliberate mapping/boundary usage.
 - Client Components are introduced only at genuine interaction boundaries.
 
+The current import graph follows these responsibilities: Application imports Domain and owns the injected `AssessmentStore` contract; Infrastructure implements that Application contract using Prisma; Presentation consumes Application read models and Domain state/types; thin `app` adapters compose the layers. Direct Presentation imports of Domain models and Infrastructure imports of the Application store contract are legitimate. The source graph has no observed circular imports, framework/database leakage into Domain, or concrete persistence imports in Application/Presentation.
+
+The existing ESLint stack now enforces these established directions, including recursive Domain protection for the future Capacity Engine. Exact restricted directions and enforcement limits are recorded in [Engineering Standards](features/engineering-standards-ai-workflow.md#mechanical-architecture-guardrails). This adds protection without relocating contracts or changing product architecture.
+
 ### Engineering standards
 - TypeScript strict mode remains enabled; avoid `any`, especially in calculation/domain code.
 - External/unknown inputs are validated/mapped rather than blindly cast.

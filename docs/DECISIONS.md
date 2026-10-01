@@ -576,3 +576,10 @@ The user explicitly approves Playwright during the fourth and final planned, unn
 
 Database-backed browser journeys remain a separate future integration layer. PostgreSQL verification scripts retain their manual/local persistence role. Future Knowles golden-sample tests remain calculation acceptance/regression evidence and require authoritative operational truth; neither unit nor browser success supplies that truth.
 
+## D148 — Existing architecture boundaries are enforced with existing ESLint tooling
+**Status:** Active — V1
+
+The fifth, unnumbered Pre-Alignment increment — Architecture Guardrails + Developer Experience — protects the already conforming dependency graph using the existing ESLint/import-plugin stack, without new dependencies, contract moves, or production refactoring. Domain/future Capacity Engine remain plain TypeScript; Application uses Domain and injected contracts; Infrastructure may implement the Application `AssessmentStore`; Presentation may consume Application/Domain models; thin `app` adapters compose them. Exact restrictions and limits are recorded in Engineering Standards.
+
+`npm run verify` reuses Prisma generation → typecheck → lint → format check → Vitest → production build, exits on failure, and requires no database, secrets, browsers, or external network after dependency installation. Playwright and manual PostgreSQL checks remain separate. CI retains its explicit stages. Onboarding applies committed migrations with `prisma migrate deploy` only against the deliberately configured development database; existing `db:migrate` remains migration-authoring tooling, not the default clone setup command. This decision does not authorize database mutation during the increment or change any product/Knowles truth.
+

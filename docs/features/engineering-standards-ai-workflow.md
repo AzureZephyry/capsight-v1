@@ -43,6 +43,25 @@ This is a direction, not a requirement to create empty folders. Modules should e
 
 `domain`, especially Capacity Engine, must not depend on Next.js, React, Prisma, HTTP, browser APIs, or persistence infrastructure.
 
+### Mechanical architecture guardrails
+
+`npm run lint` enforces the conforming current architecture through `eslint.config.mjs`. The import plugin and TypeScript resolver already supplied by `eslint-config-next` provide resolved path restrictions; built-in ESLint rules restrict framework/database packages, Domain I/O, browser globals, and JSX. No architecture dependency or separate checker is introduced.
+
+| Importing layer | Forbidden source layers |
+| --- | --- |
+| Domain | app, Application, Presentation, Infrastructure, generated code |
+| Application | app, Presentation, Infrastructure, generated code |
+| Presentation | Infrastructure, generated code |
+| Infrastructure | app, Presentation |
+
+Domain and Application also reject React/React DOM, Next.js, Prisma packages/CLI, and PostgreSQL/MySQL driver packages (`pg`, `postgres`, `mysql2`), including package subpaths. Presentation rejects the same database packages. Domain additionally rejects Node filesystem, HTTP/network, process-spawning and worker modules, selected browser globals (including access through `globalThis`), and JSX. These recursive rules cover future Capacity Engine code under `src/domain` without creating an engine placeholder.
+
+Layer restrictions resolve aliases and relative paths; they cover static imports, type imports, re-exports, literal dynamic imports, and literal `require` calls. Package restrictions cover these literal loading forms as well. Computed module paths, aliased browser globals, indirect effects through future shared helpers, and newly introduced packages need review; lint is not a sandbox or a whole-program effect/cycle analyzer. Typecheck handles missing modules. New dependencies and shared modules must preserve these boundaries.
+
+Legitimate dependencies remain accepted: Application → Domain and its own `AssessmentStore`; Infrastructure → that Application contract and Prisma; Presentation → Application/Domain models and React/Next.js; `app` → the layers it composes. No contracts move to satisfy lint. If a proposed rule conflicts with valid current code, stop for review rather than restructuring production.
+
+The initial proof used ESLint's in-memory `lintText` against forbidden and allowed imports, including relative/alias paths, re-exports, dynamic imports, type contracts, and a future nested engine path. No invalid production files or temporary fixtures are retained.
+
 ## Engineering Standards
 - TypeScript strict mode remains enabled.
 - Avoid `any`, particularly in domain/calculation code.
@@ -70,6 +89,7 @@ Stage 12 remains the testing authority for what must be verified.
 - Commit `package-lock.json`.
 - Pin/document the supported Node.js version during scaffolding.
 - Expose predictable scripts such as `dev`, `build`, `lint`, `typecheck`, `test` when applicable.
+- `npm run verify` sequentially reuses client generation, typecheck, lint, format check, Vitest, and production build; it exits on the first failure. With dependencies installed, it needs no database, database URL, secrets, browser installation, or external network. Browser/E2E verification remains separate.
 - Centralize environment access.
 - Keep real `.env` credentials outside Git; provide a safe `.env.example`.
 
@@ -81,6 +101,7 @@ May use a lighter solo workflow. Keep `main` reasonably runnable and use feature
 Use short-lived feature branches and lightweight PR review for substantial changes. Avoid long-lived per-developer branches that accumulate merge conflicts.
 
 ### Shared rules
+- Branch from current `main`, keep changes bounded, run `npm run verify` and relevant browser/integration checks, then push. CI must pass and meaningful changes receive review before merge. Manual PostgreSQL checks use a dedicated development database and require a deliberate decision to run mutating probes.
 - Prefer small meaningful commits.
 - Lightweight Conventional Commit prefixes are recommended (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`).
 - The repositories share **product truth**, not automatic source-code synchronization.
@@ -101,7 +122,7 @@ Use short-lived feature branches and lightweight PR review for substantial chang
 12. Codex is primary for architecture-sensitive/multi-file/domain/persistence/calculation work.
 13. Copilot is preferred for localized implementation assistance and repetitive/small changes.
 14. UI work must follow Prince-approved Figma/design-system direction.
-15. Significant changes should run the appropriate available verification commands.
+15. Significant changes run `npm run verify` plus relevant browser/integration checks; do not bypass architecture lint to complete a task.
 
 ## Unresolved Markers
 - `TODO(KNOWLES)`: unresolved authoritative requirement/domain truth.
@@ -131,3 +152,5 @@ The scaffold uses strict TypeScript, npm, ESLint, Prettier, and the approved lay
 The Automated Verification Foundation adds Vitest Domain/Application tests and automatic CI execution without production refactoring. Existing Baseline gate verification remains an optional, read-only TypeScript compiler/Node loading smoke script whose gate assertions overlap Vitest coverage. The concurrency script deliberately advances one existing Assessment's actual current revision and must only run when real persistence verification is needed. The distinct verification layers are defined in [Capacity Engine Testing Strategy](capacity-engine-testing-strategy.md).
 
 The fourth, unnumbered Browser / E2E Verification Foundation adds Playwright tests for existing database-independent product behavior, using Chromium only. It does not move Vitest rules into browser tests or establish persisted Assessment/calculation correctness.
+
+The fifth, unnumbered Architecture Guardrails + Developer Experience increment mechanically protects the conforming import graph with existing ESLint tooling, adds the local `verify` command, and clarifies source-only onboarding and safe migration use. CI retains its visible individual checks; schema, persistence, product behavior, testing frameworks, and Knowles requirements remain unchanged.
