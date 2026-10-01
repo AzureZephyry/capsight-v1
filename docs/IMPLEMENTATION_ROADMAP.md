@@ -47,33 +47,28 @@ Exact aesthetics remain implementation-led and Prince-approved.
 
 ## Phase 2 — Capacity Assessment Lifecycle
 
-Build the first real product workflow:
+Establish the Assessment lifecycle UX before persistence:
 
 ```text
-Shared Workspace
-      ↓
-Create Capacity Assessment
-      ↓
-Open Capacity Assessment
-      ↓
-Request / Planning Context shell
+Overview → Request Context → Baseline → Scenarios → Solution → Reality
 ```
 
-Support create/read/edit/save/reopen using only fields safe to implement from validated requirements.
+Provide Assessment routing, the INPUT → VALIDATE → ANALYZE → DEVELOP → SUBMISSION lifecycle indicator, request completeness/readiness representation, workflow gating, contextual blocked states, and a Request Context shell. With Knowles request fields unresolved, the current request remains incomplete and unvalidated. Phase 2 does not create or save persistent Assessments.
 
 ## Phase 3 — PostgreSQL + Prisma Persistence Spike
 
-Prove the stack with a tiny slice:
+Introduce persistent Assessment create/read/update/edit/save/reopen behavior and prove the stack with a tiny slice:
 
 ```text
 Create Assessment
 → Persist
 → Retrieve
 → Update
+→ Reopen
 → Revision conflict protection
 ```
 
-Do not build the full manufacturing schema yet.
+Use only fields safe under validated requirements. Do not build the full manufacturing schema yet.
 
 ## Phase 4 — Baseline Planning Workflow Shell
 

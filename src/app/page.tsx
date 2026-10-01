@@ -1,5 +1,5 @@
-import { ApplicationShell } from "@/presentation/application-shell/ApplicationShell";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <ApplicationShell />;
+  redirect("/assessment");
 }

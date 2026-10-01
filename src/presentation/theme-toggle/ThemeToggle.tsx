@@ -1,18 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import styles from "./ThemeToggle.module.css";
 
 type Theme = "light" | "dark";
+const themeChangeEvent = "capsight:theme-change";
+
+function subscribeToTheme(onChange: () => void) {
+  window.addEventListener(themeChangeEvent, onChange);
+  return () => window.removeEventListener(themeChangeEvent, onChange);
+}
+
+function getTheme(): Theme {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
+
+function getServerTheme(): Theme {
+  return "light";
+}
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getTheme,
+    getServerTheme,
+  );
   const isDark = theme === "dark";
 
   function toggleTheme() {
     const nextTheme = isDark ? "light" : "dark";
     document.documentElement.dataset.theme = nextTheme;
-    setTheme(nextTheme);
+    window.dispatchEvent(new Event(themeChangeEvent));
   }
 
   return (

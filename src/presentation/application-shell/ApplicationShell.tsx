@@ -1,16 +1,22 @@
+import type { ReactNode } from "react";
+import Link from "next/link";
+import type { AssessmentSection } from "@/domain/assessment-lifecycle";
+import { assessmentNavigation } from "@/presentation/assessment/section-presentation";
 import { ThemeToggle } from "@/presentation/theme-toggle/ThemeToggle";
 import styles from "./ApplicationShell.module.css";
 
-const workflowSections = [
-  "Overview",
-  "Request Context",
-  "Baseline",
-  "Scenarios",
-  "Solution",
-  "Reality",
-] as const;
+export function ApplicationShell({
+  section,
+  children,
+}: {
+  section: AssessmentSection;
+  children: ReactNode;
+}) {
+  const sectionIndex = assessmentNavigation.findIndex(
+    (item) => item.section === section,
+  );
+  const current = assessmentNavigation[sectionIndex];
 
-export function ApplicationShell() {
   return (
     <div className={styles.shell}>
       <aside className={styles.sidebar}>
@@ -27,25 +33,22 @@ export function ApplicationShell() {
         <nav className={styles.navigation} aria-label="Capacity Assessment">
           <p className={styles.navHeading}>Assessment workflow</p>
           <ol className={styles.navList}>
-            {workflowSections.map((section, index) => (
-              <li className={styles.navItem} key={section}>
-                {index === 0 ? (
-                  <a
-                    aria-current="page"
-                    className={styles.navCurrent}
-                    href="#overview"
-                  >
-                    <span className={styles.navNumber}>01</span>
-                    <span>{section}</span>
-                  </a>
-                ) : (
-                  <span className={styles.navFuture}>
-                    <span className={styles.navNumber}>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span>{section}</span>
+            {assessmentNavigation.map((item, index) => (
+              <li className={styles.navItem} key={item.section}>
+                <Link
+                  aria-current={section === item.section ? "page" : undefined}
+                  className={
+                    section === item.section
+                      ? styles.navCurrent
+                      : styles.navFuture
+                  }
+                  href={item.href}
+                >
+                  <span className={styles.navNumber}>
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                )}
+                  <span>{item.label}</span>
+                </Link>
               </li>
             ))}
           </ol>
@@ -60,50 +63,35 @@ export function ApplicationShell() {
         <header className={styles.topbar}>
           <div className={styles.location}>
             <span className={styles.locationOverline}>
-              CapSight / Capacity Assessment
+              CapSight / Assessment workflow
             </span>
-            <span className={styles.locationTitle}>Overview</span>
+            <span className={styles.locationTitle}>{current.label}</span>
           </div>
           <ThemeToggle />
         </header>
 
-        <main className={styles.main} id="overview">
+        <main className={styles.main} id={section}>
           <div className={styles.introduction}>
             <div className={styles.introCopy}>
               <p className={styles.eyebrow}>
                 <span className={styles.eyebrowLine} aria-hidden="true" />
                 Assessment workspace
               </p>
-              <h1>Capacity Assessment</h1>
-              <p className={styles.description}>
-                A shared place to work through production capacity requirements,
-                from request context to planning and real-world validation.
-              </p>
+              <h1>
+                {section === "overview" ? "Capacity Assessment" : current.label}
+              </h1>
+              <p className={styles.description}>{current.description}</p>
             </div>
             <div className={styles.introDetail} aria-hidden="true">
-              <span className={styles.detailIndex}>01 / 06</span>
+              <span className={styles.detailIndex}>
+                {String(sectionIndex + 1).padStart(2, "0")} / 06
+              </span>
               <span className={styles.detailRule} />
-              <span className={styles.detailLabel}>Overview</span>
+              <span className={styles.detailLabel}>{current.label}</span>
             </div>
           </div>
 
-          <section className={styles.placeholder} aria-labelledby="shell-title">
-            <div className={styles.placeholderSymbol} aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className={styles.placeholderCopy}>
-              <p className={styles.placeholderKicker}>Application shell</p>
-              <h2 id="shell-title">Ready for the assessment workflow</h2>
-              <p>
-                This is the Phase 1 interface foundation. Assessment features
-                and validated capacity information will be added in later
-                phases.
-              </p>
-            </div>
-            <span className={styles.placeholderStatus}>Phase 1 foundation</span>
-          </section>
+          {children}
         </main>
       </div>
     </div>
