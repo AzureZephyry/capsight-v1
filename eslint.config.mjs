@@ -38,7 +38,7 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   {
-    files: ["src/**/*.{ts,tsx}"],
+    files: ["src/**/*.{ts,tsx,mts}"],
     rules: {
       "import/no-restricted-paths": [
         "error",
@@ -83,7 +83,7 @@ const eslintConfig = defineConfig([
     },
   },
   {
-    files: ["src/domain/**/*.{ts,tsx}"],
+    files: ["src/domain/**/*.{ts,tsx,mts}"],
     rules: {
       ...domainPackages,
       "no-restricted-syntax": [
@@ -119,14 +119,14 @@ const eslintConfig = defineConfig([
     },
   },
   {
-    files: ["src/application/**/*.{ts,tsx}"],
+    files: ["src/application/**/*.{ts,tsx,mts}"],
     rules: restrictedPackages(
       `${databasePackages}|${frameworkPackages}`,
       "Application must use Domain and injected contracts, not framework or database implementations.",
     ),
   },
   {
-    files: ["src/presentation/**/*.{ts,tsx}"],
+    files: ["src/presentation/**/*.{ts,tsx,mts}"],
     rules: restrictedPackages(
       databasePackages,
       "Presentation must not access Prisma or database drivers.",
