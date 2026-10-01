@@ -28,6 +28,8 @@ _Last updated: October 1, 2026_
 
 `CAPSIGHT_CONTEXT.md` is the required entry point for substantial CapSight work.
 
+After reading this context, consult [docs/CAPSIGHT_EXECUTION_STATE.md](docs/CAPSIGHT_EXECUTION_STATE.md) for the current execution checkpoint, active focus, and provisional next path.
+
 Do not read every contract indiscriminately. After reading this file, load only the documentation relevant to the current task.
 
 ### Project Architecture
