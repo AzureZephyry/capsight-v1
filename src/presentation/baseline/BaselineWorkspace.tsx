@@ -1,0 +1,189 @@
+import Link from "next/link";
+import type {
+  BaselineCalculationBlocker,
+  BaselineWorkflow,
+  RequestReadiness,
+} from "@/domain/baseline-workflow";
+import styles from "./BaselineWorkspace.module.css";
+
+const requestLabels: Record<RequestReadiness["status"], string> = {
+  incomplete: "Incomplete · Not validated",
+  "awaiting-validation": "Awaiting validation",
+  ready: "Complete and validated",
+};
+
+const blockerCopy: Record<BaselineCalculationBlocker, string> = {
+  "request-incomplete":
+    "Request Context must be completed and validated first.",
+  "request-unvalidated": "Request Context must be validated first.",
+  "planning-inputs-unresolved":
+    "The required planning inputs and their validation rules are still being confirmed with Knowles.",
+  "calculation-reference-unvalidated":
+    "Calculation definitions and profile requirements, including units, defaults, rounding, and dependencies, are awaiting validation.",
+};
+
+export function BaselineWorkspace({
+  workflow,
+  requestContextHref,
+}: {
+  workflow: BaselineWorkflow;
+  requestContextHref: string;
+}) {
+  return (
+    <div className={styles.workspace}>
+      <section className={styles.planning} aria-labelledby="baseline-planning">
+        <div className={styles.planningCopy}>
+          <p className={styles.kicker}>Reference planning state</p>
+          <h2 id="baseline-planning">
+            {workflow.planning.status === "blocked"
+              ? "Request Context comes first"
+              : "Baseline is available for planning"}
+          </h2>
+          <p>
+            Baseline establishes the reference planning condition for this
+            Assessment. Future Scenarios will explore alternatives from a valid
+            Baseline while preserving its reference context.
+          </p>
+          {workflow.planning.status === "blocked" ? (
+            <p>{blockerCopy[workflow.planning.reason]}</p>
+          ) : (
+            <p>
+              Request prerequisites are satisfied. Planning information can be
+              prepared once its required fields and rules are confirmed.
+            </p>
+          )}
+        </div>
+        <div className={styles.nextAction}>
+          <span
+            className={
+              workflow.planning.status === "blocked"
+                ? styles.blockedStatus
+                : styles.availableStatus
+            }
+          >
+            {workflow.planning.status === "blocked"
+              ? "Planning blocked"
+              : "Planning available"}
+          </span>
+          <p>
+            {workflow.planning.status === "blocked"
+              ? "Next step"
+              : "Request foundation"}
+          </p>
+          <Link className={styles.actionLink} href={requestContextHref}>
+            Review Request Context <span aria-hidden="true">↗</span>
+          </Link>
+          {workflow.planning.status === "blocked" ? (
+            <small>
+              Required request fields are being confirmed with Knowles. There
+              are no inputs to enter yet.
+            </small>
+          ) : null}
+        </div>
+      </section>
+
+      <section
+        className={styles.readiness}
+        aria-labelledby="baseline-readiness"
+      >
+        <div className={styles.sectionHeading}>
+          <div>
+            <p className={styles.kicker}>Before calculation</p>
+            <h2 id="baseline-readiness">Baseline readiness</h2>
+          </div>
+          <p>
+            Planning access and calculation readiness are checked separately.
+          </p>
+        </div>
+        <dl className={styles.readinessList}>
+          <div className={styles.readinessRow}>
+            <dt>Request Context</dt>
+            <dd>
+              <strong
+                className={
+                  workflow.request.status === "ready"
+                    ? styles.availableStatus
+                    : styles.blockedStatus
+                }
+              >
+                {requestLabels[workflow.request.status]}
+              </strong>
+              <p>
+                Completeness and validation establish whether capacity planning
+                can begin.
+              </p>
+            </dd>
+          </div>
+          <div className={styles.readinessRow}>
+            <dt>Planning context</dt>
+            <dd>
+              <strong
+                className={
+                  workflow.planning.status === "blocked"
+                    ? styles.blockedStatus
+                    : styles.availableStatus
+                }
+              >
+                {workflow.planning.status === "blocked"
+                  ? "Waiting for Request Context"
+                  : "Available for planning"}
+              </strong>
+              <p>
+                Baseline planning follows a complete, validated request. Its
+                input definitions and validation rules must also be confirmed.
+              </p>
+            </dd>
+          </div>
+          <div className={styles.readinessRow}>
+            <dt>Calculation readiness</dt>
+            <dd>
+              <strong
+                className={
+                  workflow.calculation.status === "blocked"
+                    ? styles.blockedStatus
+                    : styles.availableStatus
+                }
+              >
+                {workflow.calculation.status === "blocked"
+                  ? "Not ready to calculate"
+                  : "Prerequisites satisfied"}
+              </strong>
+              {workflow.calculation.status === "blocked" ? (
+                <ul className={styles.blockerList}>
+                  {workflow.calculation.blockers.map((blocker) => (
+                    <li key={blocker}>{blockerCopy[blocker]}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>
+                  Readiness is confirmed. Calculation execution will be
+                  introduced with the validated Capacity Engine.
+                </p>
+              )}
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section
+        className={styles.calculation}
+        aria-labelledby="calculation-intent"
+      >
+        <p className={styles.kicker}>Calculation workflow</p>
+        <h2 id="calculation-intent">Calculate when the foundation is ready</h2>
+        <p>
+          Calculation will be an intentional action after readiness is
+          confirmed. Each successful calculation will create a Calculation Run
+          with its own authoritative result and traceable context. Changes to
+          planning inputs will require an explicit calculation of the revised
+          state.
+        </p>
+        <p className={styles.resultNotice}>
+          No Baseline calculation has been performed. Resource requirements,
+          capacity gap interpretation, and Decision Trace become available with
+          a successful Calculation Run.
+        </p>
+      </section>
+    </div>
+  );
+}

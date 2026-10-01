@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAssessmentLifecycle } from "@/application/get-assessment-lifecycle";
+import { getBaselineWorkflow } from "@/application/get-baseline-workflow";
 import type { CapacityAssessmentRecord } from "@/application/assessment-store";
 import type {
   AssessmentLifecycle,
@@ -10,6 +11,7 @@ import type {
 } from "@/domain/assessment-lifecycle";
 import { lifecycleStages } from "@/domain/assessment-lifecycle";
 import { ApplicationShell } from "@/presentation/application-shell/ApplicationShell";
+import { BaselineWorkspace } from "@/presentation/baseline/BaselineWorkspace";
 import { assessmentNavigation } from "./section-presentation";
 import styles from "./AssessmentPage.module.css";
 
@@ -62,10 +64,20 @@ export function AssessmentPage({
       <div className={styles.content}>
         <p className={styles.recordNotice}>
           <span className={styles.recordNoticeMark} aria-hidden="true" />
-          Saved Assessment · Technical ID:{" "}
-          <span className={styles.recordId}>{assessment.id}</span>
+          {section === "baseline" ? (
+            "Saved Assessment"
+          ) : (
+            <>
+              Saved Assessment · Technical ID:{" "}
+              <span className={styles.recordId}>{assessment.id}</span>
+            </>
+          )}
         </p>
-        <LifecycleIndicator lifecycle={lifecycle} />
+        <LifecycleIndicator
+          lifecycle={lifecycle}
+          compact={section === "baseline"}
+          overviewHref={navigation[0].href}
+        />
         {section === "overview" ? (
           <Overview
             lifecycle={lifecycle}
@@ -76,6 +88,11 @@ export function AssessmentPage({
           <RequestContext
             lifecycle={lifecycle}
             overviewHref={navigation[0].href}
+          />
+        ) : section === "baseline" ? (
+          <BaselineWorkspace
+            workflow={getBaselineWorkflow(assessment)}
+            requestContextHref={requestContextHref}
           />
         ) : (
           <BlockedSection
@@ -90,7 +107,29 @@ export function AssessmentPage({
   );
 }
 
-function LifecycleIndicator({ lifecycle }: { lifecycle: AssessmentLifecycle }) {
+function LifecycleIndicator({
+  lifecycle,
+  compact,
+  overviewHref,
+}: {
+  lifecycle: AssessmentLifecycle;
+  compact: boolean;
+  overviewHref: string;
+}) {
+  if (compact) {
+    return (
+      <section
+        className={styles.compactLifecycle}
+        aria-label="Assessment lifecycle"
+      >
+        <p>
+          Assessment lifecycle <span aria-hidden="true">/</span> Current stage:{" "}
+          <strong>{stageLabels[lifecycle.currentStage]}</strong>
+        </p>
+        <Link href={overviewHref}>View full lifecycle in Overview</Link>
+      </section>
+    );
+  }
   return (
     <section className={styles.lifecycle} aria-labelledby="lifecycle-title">
       <div className={styles.sectionHeading}>

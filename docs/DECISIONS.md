@@ -456,9 +456,11 @@ Prove Assessment create/read/update plus revision-conflict protection before lar
 **Status:** Active — V1
 Build Planning State/Baseline workflow structure and readiness concepts using clearly synthetic development data where needed; do not invent real Knowles formulas, defaults, or fields.
 
-## D120 — October 14 is the calculation-domain implementation gate
+## D120 — Authoritative Knowles operational truth gates calculation implementation
 **Status:** Active — V1
 Real Capacity Engine implementation waits for authoritative Knowles discovery of terminology, formulas, units, rounding, defaults, exceptions, dependencies, scenario rules, and representative expected outputs.
+
+October 14, 2026 is the first major Knowles/KEP alignment and validation checkpoint, not a guaranteed date for complete calculation-domain validation. Validation may continue throughout the Engineering Hackathon mentorship/development period from October 2026 to March 2027. The calendar date does not unlock implementation; the corresponding authoritative operational truth must be validated.
 
 ## D121 — Knowles fields are classified before final manufacturing-schema design
 **Status:** Active — V1

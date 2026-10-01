@@ -330,7 +330,7 @@ CapSight implementation proceeds through vertical capability slices rather than 
 3. Capacity Assessment lifecycle.
 4. Small PostgreSQL + Prisma persistence spike.
 5. Baseline/planning-state workflow shell without invented manufacturing logic.
-6. October 14 Knowles domain assimilation and field classification.
+6. Knowles domain assimilation and field classification, beginning with the October 14 alignment checkpoint and continuing as authoritative operational material is validated.
 7. Populate `CALCULATION_REFERENCE.md` with validated truth.
 8. Implement/test the plain-TypeScript Capacity Engine rule-by-rule.
 9. Complete the Baseline vertical slice through persisted Calculation Run + Decision Trace.

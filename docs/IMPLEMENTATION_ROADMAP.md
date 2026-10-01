@@ -4,6 +4,8 @@ _Status: APPROVED V1 — Stage 18_
 
 > This document defines **implementation order and readiness gates** for the single CapSight V1 specification. It applies to both separate codebases. It does not create separate product variants.
 
+All numbered phases in this roadmap are **CapSight Implementation Phases**. **Engineering Hackathon Phases** describe the separate official event timeline recorded in `../CAPSIGHT_CONTEXT.md`; their numbers do not map to this implementation sequence.
+
 ## Governing Rules
 
 - Build vertically, not all-at-once.
@@ -72,9 +74,11 @@ Use only fields safe under validated requirements. Do not build the full manufac
 
 ## Phase 4 — Baseline Planning Workflow Shell
 
-Establish Baseline as the reference Planning State. Support editable planning-context structure, saving, revision tracking, and calculation-readiness state without fabricating real Knowles capacity logic. Clearly label synthetic development data.
+Establish Baseline as the reference Planning State and distinguish request readiness, planning access, and calculation readiness. Editable planning context, saving, and revision tracking begin when authoritative planning fields exist; the current Phase 4 shell derives readiness without placeholder inputs or schema expansion. Real calculation waits for Knowles truth, and any development fixtures remain clearly synthetic.
 
-## Phase 5 — October 14 Knowles Truth Assimilation
+## Phase 5 — Knowles Truth Assimilation
+
+CapSight Implementation Phase 5 begins with the October 14, 2026 alignment checkpoint and continues as authoritative operational material is validated. October 14 is **the first major Knowles/KEP alignment and validation checkpoint**, with no guarantee that all required calculation truth will be validated that day. Validation may continue throughout Engineering Hackathon Phase 2, October 2026 to March 2027. Actual calculation implementation is gated by authoritative Knowles operational truth, regardless of calendar date.
 
 Before real calculation coding, capture:
 
@@ -316,3 +320,5 @@ New ideas during implementation are accepted only if justified by Knowles requir
 ## Current Implementation Checkpoint
 
 Implementation Phase 3 has configured the minimal Assessment persistence slice: Prisma/PostgreSQL schema, generated client, data-access boundary, Application operations, and ID-scoped Assessment routes. PostgreSQL is now reachable, the initial migration is confirmed applied, and two incomplete/unvalidated Assessments exist. The actual Application/Infrastructure update path advanced one existing record from revision 1 to 2 and rejected a repeated expected revision 1 as a conflict; the second record remained unchanged. Browser create/reload/reopen verification remains pending. This checkpoint does not advance the manufacturing schema or calculation phases.
+
+Phase 4 adds the Baseline Domain/read-query boundary and a focused readiness workspace. The current incomplete/unvalidated request remains the first blocker; unresolved planning inputs and calculation definitions are explained separately. Baseline's compact lifecycle links to the full Overview lifecycle. Readiness gates, persisted Baseline reload, keyboard Request Context navigation, missing-ID behavior, both themes, and narrow layouts have been verified without changing either stored Assessment. Persistence/schema, manufacturing fields, and calculation truth are unchanged. Phase 5 receives explicit integration points for validated input readiness and compatible reference/profile context; these remain `TODO(KNOWLES)` until authoritative discovery.

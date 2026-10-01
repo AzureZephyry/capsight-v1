@@ -22,6 +22,8 @@ Without a database, the app shows a safe unavailable message. An invalid Assessm
 
 Run `npm run typecheck`, `npm run lint`, `npm run format:check`, and `npm run build`. Run `npm exec prisma validate` for schema validation. Persistence behavior and migration success must be checked against a reachable PostgreSQL database.
 
+Run `node scripts/verify-baseline-workflow.mjs` to check Baseline request, planning, and calculation-readiness gates using the existing TypeScript compiler. This performs no calculation or database writes and does not select a testing framework.
+
 Run `node scripts/verify-assessment-concurrency.mjs` against the development database to exercise the actual Application/Infrastructure update path using an existing Assessment. It reads the current revision, advances it once, retries with the stale revision, and checks PostgreSQL for preserved lifecycle state and unchanged other records. Each successful run advances the selected record's revision; it does not create a record. Set `ASSESSMENT_ID` in the process environment to select a particular existing record, or omit it to select the oldest record.
 
 On October 1, 2026, verification against two existing Assessments advanced one record from revision 1 to 2 and rejected the repeated expected revision 1 with `conflict`. Direct PostgreSQL inspection confirmed revision 2, preserved incomplete/unvalidated state, and an unchanged second Assessment. Browser reload/reopen verification was not repeated during this concurrency check.

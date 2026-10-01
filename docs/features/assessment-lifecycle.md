@@ -50,6 +50,8 @@ Do not invent manufacturing or request fields, request owners, dates, identifier
 
 Use INPUT, VALIDATE, ANALYZE, DEVELOP, and SUBMISSION in the lifecycle indicator. Status text accompanies color. Overview and Request Context are available; later sections open contextual not-ready views instead of dead navigation or fabricated results. Explain the first actionable prerequisite in plain language.
 
+Phase 4 gives Baseline a dedicated readiness workspace. Baseline uses a compact current-stage line linked to Overview's full lifecycle to preserve room for planning work. Request readiness, planning access, and calculation readiness remain distinct; see `baseline-workflow.md`. Request prerequisites and lifecycle transitions are unchanged.
+
 ## Technical Boundaries
 
 Presentation renders application-provided readiness. Domain owns request completeness and prerequisite semantics; application supplies the current pre-Knowles state. Phase 2 uses server-rendered routes without persistence, database models, or new state libraries.

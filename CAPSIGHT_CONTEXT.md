@@ -1,6 +1,6 @@
 # CapSight Context — Locked Project Direction
 
-_Last updated: September 30, 2026_
+_Last updated: October 1, 2026_
 
 > **V1 STATUS:** All “locked” decisions in this document are authoritative working decisions for **CapSight V1**, not irreversible commitments. If higher-authority Knowles evidence contradicts a V1 decision, update the relevant Markdown contract and decision ledger. The newest validated truth wins.
 
@@ -46,6 +46,8 @@ Use:
 - `docs/IMPLEMENTATION_ROADMAP.md`
 
 to determine the current implementation phase and dependency order.
+
+**Phase terminology:** Phase references in CapSight's implementation roadmap and feature contracts mean **CapSight Implementation Phase X** unless explicitly labeled otherwise. **Engineering Hackathon Phase X** refers to the official event timeline below. The two phase sequences are separate.
 
 ### UI / Frontend / Design
 
@@ -112,7 +114,7 @@ If the proposal conflicts with validated Knowles requirements, **Knowles require
 
 ### Core rule
 
-> **Unknowns are requirements to validate — not blanks to fill with assumptions.**
+> **Unknowns are treated as requirements to validate — not blanks to fill with assumptions.**
 
 Never:
 
@@ -177,11 +179,22 @@ Examples seen in one workbook are **not yet universal rules**, including:
 
 ---
 
-## 4. What October 14 Is For
+## 4. Official Engineering Hackathon Timeline and October 14 Checkpoint
 
-The October 14 mentor session is the **domain unlock** for the V1 calculation model.
+Official announced timeline:
 
-Priority discovery targets:
+| Engineering Hackathon phase | Activity | Date | Attendees | Venue |
+| --- | --- | --- | --- | --- |
+| Engineering Hackathon Phase 1 | Event Kick-off and Detailed Project Alignment | October 14, 2026 | CITU: Department Heads/In-Charge and Selected Students; KEP: Managers and Mentors | KEP Training Room and General Office |
+| Engineering Hackathon Phase 2 | Mentorship, Research and Concept Development; Project Execution and Evaluations, Validations | October 2026 to March 2027 | CITU: Students/Teams; KEP: Managers and Mentors | Offsite and Onsite depending on Mentor and Students alignment |
+| Engineering Hackathon Phase 3 | Project Presentation, Awards and Recognition | March 2027; final date is for alignment | CITU: Department Heads/In-Charge and Selected Students; KEP: Managers and Mentors | KEP Training Room and General Office |
+| Engineering Hackathon Phase 4 | Internship Program — for eligible students from top 3 Winning Team | May 2027 to July 2027 | CITU: Eligible Students of Top 3 Winning Team; KEP: Managers and Mentors | KEP Office and Production Areas |
+
+October 14, 2026 is **the first major Knowles/KEP alignment and validation checkpoint**. It does not guarantee that every required formula, field definition, unit, rounding rule, dependency, scenario variable, calculation profile rule, or golden example will be fully validated on that date.
+
+Actual calculation implementation remains gated by authoritative Knowles operational truth, regardless of calendar date. Validation may continue throughout the Engineering Hackathon mentorship/development period from October 2026 to March 2027.
+
+Priority discovery targets beginning with the alignment checkpoint and continuing as operational material is validated:
 
 - authoritative formulas;
 - units;
@@ -200,7 +213,7 @@ Priority discovery targets:
 - user roles / authentication / permissions / audit/history requirements;
 - technical meaning of “Real-Time Assessment.”
 
-Until then, **the real calculation engine must not be implemented from guesses**.
+Until the relevant authoritative operational truth is validated, **the real calculation engine must not be implemented from guesses**.
 
 ---
 
@@ -419,7 +432,7 @@ This protects the Knowles calculation model from presentation and framework chan
 
 - Centralized persistence is a requirement.
 - Database technology and schema are **not yet locked**.
-- Do not design the schema before October 14 provides the real field/domain model.
+- Final manufacturing-schema design waits for the validated field/domain model; October 14 does not guarantee its availability.
 
 ### API strategy
 
@@ -2185,7 +2198,8 @@ PERSISTENCE SPIKE
     ↓
 BASELINE WORKFLOW SHELL
     ↓
-OCTOBER 14 KNOWLES DOMAIN GATE
+KNOWLES TRUTH ASSIMILATION
+(BEGINS OCTOBER 14 ALIGNMENT; CONTINUES WITH VALIDATION)
     ↓
 CALCULATION REFERENCE
     ↓
@@ -2204,7 +2218,7 @@ VISUAL REFINEMENT
 COMPETITION HARDENING
 ```
 
-### Before October 14
+### While authoritative Knowles truth remains unresolved
 Safe implementation work includes:
 - repository/tooling foundation;
 - Next.js application shell;
@@ -2217,7 +2231,9 @@ Safe implementation work includes:
 
 Do **not** invent Knowles manufacturing fields or real capacity formulas to make the app appear complete.
 
-### October 14 calculation-domain gate
+### Knowles truth assimilation and operational validation gate
+Assimilation begins with the October 14 alignment checkpoint and continues as authoritative operational material is validated. The checkpoint does not guarantee completion; calendar dates do not unlock calculation implementation.
+
 Before real Capacity Engine implementation:
 1. assimilate Knowles terminology, definitions, units, formulas, defaults, rounding, exceptions, dependencies, and scenario rules;
 2. classify relevant fields as `REFERENCE_DATA`, `ASSESSMENT_INPUT`, `SCENARIO_EDITABLE`, `CALCULATED`, `DEFAULT`, or `DERIVED`;
