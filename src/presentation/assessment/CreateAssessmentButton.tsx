@@ -34,7 +34,7 @@ function CreateAssessmentButton({
   }, [pending, submissionLockRef]);
   return (
     <button className={styles.createButton} type="submit" disabled={pending}>
-      <span role="status">
+      <span aria-live="polite" aria-atomic="true">
         {pending ? "Creating Assessment…" : "Create Assessment"}
       </span>
       <span aria-hidden="true">{pending ? "·" : "+"}</span>
