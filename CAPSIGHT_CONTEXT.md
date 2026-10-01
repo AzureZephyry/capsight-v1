@@ -64,11 +64,18 @@ plus the contract for the feature being implemented.
 Use:
 
 - `docs/CALCULATION_REFERENCE.md`
+- `docs/KNOWLES_REQUIREMENTS.md`
 - `docs/features/capacity-engine.md`
 - `docs/features/calculation-validation-safety.md`
 - `docs/features/capacity-engine-testing-strategy.md`
 
 Do not implement unresolved Knowles formulas, meanings, defaults, units, dependencies, or business rules.
+
+### Knowles Operational Requirements / Alignment
+
+Use `docs/KNOWLES_REQUIREMENTS.md` as the authoritative ledger for Knowles-derived operational requirements, confirmed-source provenance, open validation questions, and affected contracts. CapSight Implementation Phase 5A prepares this ledger and the calculation capture structure; it does not assimilate new truth or implement features.
+
+Validated operational truth may arrive incrementally beginning with the October 14 alignment checkpoint. Reconcile each confirmed statement into the ledger and affected feature/domain contract, and into `docs/CALCULATION_REFERENCE.md` for calculation truth, before corresponding implementation. Meeting notes alone are not implementation authority. Independently validated areas may proceed with their prerequisites satisfied while other items remain explicitly OPEN.
 
 ### Persistence / Database
 
@@ -551,11 +558,13 @@ Short architecture/product decision records with reason and status.
 
 ### `KNOWLES_REQUIREMENTS.md`
 
-Separate:
+Now maintained at `docs/KNOWLES_REQUIREMENTS.md` as the operational requirements authority. Separate:
 
 - CONFIRMED
 - OPEN
 - DO NOT ASSUME
+
+It contains the alignment validation matrix, confirmed-source provenance, golden sample requirements, and assimilation procedure. Keep the full matrix there; this context remains the entry point.
 
 Keep these files compact and current. Compress outdated context instead of endlessly appending history.
 
@@ -656,7 +665,7 @@ docs/
 ├── KNOWLES_REQUIREMENTS.md
 ├── PRODUCT_ARCHITECTURE.md
 ├── DESIGN_SYSTEM.md
-├── CALCULATION_REFERENCE.md        # after Knowles validates definitions/formulas
+├── CALCULATION_REFERENCE.md        # capture structure prepared; content requires Knowles validation
 └── features/
     ├── assessment.md
     ├── capacity-engine.md
@@ -1342,7 +1351,8 @@ Maintain:
 
 - `docs/features/reference-data.md`
 - `docs/features/calculation-profiles.md`
-- `docs/CALCULATION_REFERENCE.md` only after Knowles validates definitions/formulas
+- `docs/KNOWLES_REQUIREMENTS.md` for operational requirements and validation status
+- `docs/CALCULATION_REFERENCE.md` with prepared capture structure; populate rules only after Knowles validates definitions/formulas
 
 ---
 
@@ -2233,6 +2243,8 @@ Do **not** invent Knowles manufacturing fields or real capacity formulas to make
 
 ### Knowles truth assimilation and operational validation gate
 Assimilation begins with the October 14 alignment checkpoint and continues as authoritative operational material is validated. The checkpoint does not guarantee completion; calendar dates do not unlock calculation implementation.
+
+CapSight Implementation Phase 5A is alignment readiness only: `docs/KNOWLES_REQUIREMENTS.md` consolidates validation questions and defines the capture/reconciliation procedure, while `docs/CALCULATION_REFERENCE.md` provides an unpopulated rule template. CapSight Implementation Phase 5 may remain partially open while independently validated areas advance through their existing prerequisites.
 
 Before real Capacity Engine implementation:
 1. assimilate Knowles terminology, definitions, units, formulas, defaults, rounding, exceptions, dependencies, and scenario rules;

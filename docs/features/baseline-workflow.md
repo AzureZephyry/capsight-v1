@@ -10,7 +10,7 @@ Make Baseline's role, prerequisites, and next action clear while preserving a bo
 
 ## Proposal / Requirement Basis
 
-Baseline is the Assessment's reference planning state (D002, D119). Request Context must be complete and validated before Baseline planning. Calculation truth is gated by `CALCULATION_REFERENCE.md` (D120, D122); its current placeholder is not validated content.
+Baseline is the Assessment's reference planning state (D002, D119). Request Context must be complete and validated before Baseline planning. Calculation truth is gated by `CALCULATION_REFERENCE.md` (D120, D122); its prepared capture structure contains no validated rules.
 
 ## User Problem
 

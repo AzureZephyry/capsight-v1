@@ -80,6 +80,20 @@ Establish Baseline as the reference Planning State and distinguish request readi
 
 CapSight Implementation Phase 5 begins with the October 14, 2026 alignment checkpoint and continues as authoritative operational material is validated. October 14 is **the first major Knowles/KEP alignment and validation checkpoint**, with no guarantee that all required calculation truth will be validated that day. Validation may continue throughout Engineering Hackathon Phase 2, October 2026 to March 2027. Actual calculation implementation is gated by authoritative Knowles operational truth, regardless of calendar date.
 
+CapSight Implementation Phase 5 may remain partially open while development continues on independently validated areas. Corresponding documentation and dependencies must be reconciled before implementation; unresolved truth required by a change still blocks that change. The calendar does not complete this phase automatically.
+
+### CapSight Implementation Phase 5A — Knowles Alignment Readiness
+
+Prepare for Engineering Hackathon Phase 1, **Event Kick-off and Detailed Project Alignment**, October 14, 2026. This preparation does not perform Knowles Truth Assimilation or implement application features.
+
+- Establish [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md) as the operational requirements ledger, with confirmed provenance, open validation questions, affected contracts, and golden sample requirements.
+- Prepare [CALCULATION_REFERENCE.md](CALCULATION_REFERENCE.md) to capture validated rules without creating formulas or sample values.
+- Define source capture → validated statement → requirements ledger → affected contract → calculation reference when applicable → durable decision when appropriate → impact review → implementation → evidence verification.
+
+Readiness completion means the capture structure and reconciliation procedure are ready. It does not mean any unresolved operational answer has been validated.
+
+### CapSight Implementation Phase 5 — Incremental Truth Assimilation
+
 Before real calculation coding, capture:
 
 - terminology and definitions;
@@ -108,6 +122,8 @@ DERIVED
 ```
 
 Unresolved items remain OPEN / `TODO(KNOWLES)`.
+
+Use the validation matrix and assimilation procedure in [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md). Confirmations update the affected existing contracts; informal meeting notes do not directly authorize coding.
 
 ## Phase 6 — Populate `CALCULATION_REFERENCE.md`
 
@@ -321,4 +337,6 @@ New ideas during implementation are accepted only if justified by Knowles requir
 
 Implementation Phase 3 has configured the minimal Assessment persistence slice: Prisma/PostgreSQL schema, generated client, data-access boundary, Application operations, and ID-scoped Assessment routes. PostgreSQL is now reachable, the initial migration is confirmed applied, and two incomplete/unvalidated Assessments exist. The actual Application/Infrastructure update path advanced one existing record from revision 1 to 2 and rejected a repeated expected revision 1 as a conflict; the second record remained unchanged. Browser create/reload/reopen verification remains pending. This checkpoint does not advance the manufacturing schema or calculation phases.
 
-Phase 4 adds the Baseline Domain/read-query boundary and a focused readiness workspace. The current incomplete/unvalidated request remains the first blocker; unresolved planning inputs and calculation definitions are explained separately. Baseline's compact lifecycle links to the full Overview lifecycle. Readiness gates, persisted Baseline reload, keyboard Request Context navigation, missing-ID behavior, both themes, and narrow layouts have been verified without changing either stored Assessment. Persistence/schema, manufacturing fields, and calculation truth are unchanged. Phase 5 receives explicit integration points for validated input readiness and compatible reference/profile context; these remain `TODO(KNOWLES)` until authoritative discovery.
+Phase 4 adds the Baseline Domain/read-query boundary and a focused readiness workspace. The current incomplete/unvalidated request remains the first blocker; unresolved planning inputs and calculation definitions are explained separately. Baseline's compact lifecycle links to the full Overview lifecycle. Readiness gates, persisted Baseline reload, keyboard Request Context navigation, missing-ID behavior, both themes, and narrow layouts have been verified without changing either stored Assessment. Persistence/schema, manufacturing fields, and calculation truth are unchanged. CapSight Implementation Phase 5 receives explicit integration points for validated input readiness and compatible reference/profile context; these remain `TODO(KNOWLES)` until authoritative discovery.
+
+CapSight Implementation Phase 5A prepares `KNOWLES_REQUIREMENTS.md`, the calculation-rule capture template, and the context/roadmap entry points. No new calculation truth is assimilated and no application behavior changes in this readiness pass.
