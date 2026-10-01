@@ -101,7 +101,7 @@ Every confirmed calculation bug should receive a regression test.
 
 Testing depth follows calculation risk and domain correctness, not a vanity coverage target.
 
-Vitest is approved for Domain/Application tests and future Capacity Engine unit/regression tests. Browser/E2E framework selection remains separate; calculation expectations still require authoritative Knowles validation.
+Vitest is approved for Domain/Application tests and future Capacity Engine unit/regression tests. Playwright is separately approved for browser/E2E verification; calculation expectations still require authoritative Knowles validation.
 
 ## Test Data / Confidentiality
 Do not commit sensitive Knowles production data, costs, internal identifiers, or operational records to a public repository without permission. Prefer Knowles-approved sanitized test cases.

@@ -567,5 +567,12 @@ Stages 1–18 are the completed V1 planning cycle. Future Knowles discoveries re
 
 The user explicitly approves Vitest during the third, unnumbered Pre-Alignment Product Experience increment — Automated Verification Foundation. Use deterministic Node tests for authoritative Domain/Application behavior and future Capacity Engine unit/regression tests. `npm test` runs once and is included in CI without PostgreSQL or secrets.
 
-This decision does not select browser/E2E tooling; Playwright remains preferred subject to confirmation. Test-only stores do not prove Prisma/PostgreSQL behavior, and synthetic lifecycle states do not replace the Knowles golden sample. Real persistence verification remains manual/local; golden-sample acceptance and calculation expectations remain gated by authoritative Knowles evidence.
+This decision resolved only unit/domain/application tooling; the separate browser/E2E decision is now recorded in D147. Test-only stores do not prove Prisma/PostgreSQL behavior, and synthetic lifecycle states do not replace the Knowles golden sample. Real persistence verification remains manual/local; golden-sample acceptance and calculation expectations remain gated by authoritative Knowles evidence.
+
+## D147 — Playwright is approved for real browser/E2E verification
+**Status:** Active — V1; resolves the earlier preferred-but-unconfirmed browser framework direction
+
+The user explicitly approves Playwright during the fourth and final planned, unnumbered Pre-Alignment Product Experience engineering foundation increment — Browser / E2E Verification Foundation. Use Chromium only for the initial real-browser suite, separate from Vitest Domain/Application tests. Run against a completed production build with a managed server and database access unconfigured; default browser tests require no PostgreSQL, database URL, or application secrets. No mocked Prisma, fake persisted Assessments, browser component-testing framework, or visual regression service is introduced.
+
+Database-backed browser journeys remain a separate future integration layer. PostgreSQL verification scripts retain their manual/local persistence role. Future Knowles golden-sample tests remain calculation acceptance/regression evidence and require authoritative operational truth; neither unit nor browser success supplies that truth.
 

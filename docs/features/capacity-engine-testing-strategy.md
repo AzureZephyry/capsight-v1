@@ -44,7 +44,7 @@ Do not optimize for an arbitrary coverage percentage. Prioritize domain risk, ca
 ## Tooling
 **Vitest is approved for Domain/Application unit tests and future Capacity Engine unit/regression tests.** This resolves the earlier OPEN framework decision; it does not select a browser/E2E framework.
 
-Playwright remains the preferred later E2E direction for a small set of critical competition workflows, subject to implementation-time confirmation.
+**Playwright is separately approved for real browser/E2E verification.** The initial foundation uses Chromium only for existing product behavior that needs no database or unresolved Knowles rules.
 
 ## Verification Layers
 
@@ -53,7 +53,7 @@ Playwright remains the preferred later E2E direction for a small set of critical
 | Domain/Application unit tests | Vitest; `npm test` locally and in CI | Deterministic product rules and isolated use cases. No PostgreSQL, `DATABASE_URL`, secrets, browser, or network is required. Test stores do not prove persistence correctness. |
 | Local persistence/integration verification | Manual development PostgreSQL verification, including `scripts/verify-assessment-concurrency.mjs` | Actual Application/Infrastructure updates, revision conflicts, and stored state. The concurrency probe advances an existing record's current revision; keep it outside automatic CI and use only a development database. |
 | Future Knowles golden-sample acceptance/regression | Capacity Engine tests using approved sanitized evidence; Vitest for unit/regression execution | Calculation outputs, trace, and historical context against independently validated Knowles expectations. Blocked until authoritative rules and golden inputs/outputs exist; synthetic lifecycle fixtures are not a golden sample. |
-| Future browser/E2E verification | Framework not selected; Playwright remains preferred subject to confirmation | Full user flows, navigation, rendering, and browser behavior. Vitest unit tests do not establish these results. |
+| Browser/E2E verification | Playwright; `npm run test:e2e` locally and in CI, Chromium only | Real browser navigation, interaction, theme persistence, basic keyboard access, and responsive safety. The default suite has no database access; persisted Assessment journeys require a separate future database-backed layer. |
 
 ## Current Automated Foundation
 
@@ -64,6 +64,16 @@ Colocated `*.test.ts` files in `src/domain` and `src/application` protect Assess
 Prisma owns the initial stored revision default of **1**. A unit stub returning revision 1 only verifies preservation of store metadata; it does not verify that database default. Actual revision/default and concurrency behavior belong to real persistence verification.
 
 `scripts/verify-baseline-workflow.mjs` is retained as an optional, non-mutating TypeScript compiler/Node module-loading smoke check. Its readiness assertions overlap the durable Vitest suite; it is not an additional database or calculation acceptance test and is not required in CI.
+
+## Browser Foundation
+
+`playwright.config.ts` runs `tests/e2e/*.spec.ts` against the completed production build through an automatically managed `npm start` server at `http://127.0.0.1:3100`. Build once before running E2E; CI reuses its existing build step. The server receives an explicitly empty `DATABASE_URL`, overriding any process or `.env.local` credentials. Existing servers are not reused because their database configuration cannot be guaranteed. An occupied test port fails rather than silently using a different deployment. No Prisma mocking, fake saved Assessments, or PostgreSQL service is introduced.
+
+The initial suite covers product navigation and the root Workspace redirect, the authoritative no-database Workspace unavailable state, How CapSight Works and its interactive planned loop, explicit Light/Dark persistence across reload/navigation, branded not-found recovery, keyboard skip/main focus and product controls, and document overflow/navigation at 320px and 1440px. Assessment workflow navigation is visible only after a persisted Assessment loads and is outside this suite.
+
+Tests use fresh browser contexts, semantic roles/names, normal web-first assertions, and no arbitrary sleeps or snapshot goldens. One worker and no retries keep this small suite predictable; CI forbids focused tests. Headless Chromium is the only project. Failure screenshots and traces are retained in ignored `test-results/`; CI uploads failure artifacts for seven days. Browser binaries stay outside source control. These checks are basic accessibility/responsive checks, not a comprehensive accessibility audit or visual regression service.
+
+Database-backed create/save/reopen/concurrency journeys remain outside default browser coverage. Knowles-dependent calculation, scenario, solution/CAPEX, and Reality journeys remain blocked by their validated requirements and roadmap prerequisites. Browser success is not manufacturing acceptance evidence.
 
 ## Test Data Safety
 Use Knowles-approved sanitized fixtures. Do not commit confidential production details, costs, internal model identifiers, or restricted workbook data to public source control without permission.

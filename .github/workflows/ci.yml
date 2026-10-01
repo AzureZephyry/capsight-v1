@@ -27,3 +27,12 @@ jobs:
       - run: npm run format:check
       - run: npm test
       - run: npm run build
+      - run: npx playwright install --with-deps --only-shell chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: chromium-failures
+          path: test-results/
+          if-no-files-found: ignore
+          retention-days: 7

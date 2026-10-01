@@ -2105,7 +2105,7 @@ Editable shared records retain optimistic-concurrency revision checking. Multi-r
 
 ## Stage 17 — Project Structure, Engineering Standards & AI Development Workflow — APPROVED V1
 
-Stage 17 is approved. The later, explicitly approved Automated Verification Foundation decision resolves its earlier OPEN framework choice: **Vitest is approved for Domain/Application unit tests and future Capacity Engine unit/regression tests.** Browser/E2E framework selection remains separate. The rest of the Stage 17 direction is preserved.
+Stage 17 is approved. The later, explicitly approved Automated Verification Foundation decision resolves its earlier OPEN framework choice: **Vitest is approved for Domain/Application unit tests and future Capacity Engine unit/regression tests.** The separate Browser / E2E Verification Foundation decision approves **Playwright** for browser/E2E tests. The rest of the Stage 17 direction is preserved.
 
 ### Project structure direction
 CapSight uses a layered source structure centered on:
@@ -2143,8 +2143,8 @@ Supporting project areas may include `prisma/`, `docs/`, `tests/e2e/`, and `publ
 - Automated tests remain required for the Capacity Engine/domain behaviors defined in the Stage 12 testing contract.
 - **The unit/domain/application testing framework is Vitest**, including future Capacity Engine unit/regression tests.
 - Run deterministic Node tests with `npm test` locally and in CI, without PostgreSQL, secrets, network, or browser requirements. Synthetic lifecycle fixtures and test-only store stubs are not proof of persistence or manufacturing correctness.
-- Real PostgreSQL verification remains manual/local; future golden-sample tests require authoritative Knowles evidence; browser/E2E selection remains a separate decision. See `docs/features/capacity-engine-testing-strategy.md` for these layers.
-- Playwright remains the preferred later E2E option for a small set of critical competition workflows, subject to implementation-time confirmation.
+- Real PostgreSQL verification remains manual/local; future golden-sample tests require authoritative Knowles evidence; browser/E2E tests use separately approved Playwright. See `docs/features/capacity-engine-testing-strategy.md` for these layers.
+- The default `npm run test:e2e` suite uses Chromium against a production build with database access unconfigured. It covers existing product navigation, theme, recovery, and basic keyboard/responsive behavior; persisted Assessment journeys remain a future integration concern.
 - Compilation alone is not evidence of manufacturing/calculation correctness.
 
 ### Runtime and package-management standards

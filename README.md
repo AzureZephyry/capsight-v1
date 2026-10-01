@@ -26,7 +26,23 @@ Light is the default theme. Explicit Light/Dark choices persist as a browser pre
 
 Run `npm test`, `npm run typecheck`, `npm run lint`, `npm run format:check`, and `npm run build`. `npm test` runs the colocated Domain/Application Vitest suite once in Node and exits with nonzero status on failure. It requires no PostgreSQL, `DATABASE_URL`, secrets, network, or browser. Test fixtures are synthetic lifecycle state, not Knowles calculation evidence. Run `npm exec prisma validate` for schema validation. Persistence behavior and migration success must be checked against a reachable PostgreSQL database.
 
-`.github/workflows/ci.yml` runs `npm ci`, Prisma Client generation, typecheck, lint, format check, `npm test`, and build for pushes and pull requests to `main`, using `.nvmrc`. A clean checkout must run `npm run db:generate` before typecheck/build because the generated client is ignored. Compilation and unit tests need neither `.env.local` nor `DATABASE_URL`; CI runs no migrations, database integration tests, or deployment. Use `npm audit` to inspect the locked dependency graph; do not force upgrades automatically. See [the testing strategy](docs/features/capacity-engine-testing-strategy.md) for unit, persistence, future Knowles golden-sample, and future browser/E2E verification boundaries.
+`.github/workflows/ci.yml` runs `npm ci`, Prisma Client generation, typecheck, lint, format check, `npm test`, build, Playwright Chromium headless runtime installation, and `npm run test:e2e` for pushes and pull requests to `main`, using `.nvmrc`. A clean checkout must run `npm run db:generate` before typecheck/build because the generated client is ignored. Compilation, unit tests, and default browser tests need neither `.env.local` nor a database; CI runs no migrations, database integration tests, or deployment. Use `npm audit` to inspect the locked dependency graph; do not force upgrades automatically. See [the testing strategy](docs/features/capacity-engine-testing-strategy.md) for unit, persistence, future Knowles golden-sample, and browser/E2E verification boundaries.
+
+### Browser / E2E checks
+
+After `npm ci` and `npm run db:generate`, run:
+
+```sh
+npx playwright install chromium
+npm run build
+npm run test:e2e
+```
+
+Playwright automatically starts and stops the production application at `http://127.0.0.1:3100`, reusing the completed build. Leave that port free. It explicitly sets `DATABASE_URL` empty for its server, overriding existing process or `.env.local` credentials, and does not reuse other running servers. PostgreSQL and secrets are unnecessary; Workspace shows its existing safe unavailable state. No persistence is mocked or seeded. Rebuild after production source changes; test/config changes alone do not require another build. `npm test` continues to run Vitest only.
+
+The small Chromium suite covers product navigation, the planned closed-loop explanation, theme persistence, branded not-found recovery, keyboard access, and 320px/1440px layouts. Persisted Assessment creation/reopening, workflow navigation, and other database-backed journeys remain a future integration layer. Knowles-dependent calculations remain blocked until validated evidence exists.
+
+For local debugging, run `npm run test:e2e -- --headed`. Failure screenshots/traces are generated in ignored `test-results/`; open a trace with `npx playwright show-trace <path-to-trace.zip>`. CI installs only Chromium's headless runtime and OS dependencies with `npx playwright install --with-deps --only-shell chromium`, reuses its build, and uploads failure artifacts for seven days. Browser binaries stay in Playwright's local cache outside the repository.
 
 Optionally run `node scripts/verify-baseline-workflow.mjs` as a non-mutating TypeScript compiler/Node module-loading smoke check. Its Baseline readiness assertions overlap the durable Vitest suite; it performs no calculation or database access and is retained outside CI.
 

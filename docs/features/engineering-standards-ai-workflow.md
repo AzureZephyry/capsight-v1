@@ -3,7 +3,7 @@
 ## Status
 Stage 17 — **APPROVED V1**.
 
-**Testing-tool decision:** Vitest is now approved for Domain/Application unit tests and future Capacity Engine unit/regression tests. Browser/E2E selection remains separate. All other Stage 17 directions are preserved.
+**Testing-tool decisions:** Vitest is approved for Domain/Application unit tests and future Capacity Engine unit/regression tests. Playwright is separately approved for browser/E2E verification. All other Stage 17 directions are preserved.
 
 ## Purpose
 Keep both CapSight V1 implementations understandable, reproducible, architecture-aligned, and resistant to AI/product drift while allowing Prince's independent codebase and the KnowLarps collaborative codebase to use contributor workflows appropriate to their different team sizes.
@@ -63,7 +63,7 @@ Stage 12 remains the testing authority for what must be verified.
 - Decision Trace/Change Explanation/historical reproducibility: testable correctness concerns.
 - **Unit/domain/application test framework: Vitest.** Keep the Node suite deterministic, colocated with the behavior it protects, and independent of PostgreSQL, secrets, network, and browser APIs.
 - `npm test` runs once and exits with failure status when tests fail. Use small, explicit synthetic fixtures and test-only store stubs; these do not prove Prisma/PostgreSQL or Knowles calculation correctness.
-- Playwright is the preferred later E2E direction for a limited set of critical competition flows, subject to implementation confirmation.
+- **Browser/E2E framework: Playwright.** The default Chromium suite runs once with `npm run test:e2e` against a production build, without PostgreSQL or application secrets. Use semantic selectors, fresh browser contexts, and web-first assertions; no arbitrary sleeps or invented persistence.
 
 ## Runtime / Package Management
 - npm remains the package manager.
@@ -112,7 +112,7 @@ Neither marker may justify shipping missing critical calculation truth.
 Synthetic/demo data must identify itself clearly and must not be named or presented as validated Knowles data.
 
 ## CI
-The lightweight GitHub Actions workflow runs for pushes to `main` and pull requests targeting `main`. It uses first-party checkout/setup-node, the pinned `.nvmrc`, and committed npm lockfile. Checks are `npm ci`, generated Prisma Client setup, typecheck, lint, format check, `npm test`, and production build. Compilation and unit tests require no database URL, PostgreSQL service, or deployment credentials; CI does not migrate or write to a database.
+The lightweight GitHub Actions workflow runs for pushes to `main` and pull requests targeting `main`. It uses first-party checkout/setup-node, the pinned `.nvmrc`, and committed npm lockfile. Checks are `npm ci`, generated Prisma Client setup, typecheck, lint, format check, `npm test`, production build, Playwright Chromium headless runtime installation, and `npm run test:e2e`. Browser tests reuse that build with an isolated, database-unconfigured server; no PostgreSQL service, database URL secret, or deployment credentials are required. CI does not migrate or write to a database. Failure-only browser artifacts use first-party GitHub upload with seven-day retention.
 
 ## Documentation Boundary
 - `README.md`: installation, setup, environment, commands, testing/run instructions.
@@ -129,3 +129,5 @@ The lightweight GitHub Actions workflow runs for pushes to `main` and pull reque
 The scaffold uses strict TypeScript, npm, ESLint, Prettier, and the approved layer boundaries. Product Hardening establishes compilation CI and centralizes runtime database URL validation in Infrastructure. Missing/invalid configuration produces a static developer diagnostic; connection URLs and parser errors are never included in it or in normal UI.
 
 The Automated Verification Foundation adds Vitest Domain/Application tests and automatic CI execution without production refactoring. Existing Baseline gate verification remains an optional, read-only TypeScript compiler/Node loading smoke script whose gate assertions overlap Vitest coverage. The concurrency script deliberately advances one existing Assessment's actual current revision and must only run when real persistence verification is needed. The distinct verification layers are defined in [Capacity Engine Testing Strategy](capacity-engine-testing-strategy.md).
+
+The fourth, unnumbered Browser / E2E Verification Foundation adds Playwright tests for existing database-independent product behavior, using Chromium only. It does not move Vitest rules into browser tests or establish persisted Assessment/calculation correctness.
