@@ -73,4 +73,6 @@ Verify incomplete/unvalidated requests cannot be bypassed by otherwise ready cal
 
 Phase 4 implements the Domain/read-query boundary and a dedicated server-rendered Baseline workspace. Real request transitions, planning inputs/edit/save, Capacity Engine, Calculation Runs, outputs, and trace integration remain deferred. The concrete calculation-domain integration point is marked `TODO(KNOWLES)` in `src/application/get-baseline-workflow.ts`.
 
+The bounded Phase 5 workflow refinement adds a read-only explanation of the five confirmed Capacity Assessment responsibilities and their unresolved calculation rules. Existing request/planning/calculation readiness remains intact; no inputs, calculations, results, or persistence mutations were introduced.
+
 Readiness checks cover request prerequisites, independently unresolved inputs/reference truth, future prerequisite-ready semantics, and read-only Application derivation without a new test framework. The production Baseline route was verified against an existing PostgreSQL Assessment: URL reload, keyboard navigation to Request Context, Overview's full lifecycle, safe missing-ID behavior, both themes at 320/390/768/1024/1440-pixel widths, visible focus, and reduced motion passed. Direct database comparison confirmed both records remained unchanged. No calculation exists or was tested.

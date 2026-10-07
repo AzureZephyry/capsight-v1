@@ -245,30 +245,69 @@ function RequestContext({
         <p className={styles.kicker}>Request intake</p>
         <h2 id="request-title">Establish the planning context</h2>
         <p>
-          Request Context gathers the information needed to decide whether a
-          capacity assessment can proceed. Its completeness must be checked
-          before the request can be validated.
+          A CAPEX request for NPI or Sustaining Capacity Increase begins with
+          information from the Requestor. Completeness review determines whether
+          it can proceed to Capacity Assessment.
         </p>
-        <div className={styles.fieldShell}>
-          <span className={styles.fieldSymbol} aria-hidden="true">
-            ◇
-          </span>
-          <div>
-            <h3>Required request information</h3>
-            <p>
-              The required fields and validation rules are still being confirmed
-              with Knowles. They will be grouped here once defined; there are no
-              request inputs to enter yet.
-            </p>
-          </div>
-        </div>
+        <section
+          className={styles.intakeSection}
+          aria-labelledby="intake-title"
+        >
+          <h3 id="intake-title">Confirmed intake information</h3>
+          <p>Confirmed by Knowles · September 30, 2026</p>
+          <ul className={styles.intakeList}>
+            <li>
+              <strong>Affected model line / PN</strong>
+            </li>
+            <li>
+              <strong>Routing with PDT</strong>
+              <p>For a new PN.</p>
+            </li>
+            <li>
+              <strong>Volume and Volume Mix</strong>
+            </li>
+            <li>
+              <strong>Days/week scenario</strong>
+              <p>
+                Knowles states “Default: 6 days/week”. Applicability is still
+                being validated; no default is applied here.
+              </p>
+            </li>
+            <li>
+              <strong>Supplier Tooling</strong>
+            </li>
+            <li>
+              <strong>Retained tool capacity</strong>
+              <p>
+                When using existing capacity from other models: how much tool
+                capacity should be retained.
+              </p>
+            </li>
+          </ul>
+        </section>
+        <section
+          className={styles.alignmentNote}
+          aria-labelledby="intake-alignment-title"
+        >
+          <h3 id="intake-alignment-title">Still to align with Knowles</h3>
+          <p>
+            Field structure, definitions including PDT, Volume units and time
+            basis, Volume Mix representation, and tool capacity measures still
+            need validation. Default applicability and mandatory or conditional
+            requirements also remain open.
+          </p>
+          <p>
+            Editable fields will follow that alignment so the information you
+            enter has an agreed meaning and validation rule.
+          </p>
+        </section>
       </section>
       <aside className={styles.gatePanel} aria-labelledby="gate-title">
         <p className={styles.kicker}>Current gate</p>
         <h2 id="gate-title">Incomplete and unvalidated</h2>
         <p>
-          This request cannot move into Baseline planning until the required
-          information is known, supplied, and validated.
+          This Assessment has no request information entered. Baseline planning
+          requires a complete and validated request.
         </p>
         <div className={styles.gateStatus}>
           <span>Request completeness</span>
@@ -286,6 +325,26 @@ function RequestContext({
               : "Validated"}
           </strong>
         </div>
+        <section
+          className={styles.reviewFlow}
+          aria-labelledby="review-flow-title"
+        >
+          <h3 id="review-flow-title">Confirmed completeness flow</h3>
+          <dl>
+            <div>
+              <dt>Incomplete information</dt>
+              <dd>Return to Requestor for Completion</dd>
+            </div>
+            <div>
+              <dt>Complete information</dt>
+              <dd>Continue to Capacity Assessment</dd>
+            </div>
+          </dl>
+          <p>
+            Return and resubmission actions are not available yet. Completeness
+            alone does not establish calculation readiness.
+          </p>
+        </section>
         <Link className={styles.textLink} href={overviewHref}>
           Return to Overview <span aria-hidden="true">↗</span>
         </Link>
@@ -310,26 +369,58 @@ function BlockedSection({
   if (!item) return null;
 
   return (
-    <section className={styles.blockedPanel} aria-labelledby="blocked-title">
-      <p className={styles.kicker}>Section readiness</p>
-      <span className={styles.stateTag}>Not ready</span>
-      <h2 id="blocked-title">{item.label} is not ready yet</h2>
-      <p>
-        {readiness.status === "blocked"
-          ? prerequisiteDescriptions[readiness.prerequisite]
-          : "This section's workflow will follow its validated prerequisite."}
-      </p>
-      <div className={styles.blockerDetail}>
-        <span>First open gate</span>
-        <strong>Complete and validate Request Context</strong>
+    <>
+      <section className={styles.blockedPanel} aria-labelledby="blocked-title">
+        <p className={styles.kicker}>Section readiness</p>
+        <span className={styles.stateTag}>Not ready</span>
+        <h2 id="blocked-title">{item.label} is not ready yet</h2>
         <p>
-          Its required fields are still being confirmed, so no capacity work or
-          results are available yet.
+          {readiness.status === "blocked"
+            ? prerequisiteDescriptions[readiness.prerequisite]
+            : "This section's workflow will follow its validated prerequisite."}
         </p>
-      </div>
-      <Link className={styles.actionLink} href={requestContextHref}>
-        Review Request Context <span aria-hidden="true">↗</span>
-      </Link>
+        <div className={styles.blockerDetail}>
+          <span>First open gate</span>
+          <strong>Complete and validate Request Context</strong>
+          <p>
+            Its required fields are still being confirmed, so no capacity work
+            or results are available yet.
+          </p>
+        </div>
+        <Link className={styles.actionLink} href={requestContextHref}>
+          Review Request Context <span aria-hidden="true">↗</span>
+        </Link>
+      </section>
+      {section === "solution" ? <SolutionContext /> : null}
+    </>
+  );
+}
+
+function SolutionContext() {
+  return (
+    <section
+      className={styles.solutionContext}
+      aria-labelledby="solution-directions-title"
+    >
+      <p className={styles.kicker}>Confirmed by Knowles</p>
+      <h2 id="solution-directions-title">Solution Evaluation directions</h2>
+      <p>
+        Future capacity analysis and an identified gap will support evaluation
+        of these directions. Which apply, and the detailed evaluation rules,
+        still need Knowles validation.
+      </p>
+      <ul className={styles.solutionList}>
+        <li>Existing capacity optimization</li>
+        <li>Equipment transfer / reallocation</li>
+        <li>New tooling requirement</li>
+        <li>New equipment requirement</li>
+      </ul>
+      <h3>Downstream CAPEX handoff</h3>
+      <p>
+        Knowles’ workflow includes CAPEX cost, submission to the Requestor, and
+        waiting for feedback. How costs are provided, what follows feedback, and
+        how much of this handoff CapSight will support remain under validation.
+      </p>
     </section>
   );
 }

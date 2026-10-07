@@ -82,7 +82,8 @@
 .sectionHeading h2,
 .readiness h2,
 .requestGrid h2,
-.blockedPanel h2 {
+.blockedPanel h2,
+.solutionContext h2 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.5rem, 2.3vw, 2rem);
@@ -320,32 +321,87 @@
   min-width: 0;
 }
 
-.fieldShell {
-  display: flex;
-  gap: 18px;
-  margin-top: 26px;
-  padding: 28px;
-  border: 1px dashed var(--color-border);
-  border-radius: 12px;
-  background: var(--color-surface-inset);
+.intakeSection {
+  margin-top: 28px;
 }
 
-.fieldSymbol {
-  color: var(--color-accent-lilac);
-  font-size: 1.35rem;
-  line-height: 1;
-}
-
-.fieldShell h3 {
+.intakeSection h3,
+.alignmentNote h3,
+.reviewFlow h3,
+.solutionContext h3 {
   margin: 0;
   font-size: 0.94rem;
+  line-height: 1.5;
 }
 
-.fieldShell p {
+.intakeSection > p,
+.intakeList p,
+.alignmentNote p,
+.reviewFlow p {
   margin: 8px 0 0;
   color: var(--color-text-secondary);
   font-size: 0.82rem;
   line-height: 1.65;
+}
+
+.intakeSection > p {
+  color: var(--color-text-subtle);
+  font-size: 0.74rem;
+}
+
+.intakeList {
+  margin: 18px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+  list-style: none;
+}
+
+.intakeList li {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.intakeList strong {
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+.intakeList p {
+  margin-top: 5px;
+}
+
+.alignmentNote {
+  margin-top: 25px;
+  padding-left: 18px;
+  border-left: 2px solid var(--color-powder-blue);
+}
+
+.reviewFlow {
+  margin-top: 23px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.reviewFlow dl {
+  display: grid;
+  gap: 16px;
+  margin: 16px 0 0;
+  font-size: 0.79rem;
+  line-height: 1.6;
+}
+
+.reviewFlow dt {
+  font-weight: 750;
+}
+
+.reviewFlow dd {
+  margin: 4px 0 0;
+  color: var(--color-text-secondary);
+}
+
+.reviewFlow p {
+  margin-top: 16px;
+  font-size: 0.76rem;
 }
 
 .gatePanel {
@@ -433,6 +489,27 @@
   line-height: 1.6;
 }
 
+.solutionContext {
+  max-width: 780px;
+  min-width: 0;
+}
+
+.solutionContext > p:not(.kicker) {
+  margin: 13px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.solutionList {
+  display: grid;
+  gap: 11px;
+  margin: 22px 0 28px;
+  padding-left: 20px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 900px) {
   .stageList {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -514,9 +591,5 @@
   .rowStatus {
     display: inline-block;
     margin-top: 8px;
-  }
-
-  .fieldShell {
-    padding: 21px;
   }
 }

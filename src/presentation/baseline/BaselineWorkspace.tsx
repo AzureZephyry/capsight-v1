@@ -75,8 +75,8 @@ export function BaselineWorkspace({
           </Link>
           {workflow.planning.status === "blocked" ? (
             <small>
-              Required request fields are being confirmed with Knowles. There
-              are no inputs to enter yet.
+              Intake concepts are confirmed. Their field definitions and
+              validation rules are still being aligned with Knowles.
             </small>
           ) : null}
         </div>
@@ -163,6 +163,29 @@ export function BaselineWorkspace({
             </dd>
           </div>
         </dl>
+      </section>
+
+      <section
+        className={styles.responsibilities}
+        aria-labelledby="capacity-responsibilities"
+      >
+        <p className={styles.kicker}>Confirmed by Knowles</p>
+        <h2 id="capacity-responsibilities">
+          Capacity Assessment responsibilities
+        </h2>
+        <ul className={styles.responsibilityList}>
+          <li>Validate demand requirement</li>
+          <li>Evaluate available capacity</li>
+          <li>Review volume mix impact</li>
+          <li>Assess shared tool capacity</li>
+          <li>Identify capacity gap</li>
+        </ul>
+        <p>
+          These responsibilities define the purpose of the assessment. The
+          formulas, units, calculation order, and rules needed to perform this
+          work are still under Knowles validation. A complete request alone does
+          not make Baseline ready to calculate.
+        </p>
       </section>
 
       <section
