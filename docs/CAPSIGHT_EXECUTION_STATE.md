@@ -59,6 +59,8 @@ The persisted journey was a bounded local check; its temporary resources were cl
 
 Calculation correctness is **not validated**, and no validated calculation rules are recorded. Scenario Studio, Solution Evaluation, and Reality currently provide gated contextual routes, not implemented domain workflows or results.
 
+**Mentor demo preparation:** repository build generation and a deliberate committed-migration command support the future [protected Vercel Preview / isolated PostgreSQL demo](MENTOR_DEMO_DEPLOYMENT.md). No cloud resources, demo branch, or remote migrations have been created or run. Local development data remains separate. This is engineering preparation; Phase 5 remains **CURRENT / ACTIVE**, with the same Knowles validation gates.
+
 ## 4. Current Active Focus
 
 **CURRENT FOCUS: KNOWLES TRUTH ASSIMILATION + ALIGNMENT PREPARATION**

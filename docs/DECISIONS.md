@@ -583,3 +583,10 @@ The fifth, unnumbered Pre-Alignment increment — Architecture Guardrails + Deve
 
 `npm run verify` reuses Prisma generation → typecheck → lint → format check → Vitest → production build, exits on failure, and requires no database, secrets, browsers, or external network after dependency installation. Playwright and manual PostgreSQL checks remain separate. CI retains its explicit stages. Onboarding applies committed migrations with `prisma migrate deploy` only against the deliberately configured development database; existing `db:migrate` remains migration-authoring tooling, not the default clone setup command. This decision does not authorize database mutation during the increment or change any product/Knowles truth.
 
+## D149 — Mentor demonstration uses an isolated, protected Preview environment
+**Status:** Active — bounded engineering target; external setup pending
+
+The user approves repository readiness for a future Vercel Preview from `demo/mentor-review`, normally tracking an approved `main` checkpoint, with a completely separate managed PostgreSQL demo database. Local `capsight_dev` stays local. Access uses deployment-level protection and controlled sharing; this does not decide CapSight authentication, business roles, production hosting, or Knowles requirements. Only blank Assessments are currently supported; synthetic information is permitted only if supported later, and sensitive operational/employee/CAPEX data is excluded.
+
+`npm run build` generates the ignored Prisma Client before compilation, independently of database connectivity and dependency caching. `db:migrate:deploy` applies reviewed, committed migrations only as a deliberate setup operation against a confirmed target; install, build, startup, and default CI do not migrate or seed. Existing verification and explicit CI stages remain. The [mentor demo guide](MENTOR_DEMO_DEPLOYMENT.md) records the later manual setup, access checks, and cleanup. This preparation creates no external resources and does not advance CapSight Implementation Phase 5.
+
