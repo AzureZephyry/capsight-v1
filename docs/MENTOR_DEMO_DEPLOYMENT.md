@@ -6,7 +6,7 @@ _Repository readiness: October 7, 2026. Future manual setup only; no hosted depl
 
 Demonstrate the current CapSight checkpoint using a protected **Vercel Preview** and a completely separate managed PostgreSQL database. This is a team engineering choice ([D149](DECISIONS.md)), with CapSight Implementation Phase 5 still **CURRENT / ACTIVE**. Knowles validation gates and current product behavior remain in force.
 
-**Pre-deployment review required:** on October 7, 2026, `npm audit` reported **9 high** findings in the locked ESLint/Prisma dependency trees; `npm audit --omit=dev` still reported **4 high**. Resolve these or complete an explicit risk review before external setup. npm suggests breaking tooling version changes, so readiness work does not run forced fixes or change dependencies. No claim of a vulnerability-free deployment is made.
+**Dependency advisory review completed:** **GREEN — no identified advisory materially blocks the current mentor Preview based on the inspected application/runtime paths.** This conclusion applies to the intended protected, low-traffic mentor Preview. `npm audit` still reports findings: on October 7, 2026, it reported **9 high**, while `npm audit --omit=dev` reported **4 high**. These were traced to lint tooling, Prisma CLI/configuration paths, and an unused MySQL driver. No affected path was found in CapSight's current PostgreSQL web runtime. The advisories have not been fixed, and dependencies have not been changed. Actual hosted deployment packaging should still be rechecked if/when deployment occurs. No claim of a vulnerability-free deployment is made.
 
 | Environment       | Application                              | Database / data                                                                                  |
 | ----------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -77,7 +77,7 @@ Check build/runtime logs without copying credentials. A successful build alone d
 5. Open **How CapSight Works** and return to Workspace.
 6. Switch Light/Dark, navigate, reload, and reopen the browser: expect the selected theme to persist.
 
-These are later manual hosted smoke checks. The existing 21 Vitest and 8 database-free Playwright tests remain unchanged and do not claim remote persistence coverage. Use blank Assessments only; do not run the revision-mutating local concurrency script as a demo smoke test.
+These are later manual hosted smoke checks. The current automated test baseline is **25 passing Vitest tests** and **8 passing database-free Playwright tests**; these do not claim remote persistence coverage. Use blank Assessments only; do not run the revision-mutating local concurrency script as a demo smoke test.
 
 ## 6. Share access and retire the demo
 

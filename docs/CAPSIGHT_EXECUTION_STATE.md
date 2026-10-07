@@ -67,6 +67,8 @@ Calculation correctness is **not validated**, and no validated calculation rules
 
 Assimilate received evidence, refine unresolved questions, and prepare for October 28. Major Knowles-dependent web-app implementation is intentionally held until the evidence required by each change is validated and reconciled into the affected contracts. Work continues on bug fixes, regressions, and already-validated requirements. CapSight remains active; speculative domain implementation is held while validation proceeds. This evidence-assimilation pass changes documentation only; potential implementation unlocks require a separate review.
 
+**Current meeting-preparation artifact:** [October 28 Mentor Alignment Playbook](MENTOR_ALIGNMENT_PLAYBOOK.md) provides the short product walkthrough, prioritized discovery questions, team-call/backup checklist, evidence capture, and post-meeting assimilation/entry review. It organizes preparation without adding Knowles truth or starting Phase 6; the requirements ledger and affected contracts remain the authorities.
+
 ## 5. Current Implementation Gates
 
 **BLOCKED where required truth remains OPEN or needs CLARIFICATION.** The [Knowles requirements ledger](KNOWLES_REQUIREMENTS.md) tracks the questions, evidence, provenance, and affected contracts. Do not invent:
