@@ -460,7 +460,7 @@ Build Planning State/Baseline workflow structure and readiness concepts using cl
 **Status:** Active — V1
 Real Capacity Engine implementation waits for authoritative Knowles discovery of terminology, formulas, units, rounding, defaults, exceptions, dependencies, scenario rules, and representative expected outputs.
 
-October 14, 2026 is the first major Knowles/KEP alignment and validation checkpoint, not a guaranteed date for complete calculation-domain validation. Validation may continue throughout the Engineering Hackathon mentorship/development period from October 2026 to March 2027. The calendar date does not unlock implementation; the corresponding authoritative operational truth must be validated.
+The newer team communication postpones kick-off/project alignment from October 14 to **October 28, 2026**, now the first major Knowles/KEP live kick-off/alignment checkpoint. The earlier kickoff date is superseded; October 28 is not a guaranteed date for complete calculation-domain validation. CapSight Implementation Phase 5 is already active as authoritative evidence arrives and is assimilated. Validation may continue throughout the Engineering Hackathon mentorship/development period from October 2026 to March 2027. The calendar date does not unlock implementation; the corresponding authoritative operational truth must be validated. See the evidence provenance in [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md).
 
 ## D121 — Knowles fields are classified before final manufacturing-schema design
 **Status:** Active — V1

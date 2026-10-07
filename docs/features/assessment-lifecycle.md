@@ -12,6 +12,29 @@ Define the Capacity Assessment's request gate, lifecycle orientation, and sectio
 
 The confirmed workflow is INPUT → VALIDATE → ANALYZE → DEVELOP → SUBMISSION. Request completeness is a distinct gate before trustworthy capacity analysis. The approved Phase 2 sequencing decision delivers lifecycle UX and routing; persistent create/read/update/reopen moves to Phase 3.
 
+The supplied Knowles **Production Capacity Requirement Calculator** presentation (September 30, 2026) directly confirms this CAPEX Assessment Flow:
+
+```text
+Receive CAPEX Request (NPI or Sustaining Capacity Increase)
+→ Review Request Completeness
+→ Complete information?
+   NO  → Return to Requestor for Completion
+   YES → Capacity Assessment
+       → Solution Evaluation
+       → CAPEX Submission (CAPEX cost; submit to requestor and wait for feedback)
+```
+
+The Requestor shall provide these six information items:
+
+1. Affected model line / PN.
+2. If new PN: attach the routing with PDT.
+3. Volume and Volume Mix.
+4. Days/week scenario — deck states **Default: 6 days/week**.
+5. Supplier Tooling.
+6. If using existing capacity from other models: how much of the tool capacity should be retained.
+
+These are confirmed intake labels and source conditions, not an exact field schema, validated completeness algorithm, or universally applicable default. Definitions, units, ranges, ownership, applicability, and return/resubmission/editing behavior remain OPEN in the [Knowles requirements ledger](../KNOWLES_REQUIREMENTS.md#open-questions), which records provenance and remaining questions. The deck's completeness YES branch is compatible with the current software gates; it does not remove separate request validation or establish calculation readiness.
+
 ## User Problem
 
 An Industrial Engineer needs to see where capacity work stands, what is missing, why progression is blocked, and the next useful action.
@@ -23,7 +46,7 @@ Capacity Assessment is the central work object. Request Context belongs to it. B
 ## Relationships
 
 - Overview summarizes lifecycle, request readiness, blockers, and next action.
-- Request Context holds the future Knowles-validated intake fields.
+- Request Context will hold the confirmed intake information once its exact field definitions and rules are validated.
 - Baseline requires complete and validated request context.
 - Scenarios require a valid Baseline. Solution follows capacity analysis and gap identification. Reality requires a historical plan to validate.
 - CAPEX context may inform an Assessment, but CapSight does not assume a procurement workflow.
@@ -34,13 +57,13 @@ Capacity Assessment is the central work object. Request Context belongs to it. B
 - Incomplete or unvalidated request context never becomes calculation-ready.
 - All six Assessment sections remain navigable. Unavailable sections explain their prerequisite and give a relevant path back.
 - A newly created Phase 3 Assessment shell stores incomplete and unvalidated Request Context state. Until a database is configured and migrated, the application reports records as unavailable rather than implying they are saved.
-- Completeness, validation, and calculation readiness are distinct concepts. No field-level completeness rule is implemented before Knowles defines the required fields.
+- Completeness, validation, and calculation readiness are distinct concepts. The six source information items are known; field-level completeness rules remain unimplemented until their exact definitions and requiredness are validated.
 
 ## Open Questions
 
-- Exact Request Context fields, definitions, requiredness, and validation rules.
+- Exact mapping of the six confirmed intake items to Request Context fields, definitions, requiredness, units, default applicability, and validation rules.
 - The validated transition from request completeness to request validation.
-- Validated Request Context fields and editable data shape.
+- Completeness authority, return/resubmission process, whether information can change after assessment begins, and the validated editable data shape; see the ledger's precise questions.
 
 ## Do Not Assume
 

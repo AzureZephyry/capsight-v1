@@ -12,6 +12,16 @@ Make Baseline's role, prerequisites, and next action clear while preserving a bo
 
 Baseline is the Assessment's reference planning state (D002, D119). Request Context must be complete and validated before Baseline planning. Calculation truth is gated by `CALCULATION_REFERENCE.md` (D120, D122); its prepared capture structure contains no validated rules.
 
+The supplied Knowles **Production Capacity Requirement Calculator** presentation (September 30, 2026) directly confirms the Capacity Assessment business responsibilities:
+
+- Validate demand requirement.
+- Evaluate available capacity.
+- Review volume mix impact.
+- Assess shared tool capacity.
+- Identify capacity gap.
+
+These establish assessment purpose and responsibility, not mathematical definitions, calculation order, output specifications, units, persisted schema, or an engine interface. The [Knowles requirements ledger](../KNOWLES_REQUIREMENTS.md) records provenance and unresolved questions; this evidence does not unlock calculation readiness.
+
 ## User Problem
 
 An Industrial Engineer needs to distinguish a request blocker from planning access and calculation readiness, and understand what can be done next.
@@ -39,7 +49,7 @@ Baseline establishes the reference planning condition. Scenarios later explore a
 
 ## Open Questions
 
-Validated planning fields, requiredness, units, defaults, formulas, rounding, dependencies, exceptions, reference/profile compatibility, and the sanitized golden example await Knowles. CapSight Implementation Phase 5 begins truth assimilation with the October 14 alignment checkpoint and continues as authoritative operational material is validated. Field classification and the relevant validated reference truth must precede corresponding implementation; October 14 does not guarantee their completion.
+Exact planning fields, requiredness, units, default applicability, formulas, rounding, dependencies, exceptions, reference/profile compatibility, and the sanitized golden example await Knowles validation. CapSight Implementation Phase 5 is active as received evidence is assimilated and continues incrementally. October 28, 2026 is the current first major Knowles/KEP live kick-off/alignment checkpoint, postponed from October 14; it does not guarantee completion of domain truth. Field classification and the relevant validated reference truth must precede corresponding implementation, regardless of calendar date.
 
 ## Do Not Assume
 

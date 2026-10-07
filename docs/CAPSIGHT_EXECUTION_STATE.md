@@ -1,6 +1,6 @@
 # CapSight Execution State
 
-_Current checkpoint: October 1, 2026_
+_Current checkpoint: October 7, 2026_
 
 ## Purpose
 
@@ -24,11 +24,11 @@ These are **CapSight Implementation Phases**. Engineering Hackathon phases descr
 | 2     | Assessment Lifecycle                 | **COMPLETE**           |
 | 3     | Assessment Persistence Spike         | **COMPLETE**           |
 | 4     | Baseline Workflow Shell              | **COMPLETE**           |
-| 5     | Knowles Truth Assimilation           | **CURRENT / ENTERING** |
+| 5     | Knowles Truth Assimilation           | **CURRENT / ACTIVE**   |
 
-COMPLETE refers to the delivered pre-Knowles scope: the persistence spike supports blank Assessments and revision protection; Baseline is a readiness shell. Manufacturing fields, user-facing edit/save transitions, and calculations remain gated. Phase 5A alignment-readiness preparation is complete: the requirements ledger and calculation capture structure are ready, with no new calculation truth assimilated.
+COMPLETE refers to the delivered pre-Knowles scope: the persistence spike supports blank Assessments and revision protection; Baseline is a readiness shell. Manufacturing fields, user-facing edit/save transitions, and calculations remain gated. Phase 5A alignment-readiness preparation is complete. Phase 5 is now actively assimilating authoritative operational evidence from the supplied **Production Capacity Requirement Calculator** presentation (September 30, 2026): intake items, completeness flow, assessment/solution/submission responsibilities, and system intent are recorded in the [requirements ledger](KNOWLES_REQUIREMENTS.md). Exact semantics/rules remain OPEN; no validated calculation rules are recorded.
 
-CapSight is preparing for Phase 5. **October 14, 2026 is the first major Knowles/KEP alignment and validation checkpoint.** It does not guarantee every formula, rule, field definition, dependency, or golden sample. Validation may continue throughout the October 2026–March 2027 mentorship period. Validated operational truth gates implementation, regardless of calendar date; Phase 5 is not complete.
+The newer team communication postpones the originally expected October 14 kickoff to **October 28, 2026**, now the **first major Knowles/KEP live kick-off/alignment checkpoint**. Assimilation is already active and does not wait for that date. October 28 does not guarantee every formula, rule, field definition, unit, rounding rule, dependency, scenario variable, calculation profile rule, or golden sample. Validation may continue throughout the October 2026–March 2027 mentorship period. Validated operational truth gates implementation, regardless of calendar date; Phase 5 is not complete.
 
 ## 2. Pre-Alignment Engineering Work Completed
 
@@ -61,17 +61,17 @@ Calculation correctness is **not validated**, and no validated calculation rules
 
 ## 4. Current Active Focus
 
-**CURRENT FOCUS: KNOWLES ALIGNMENT PREPARATION / TRUTH MAPPING**
+**CURRENT FOCUS: KNOWLES TRUTH ASSIMILATION + ALIGNMENT PREPARATION**
 
-Major Knowles-dependent web-app implementation is intentionally held until authoritative operational evidence is available, validated, and reconciled into the affected contracts. Work continues on bug fixes, regressions, and already-validated requirements. CapSight remains active; speculative domain implementation is held while validation proceeds.
+Assimilate received evidence, refine unresolved questions, and prepare for October 28. Major Knowles-dependent web-app implementation is intentionally held until the evidence required by each change is validated and reconciled into the affected contracts. Work continues on bug fixes, regressions, and already-validated requirements. CapSight remains active; speculative domain implementation is held while validation proceeds. This evidence-assimilation pass changes documentation only; potential implementation unlocks require a separate review.
 
 ## 5. Current Implementation Gates
 
 **BLOCKED where required truth remains OPEN or needs CLARIFICATION.** The [Knowles requirements ledger](KNOWLES_REQUIREMENTS.md) tracks the questions, evidence, provenance, and affected contracts. Do not invent:
 
-- Request Context manufacturing fields; exact formulas; U/S meaning, unit, or relevance; units, rounding, defaults, exceptions, calculation dependencies, or Capacity Gap mathematics.
+- Exact Request Context field definitions/schema and requiredness for the six confirmed intake items; exact formulas; U/S meaning, unit, or relevance; units, rounding, default applicability (including the deck-stated 6 days/week), exceptions, calculation dependencies, or Capacity Gap mathematics.
 - Scenario-editable variables, ranges, dependencies, or invalid combinations; reference/profile ownership.
-- Solution Evaluation rules; Reality/actual fields; the meaning of Real-Time Assessment; CAPEX detail; roles/permissions or integrations.
+- Solution Evaluation rules; Reality/actual fields; Real-Time Assessment conditions, ownership, latency, and technical mechanism (rapid shop-floor adjustment intent is confirmed); CAPEX cost/feedback rules and system boundary; roles/permissions or integrations.
 - Authoritative worked/golden-sample outputs. Synthetic lifecycle fixtures are not calculation acceptance evidence.
 
 > "Unknowns are treated as requirements to validate — not blanks to fill with assumptions."
@@ -123,9 +123,9 @@ Use the ledger's [assimilation procedure](KNOWLES_REQUIREMENTS.md#assimilation-p
 
 ## 9. Next Immediate Project Activity
 
-**Knowles Alignment Preparation / Truth Map**
+**Knowles Truth Assimilation + Alignment Preparation**
 
-Prepare validation questions and evidence capture for:
+Continue assimilating received evidence and refining validation questions/evidence capture for October 28 across:
 
 1. Request Intake & Completeness
 2. Capacity calculation truth
@@ -140,7 +140,7 @@ Prepare validation questions and evidence capture for:
 11. People / responsibilities / permissions / integrations
 12. Authoritative worked / golden example
 
-This is preparation for validation, **not permission to implement these areas**. Use the existing ledger and capture templates without filling unknown answers with assumptions.
+The received deck's confirmed existence/business-intent statements are recorded; remaining field semantics, rules, and calculations still need validation. This is evidence reconciliation and alignment preparation, **not permission to implement these areas**. Use the existing ledger and capture templates without filling unknown answers with assumptions.
 
 ## 10. Resume Checklist
 

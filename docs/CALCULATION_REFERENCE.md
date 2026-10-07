@@ -1,9 +1,17 @@
 # CapSight Calculation Reference
 
 ## Status
-CapSight Implementation Phase 5A capture structure prepared. **No validated calculation rules are recorded. Do not populate from assumptions.**
+CapSight Implementation Phase 5 is active; the Phase 5A rule capture structure remains prepared. Received deck evidence now informs discovery below. **No validated calculation rules are recorded. Do not populate from assumptions.**
 
-This document receives Knowles-validated terminology, units, formulas, variables, dependencies, defaults, exceptions, rounding rules, and calculation evidence incrementally as authoritative operational material is validated. Its structure is not calculation truth. October 14 is the first major Knowles/KEP alignment and validation checkpoint, not a guarantee that required rules or evidence will be complete.
+This document receives Knowles-validated terminology, units, formulas, variables, dependencies, defaults, exceptions, rounding rules, and calculation evidence incrementally as authoritative operational material is validated. Its structure is not calculation truth. October 28, 2026 is the current first major Knowles/KEP live kick-off/alignment checkpoint, postponed from October 14; it is not a guarantee that required rules or evidence will be complete. Assimilation is already active and validation may continue throughout the October 2026–March 2027 mentorship period.
+
+## Discovery Status — Confirmed Concepts, OPEN Mathematics
+
+The supplied Knowles **Production Capacity Requirement Calculator** presentation (September 30, 2026) confirms the relevance of demand requirement, available capacity, volume mix impact, shared tool capacity, capacity gap, Days/week scenario, and retained tool capacity when using existing capacity from other models. See [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md) for source provenance, exact statements, and remaining validation questions.
+
+The deck states **Default: 6 days/week** for the Days/week scenario. The existence of that stated default is confirmed; its applicability to assessments, valid alternatives, selection/derivation rules, and calculation use remain OPEN. It is not an executable or universal default.
+
+These concepts have no validated mathematical definitions, units, dependency/order, rounding, exceptions, or exact formulas recorded here. No output specification or engine interface follows from the responsibility list. Discovery evidence does not populate the rule records below or unlock implementation requiring unresolved details.
 
 ## Rule
 General manufacturing knowledge, screenshots, or guessed spreadsheet relationships must not be promoted into authoritative CapSight calculation logic.
@@ -38,4 +46,4 @@ Historical results must retain the rule/profile/reference context actually used;
 
 ## Validated Rule Records
 
-None yet. No formula, unit, default, rounding rule, dependency, exception, or expected sample value is introduced by this preparation.
+None yet. The discovery statements above introduce no executable formula, unit definition, applicable default rule, rounding rule, dependency, exception, or expected calculation sample value.

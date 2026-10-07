@@ -78,13 +78,15 @@ Establish Baseline as the reference Planning State and distinguish request readi
 
 ## Phase 5 — Knowles Truth Assimilation
 
-CapSight Implementation Phase 5 begins with the October 14, 2026 alignment checkpoint and continues as authoritative operational material is validated. October 14 is **the first major Knowles/KEP alignment and validation checkpoint**, with no guarantee that all required calculation truth will be validated that day. Validation may continue throughout Engineering Hackathon Phase 2, October 2026 to March 2027. Actual calculation implementation is gated by authoritative Knowles operational truth, regardless of calendar date.
+CapSight Implementation Phase 5 is **CURRENT / ACTIVE** as received authoritative operational evidence is assimilated and continues incrementally as more material is validated. The supplied **Production Capacity Requirement Calculator** presentation (September 30, 2026) confirms intake items, workflow responsibilities, and system intent; exact field semantics and calculation rules remain OPEN in [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md).
+
+The newer team communication postpones kick-off/project alignment from October 14 to **October 28, 2026**, now **the first major Knowles/KEP live kick-off/alignment checkpoint**. Assimilation is already active; it does not begin only on October 28. The checkpoint does not guarantee that all required calculation truth will be validated that day. Validation may continue throughout Engineering Hackathon Phase 2, October 2026 to March 2027. Actual calculation implementation is gated by authoritative Knowles operational truth, regardless of calendar date.
 
 CapSight Implementation Phase 5 may remain partially open while development continues on independently validated areas. Corresponding documentation and dependencies must be reconciled before implementation; unresolved truth required by a change still blocks that change. The calendar does not complete this phase automatically.
 
 ### CapSight Implementation Phase 5A — Knowles Alignment Readiness
 
-Prepare for Engineering Hackathon Phase 1, **Event Kick-off and Detailed Project Alignment**, October 14, 2026. This preparation does not perform Knowles Truth Assimilation or implement application features.
+Completed readiness preparation for Engineering Hackathon Phase 1, **Event Kick-off and Detailed Project Alignment**, originally announced for October 14, 2026 and now postponed to October 28. That preparation established capture/reconciliation structures without assimilating new operational truth or implementing application features; active Phase 5 now uses those structures for received evidence.
 
 - Establish [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md) as the operational requirements ledger, with confirmed provenance, open validation questions, affected contracts, and golden sample requirements.
 - Prepare [CALCULATION_REFERENCE.md](CALCULATION_REFERENCE.md) to capture validated rules without creating formulas or sample values.
@@ -124,6 +126,8 @@ DERIVED
 Unresolved items remain OPEN / `TODO(KNOWLES)`.
 
 Use the validation matrix and assimilation procedure in [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md). Confirmations update the affected existing contracts; informal meeting notes do not directly authorize coding.
+
+Phases 6–18 remain **PROVISIONAL AFTER PHASE 5**, with their existing order preserved. Reconcile any future evidence-driven change through the [execution-state roadmap change rule](CAPSIGHT_EXECUTION_STATE.md#7-roadmap-change-rule); this assimilation pass does not reorder them.
 
 ## Phase 6 — Populate `CALCULATION_REFERENCE.md`
 
@@ -339,7 +343,9 @@ Implementation Phase 3 has configured the minimal Assessment persistence slice: 
 
 Phase 4 adds the Baseline Domain/read-query boundary and a focused readiness workspace. The current incomplete/unvalidated request remains the first blocker; unresolved planning inputs and calculation definitions are explained separately. Baseline's compact lifecycle links to the full Overview lifecycle. Readiness gates, persisted Baseline reload, keyboard Request Context navigation, missing-ID behavior, both themes, and narrow layouts have been verified without changing either stored Assessment. Persistence/schema, manufacturing fields, and calculation truth are unchanged. CapSight Implementation Phase 5 receives explicit integration points for validated input readiness and compatible reference/profile context; these remain `TODO(KNOWLES)` until authoritative discovery.
 
-CapSight Implementation Phase 5A prepares `KNOWLES_REQUIREMENTS.md`, the calculation-rule capture template, and the context/roadmap entry points. No new calculation truth is assimilated and no application behavior changes in this readiness pass.
+CapSight Implementation Phase 5A completed `KNOWLES_REQUIREMENTS.md`, the calculation-rule capture template, and the context/roadmap entry points without assimilating new calculation truth or changing application behavior. As of October 7, 2026, Phase 5 is **CURRENT / ACTIVE**: the September 30 deck's operational evidence is assimilated, questions are refined, and preparation continues for the October 28 live kick-off/alignment checkpoint. No validated calculation rules or application changes result from this documentation pass; Phase 5 remains incomplete.
+
+The increment descriptions below record historical checkpoints. Their references to the unchanged October 14 interpretation describe those earlier passes; October 14 is now superseded as the kickoff date by the postponement above.
 
 The **Pre-Alignment Product Experience Sprint — Shared Workspace + How CapSight Works** follows completed CapSight Implementation Phase 5A as a bounded, unnumbered increment. `/assessments` now presents persisted work with dates, request state, existing Domain-derived stage/readiness, contextual next actions, blank creation/reopening, and safe loading/empty/unavailable/create-failure states. `/how-capsight-works` explains the designed closed-loop product separately from currently available functionality. Product header navigation links these two experiences without changing the six Assessment workflow steps. The existing schema, dependencies, persistence operations, calculation architecture, readiness gates, and October 14 interpretation are unchanged. This increment does not complete the later workspace intelligence/reporting phases or advance Knowles-dependent implementation.
 
