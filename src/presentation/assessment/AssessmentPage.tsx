@@ -10,6 +10,10 @@ import type {
   SectionPrerequisite,
 } from "@/domain/assessment-lifecycle";
 import { lifecycleStages } from "@/domain/assessment-lifecycle";
+import type {
+  BaselineCalculationBlocker,
+  BaselineWorkflow,
+} from "@/domain/baseline-workflow";
 import { ApplicationShell } from "@/presentation/application-shell/ApplicationShell";
 import { BaselineWorkspace } from "@/presentation/baseline/BaselineWorkspace";
 import { assessmentNavigation } from "./section-presentation";
@@ -41,11 +45,51 @@ const prerequisiteDescriptions: Record<SectionPrerequisite, string> = {
     "Reality validation needs an executed historical plan to compare with actual results.",
 };
 
-const downstreamSections: AssessmentSection[] = [
-  "baseline",
-  "scenarios",
-  "solution",
-  "reality",
+const calculationBlockerDescriptions: Record<
+  BaselineCalculationBlocker,
+  string
+> = {
+  "request-incomplete": "Request Context must be complete and validated.",
+  "request-unvalidated": "Request Context still requires validation.",
+  "planning-inputs-unresolved":
+    "Planning input definitions and requirements need confirmation with Knowles.",
+  "calculation-reference-unvalidated":
+    "Calculation requires validated rules and compatible calculation reference/profile context.",
+};
+
+const operationalFlow: {
+  stage: LifecycleStage;
+  title: string;
+  detail: string;
+}[] = [
+  {
+    stage: "input",
+    title: "Receive CAPEX Request",
+    detail: "NPI or Sustaining Capacity Increase.",
+  },
+  {
+    stage: "validate",
+    title: "Review Request Completeness",
+    detail: "Check whether the request information is complete.",
+  },
+  {
+    stage: "analyze",
+    title: "Capacity Assessment",
+    detail:
+      "Validate demand, evaluate available capacity, review volume mix and shared tools, and identify the capacity gap.",
+  },
+  {
+    stage: "develop",
+    title: "Solution Evaluation",
+    detail:
+      "Existing capacity optimization, equipment transfer / reallocation, new tooling, or new equipment.",
+  },
+  {
+    stage: "submission",
+    title: "CAPEX Submission",
+    detail:
+      "CAPEX cost, submission to the Requestor, and waiting for feedback.",
+  },
 ];
 
 export function AssessmentPage({
@@ -73,14 +117,18 @@ export function AssessmentPage({
             </>
           )}
         </p>
-        <LifecycleIndicator
-          lifecycle={lifecycle}
-          compact={section === "baseline"}
-          overviewHref={navigation[0].href}
-        />
+        {section !== "overview" ? (
+          <LifecycleIndicator
+            lifecycle={lifecycle}
+            compact={section === "baseline"}
+            overviewHref={navigation[0].href}
+          />
+        ) : null}
         {section === "overview" ? (
           <Overview
+            assessment={assessment}
             lifecycle={lifecycle}
+            workflow={getBaselineWorkflow(assessment)}
             navigation={navigation}
             requestContextHref={requestContextHref}
           />
@@ -166,68 +214,193 @@ function LifecycleIndicator({
 }
 
 function Overview({
+  assessment,
   lifecycle,
+  workflow,
   navigation,
   requestContextHref,
 }: {
+  assessment: CapacityAssessmentRecord;
   lifecycle: AssessmentLifecycle;
+  workflow: BaselineWorkflow;
   navigation: ReturnType<typeof assessmentNavigation>;
   requestContextHref: string;
 }) {
-  const requestIncomplete = lifecycle.requestCompleteness === "incomplete";
+  const requestCopy = {
+    incomplete: {
+      heading: "Request Context is incomplete",
+      detail:
+        "Request information must be complete and validated before Baseline planning can begin. Field definitions and validation rules are pending alignment.",
+    },
+    "awaiting-validation": {
+      heading: "Request Context awaits validation",
+      detail:
+        "The saved request is complete. Validation is still needed before Baseline planning can begin.",
+    },
+    ready: {
+      heading: "Request Context is complete and validated",
+      detail:
+        "Request prerequisites for Baseline planning are satisfied. Calculation readiness is checked separately.",
+    },
+  }[workflow.request.status];
+  const nextItem = navigation.find((item) => item.section === "baseline")!;
+  const requestReady = workflow.request.status === "ready";
 
   return (
     <div className={styles.overview}>
       <section className={styles.readiness} aria-labelledby="readiness-title">
         <div className={styles.readinessCopy}>
-          <p className={styles.kicker}>Request readiness</p>
-          <h2 id="readiness-title">
-            {requestIncomplete
-              ? "Request Context is incomplete"
-              : "Request Context needs validation"}
-          </h2>
+          <p className={styles.kicker}>This saved Assessment</p>
+          <h2 id="readiness-title">{requestCopy.heading}</h2>
           <p>
-            The required request information has not yet been confirmed and
-            validated. Baseline planning cannot proceed from this state.
+            A workspace for a CAPEX request and its capacity planning. The state
+            below comes from this saved Assessment.
           </p>
+          <dl className={styles.savedState} aria-label="Saved Assessment state">
+            <div>
+              <dt>Request completeness</dt>
+              <dd>
+                {assessment.requestCompleteness === "complete"
+                  ? "Complete"
+                  : "Incomplete"}
+              </dd>
+            </div>
+            <div>
+              <dt>Request validation</dt>
+              <dd>
+                {assessment.requestValidation === "validated"
+                  ? "Validated"
+                  : "Unvalidated"}
+              </dd>
+            </div>
+            <div>
+              <dt>Calculation readiness</dt>
+              <dd>
+                {workflow.calculation.status === "ready" ? "Ready" : "Blocked"}
+              </dd>
+            </div>
+            <div>
+              <dt>Saved revision</dt>
+              <dd>{assessment.revision}</dd>
+            </div>
+          </dl>
         </div>
         <div className={styles.nextAction}>
-          <span className={styles.stateTag}>Blocks Baseline</span>
-          <p>Next step</p>
-          <Link className={styles.actionLink} href={requestContextHref}>
-            Review Request Context <span aria-hidden="true">↗</span>
+          <p>Continue inspecting</p>
+          <Link
+            className={styles.actionLink}
+            href={requestReady ? nextItem.href : requestContextHref}
+          >
+            {requestReady
+              ? "Review Baseline readiness"
+              : "Review Request Context"}{" "}
+            <span aria-hidden="true">↗</span>
           </Link>
+          <span className={styles.nextExplanation}>{requestCopy.detail}</span>
         </div>
       </section>
 
-      <section className={styles.downstream} aria-labelledby="downstream-title">
+      <section aria-labelledby="lifecycle-title">
         <div className={styles.sectionHeading}>
           <div>
-            <p className={styles.kicker}>What follows</p>
-            <h2 id="downstream-title">Downstream sections</h2>
+            <p className={styles.kicker}>Confirmed Knowles process</p>
+            <h2 id="lifecycle-title">Knowles operational flow</h2>
           </div>
-          <p className={styles.sectionAside}>
-            Each section remains open for context while its work is gated.
+          <p className={styles.currentStage}>
+            Current stage:{" "}
+            <strong>{stageLabels[lifecycle.currentStage]}</strong>
           </p>
         </div>
-        <ul className={styles.sectionList}>
-          {downstreamSections.map((section) => {
-            const readiness = lifecycle.sections[section];
-            const item = navigation.find((entry) => entry.section === section);
-            if (!item || readiness.status !== "blocked") return null;
-
-            return (
-              <li className={styles.sectionRow} key={section}>
-                <div>
-                  <Link href={item.href}>{item.label}</Link>
-                  <p>{prerequisiteDescriptions[readiness.prerequisite]}</p>
-                </div>
-                <span className={styles.rowStatus}>Not ready</span>
-              </li>
-            );
-          })}
-        </ul>
+        <ol className={styles.processList}>
+          {operationalFlow.map((step) => (
+            <li key={step.stage}>
+              <span className={styles.processBand}>
+                {stageLabels[step.stage]}
+              </span>
+              <h3>{step.title}</h3>
+              <p>{step.detail}</p>
+            </li>
+          ))}
+        </ol>
+        <div className={styles.completenessBranch}>
+          <h3>At completeness review: complete information?</h3>
+          <dl>
+            <div>
+              <dt>No — incomplete</dt>
+              <dd>Return to Requestor for Completion.</dd>
+            </div>
+            <div>
+              <dt>Yes — complete</dt>
+              <dd>Continue to Capacity Assessment.</dd>
+            </div>
+          </dl>
+        </div>
+        <p className={styles.processNote}>
+          These steps describe the operational process. CapSight currently saves
+          Assessments and shows request readiness. Editable request review,
+          capacity calculations, solution selection, and CAPEX submission are
+          not yet available. The six Assessment sections provide context for
+          this work; they are not a record of completed process steps.
+        </p>
       </section>
+
+      <div className={styles.orientationDetails}>
+        <section aria-labelledby="calculation-gates-title">
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.kicker}>Before calculation</p>
+              <h2 id="calculation-gates-title">
+                {workflow.calculation.status === "blocked"
+                  ? "What keeps calculation blocked"
+                  : "Calculation prerequisites are ready"}
+              </h2>
+            </div>
+          </div>
+          {workflow.calculation.status === "blocked" ? (
+            <ul className={styles.calculationGates}>
+              {workflow.calculation.blockers.map((blocker) => (
+                <li key={blocker}>{calculationBlockerDescriptions[blocker]}</li>
+              ))}
+            </ul>
+          ) : null}
+          <p className={styles.processNote}>
+            A complete, validated request alone does not make calculation ready.
+            Saved revision is not calculation history, and navigating does not
+            run a calculation.
+          </p>
+        </section>
+
+        <section
+          className={styles.downstream}
+          aria-labelledby="downstream-title"
+        >
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.kicker}>Explore this Assessment</p>
+              <h2 id="downstream-title">What you can inspect</h2>
+            </div>
+          </div>
+          <ul className={styles.sectionList}>
+            {navigation
+              .filter((item) => item.section !== "overview")
+              .map((item) => {
+                const readiness = lifecycle.sections[item.section];
+                return (
+                  <li className={styles.sectionRow} key={item.section}>
+                    <div>
+                      <Link href={item.href}>{item.label}</Link>
+                      <p>
+                        {readiness.status === "blocked"
+                          ? prerequisiteDescriptions[readiness.prerequisite]
+                          : item.description}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
