@@ -460,7 +460,11 @@ Build Planning State/Baseline workflow structure and readiness concepts using cl
 **Status:** Active — V1
 Real Capacity Engine implementation waits for authoritative Knowles discovery of terminology, formulas, units, rounding, defaults, exceptions, dependencies, scenario rules, and representative expected outputs.
 
+**Historical scheduling context — as recorded at the October 7, 2026 checkpoint:**
+
 The newer team communication postpones kick-off/project alignment from October 14 to **October 28, 2026**, now the first major Knowles/KEP live kick-off/alignment checkpoint. The earlier kickoff date is superseded; October 28 is not a guaranteed date for complete calculation-domain validation. CapSight Implementation Phase 5 is already active as authoritative evidence arrives and is assimilated. Validation may continue throughout the Engineering Hackathon mentorship/development period from October 2026 to March 2027. The calendar date does not unlock implementation; the corresponding authoritative operational truth must be validated. See the evidence provenance in [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md).
+
+**Organizational update — October 24, 2026:** The current kickoff schedule and rescheduling provenance are maintained in the [project context](../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status). The dates above describe the earlier checkpoint; D120's calculation-validation gate is unchanged.
 
 ## D121 — Knowles fields are classified before final manufacturing-schema design
 **Status:** Active — V1
@@ -584,9 +588,12 @@ The fifth, unnumbered Pre-Alignment increment — Architecture Guardrails + Deve
 `npm run verify` reuses Prisma generation → typecheck → lint → format check → Vitest → production build, exits on failure, and requires no database, secrets, browsers, or external network after dependency installation. Playwright and manual PostgreSQL checks remain separate. CI retains its explicit stages. Onboarding applies committed migrations with `prisma migrate deploy` only against the deliberately configured development database; existing `db:migrate` remains migration-authoring tooling, not the default clone setup command. This decision does not authorize database mutation during the increment or change any product/Knowles truth.
 
 ## D149 — Mentor demonstration uses an isolated, protected Preview environment
+_Original entry preserved as recorded at the October 7, 2026 checkpoint; its initial setup status is historical._
+
 **Status:** Active — bounded engineering target; external setup pending
 
 The user approves repository readiness for a future Vercel Preview from `demo/mentor-review`, normally tracking an approved `main` checkpoint, with a completely separate managed PostgreSQL demo database. Local `capsight_dev` stays local. Access uses deployment-level protection and controlled sharing; this does not decide CapSight authentication, business roles, production hosting, or Knowles requirements. Only blank Assessments are currently supported; synthetic information is permitted only if supported later, and sensitive operational/employee/CAPEX data is excluded.
 
 `npm run build` generates the ignored Prisma Client before compilation, independently of database connectivity and dependency caching. `db:migrate:deploy` applies reviewed, committed migrations only as a deliberate setup operation against a confirmed target; install, build, startup, and default CI do not migrate or seed. Existing verification and explicit CI stages remain. The [mentor demo guide](MENTOR_DEMO_DEPLOYMENT.md) records the later manual setup, access checks, and cleanup. This preparation creates no external resources and does not advance CapSight Implementation Phase 5.
 
+**Implementation clarification — October 24, 2026:** The project lead confirms a subsequently implemented, previously verified protected mentor demo with Production Branch Tracking set to `demo/mentor-review`. This observed configuration differs from the original Preview-oriented intent above. See the [deployment history](MENTOR_DEMO_DEPLOYMENT.md#deployment-history--reconciled-october-24-2026) for the reported milestones and provenance. Present live state was not revalidated. This records a later implementation, not a retroactive approval or a new/superseding hosting-policy decision.

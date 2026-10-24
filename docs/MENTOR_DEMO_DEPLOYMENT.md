@@ -1,19 +1,37 @@
 # Mentor Demo Deployment
 
-_Repository readiness: October 7, 2026. Future manual setup only; no hosted deployment has been verified._
+_Repository readiness: October 7, 2026. Deployment history reconciled October 24, 2026 from project-lead confirmation; present live state not revalidated._
 
 ## Purpose and isolation
 
-Demonstrate the current CapSight checkpoint using a protected **Vercel Preview** and a completely separate managed PostgreSQL database. This is a team engineering choice ([D149](DECISIONS.md)), with CapSight Implementation Phase 5 still **CURRENT / ACTIVE**. Knowles validation gates and current product behavior remain in force.
+Demonstrate the current CapSight checkpoint using a protected mentor demo and a completely separate managed PostgreSQL database. The original engineering plan targeted a **Vercel Preview**; the subsequently confirmed deployment configuration is recorded below and differs in its branch tracking ([D149](DECISIONS.md)). CapSight Implementation Phase 5 remains **CURRENT / ACTIVE**. Knowles validation gates and current product behavior remain in force.
 
-**Dependency advisory review completed:** **GREEN — no identified advisory materially blocks the current mentor Preview based on the inspected application/runtime paths.** This conclusion applies to the intended protected, low-traffic mentor Preview. `npm audit` still reports findings: on October 7, 2026, it reported **9 high**, while `npm audit --omit=dev` reported **4 high**. These were traced to lint tooling, Prisma CLI/configuration paths, and an unused MySQL driver. No affected path was found in CapSight's current PostgreSQL web runtime. The advisories have not been fixed, and dependencies have not been changed. Actual hosted deployment packaging should still be rechecked if/when deployment occurs. No claim of a vulnerability-free deployment is made.
+**Dependency advisory review completed — historical October 7 review:** **GREEN — no identified advisory materially blocks the current mentor Preview based on the inspected application/runtime paths.** This conclusion applied to the intended protected, low-traffic mentor Preview. `npm audit` findings were not fixed: on October 7, 2026, it reported **9 high**, while `npm audit --omit=dev` reported **4 high**. These were traced to lint tooling, Prisma CLI/configuration paths, and an unused MySQL driver. No affected path was found in the inspected PostgreSQL web runtime. Dependencies have not been changed by this reconciliation. Actual hosted deployment packaging still requires rechecking; neither that packaging nor current advisory status was revalidated on October 24. No claim of a vulnerability-free deployment is made.
 
 | Environment       | Application                              | Database / data                                                                                  |
 | ----------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | Local development | Local Next.js                            | Local `capsight_dev`; developer-owned data                                                       |
-| Mentor demo       | Vercel Preview from `demo/mentor-review` | Separate managed PostgreSQL; initially empty, then blank Assessments created through the real UI |
+| Mentor demo — historical record | Vercel `capsight-mentor-demo`; Production Branch Tracking set to `demo/mentor-review` | Separate hosted PostgreSQL; manual create/read/persistence checks previously passed |
 
 Never copy the local database, local `.env.local`, real Knowles operational datasets, employee information, or real CAPEX records into this environment. Synthetic information may be used only if supported by a later approved feature; there is no seed or invented manufacturing data in this setup. Everyone granted deployment access shares the current Workspace and create capability; CapSight has no product login or roles.
+
+## Deployment history — reconciled October 24, 2026
+
+Source: project-lead confirmation of previously verified milestones from the earlier CapSight deployment session. The deployment verification date and deployed commit SHA were not supplied in this reconciliation.
+
+- `demo/mentor-review` was created and pushed.
+- Vercel project `capsight-mentor-demo` was configured with **Production Branch Tracking set to `demo/mentor-review`**.
+- The project was connected to a separate hosted PostgreSQL database.
+- The existing Prisma migration was applied successfully to that hosted database.
+- The deployed application passed manual create/read/persistence checks.
+- Vercel Authentication was enabled for deployments.
+- A separate Shareable Link was used to verify protected demo access; the link itself is not recorded here.
+
+These are historical milestones, not claims that the present deployment, database, authentication settings, or shared access remain available or unchanged. This task did not contact Vercel, inspect secrets, run migrations, or revalidate the live state. Production Branch Tracking is recorded as reported; it does not establish CapSight's final production-hosting or product-authentication requirements.
+
+## Original Preview-only setup plan — historical reference
+
+The numbered procedure below preserves the original Preview-only readiness plan. Its Preview branch/environment-scoping instructions describe that plan, **not the confirmed subsequent deployment configuration**. Do not relabel the recorded setup as a verified Preview configuration or use this historical plan to change the existing deployment. Branch creation, migration, and empty-database checks below are fresh-setup references, not steps to replay against the existing demo. Any future live-state review or deployment operation is a separate task.
 
 ## 1. Select an approved source checkpoint
 
@@ -77,7 +95,7 @@ Check build/runtime logs without copying credentials. A successful build alone d
 5. Open **How CapSight Works** and return to Workspace.
 6. Switch Light/Dark, navigate, reload, and reopen the browser: expect the selected theme to persist.
 
-These are later manual hosted smoke checks. The current automated test baseline is **25 passing Vitest tests** and **8 passing database-free Playwright tests**; these do not claim remote persistence coverage. Use blank Assessments only; do not run the revision-mutating local concurrency script as a demo smoke test.
+These are the original plan's manual hosted smoke checks; the historical deployment passed the create/read/persistence checks recorded above. The last recorded automated test baseline is **25 passing Vitest tests** and **8 passing database-free Playwright tests**; these do not claim remote persistence coverage and were not rerun for the October 24 reconciliation. Use blank Assessments only; do not run the revision-mutating local concurrency script as a demo smoke test.
 
 ## 6. Share access and retire the demo
 

@@ -1,6 +1,6 @@
 # CapSight Execution State
 
-_Current checkpoint: October 7, 2026_
+_Current checkpoint: October 24, 2026_
 
 ## Purpose
 
@@ -28,7 +28,7 @@ These are **CapSight Implementation Phases**. Engineering Hackathon phases descr
 
 COMPLETE refers to the delivered pre-Knowles scope: the persistence spike supports blank Assessments and revision protection; Baseline is a readiness shell. Manufacturing fields, user-facing edit/save transitions, and calculations remain gated. Phase 5A alignment-readiness preparation is complete. Phase 5 is now actively assimilating authoritative operational evidence from the supplied **Production Capacity Requirement Calculator** presentation (September 30, 2026): intake items, completeness flow, assessment/solution/submission responsibilities, and system intent are recorded in the [requirements ledger](KNOWLES_REQUIREMENTS.md). Exact semantics/rules remain OPEN; no validated calculation rules are recorded.
 
-The newer team communication postpones the originally expected October 14 kickoff to **October 28, 2026**, now the **first major Knowles/KEP live kick-off/alignment checkpoint**. Assimilation is already active and does not wait for that date. October 28 does not guarantee every formula, rule, field definition, unit, rounding rule, dependency, scenario variable, calculation profile rule, or golden sample. Validation may continue throughout the October 2026–March 2027 mentorship period. Validated operational truth gates implementation, regardless of calendar date; Phase 5 is not complete.
+The [context's timeline and organizational status](../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status) records the current kickoff and its scheduling history. Assimilation is already active and does not wait for that date. Alignment does not guarantee every formula, rule, field definition, unit, rounding rule, dependency, scenario variable, calculation profile rule, or golden sample. Validation may continue throughout the October 2026–March 2027 mentorship period. Validated operational truth gates implementation, regardless of calendar date; Phase 5 is not complete.
 
 ## 2. Pre-Alignment Engineering Work Completed
 
@@ -59,15 +59,15 @@ The persisted journey was a bounded local check; its temporary resources were cl
 
 Calculation correctness is **not validated**, and no validated calculation rules are recorded. Scenario Studio, Solution Evaluation, and Reality currently provide gated contextual routes, not implemented domain workflows or results.
 
-**Mentor demo preparation:** repository build generation and a deliberate committed-migration command support the future [protected Vercel Preview / isolated PostgreSQL demo](MENTOR_DEMO_DEPLOYMENT.md). No cloud resources, demo branch, or remote migrations have been created or run. Local development data remains separate. This is engineering preparation; Phase 5 remains **CURRENT / ACTIVE**, with the same Knowles validation gates.
+**Mentor demo status:** `demo/mentor-review` was created and pushed, and a protected hosted mentor demo was previously verified, as confirmed by the project lead. See the [deployment history](MENTOR_DEMO_DEPLOYMENT.md#deployment-history--reconciled-october-24-2026) for milestones and the distinction from the original Preview-only plan. Present live state was not revalidated for this checkpoint. Local development data remains separate; Phase 5 remains **CURRENT / ACTIVE**, with the same Knowles validation gates.
 
 ## 4. Current Active Focus
 
 **CURRENT FOCUS: KNOWLES TRUTH ASSIMILATION + ALIGNMENT PREPARATION**
 
-Assimilate received evidence, refine unresolved questions, and prepare for October 28. Major Knowles-dependent web-app implementation is intentionally held until the evidence required by each change is validated and reconciled into the affected contracts. Work continues on bug fixes, regressions, and already-validated requirements. CapSight remains active; speculative domain implementation is held while validation proceeds. This evidence-assimilation pass changes documentation only; potential implementation unlocks require a separate review.
+Assimilate received evidence, refine unresolved questions, and prepare for November 4. Major Knowles-dependent web-app implementation is intentionally held until the evidence required by each change is validated and reconciled into the affected contracts. Work continues on bug fixes, regressions, and already-validated requirements. CapSight remains active; speculative domain implementation is held while validation proceeds. This reconciliation changes documentation only; potential implementation unlocks require a separate review.
 
-**Current meeting-preparation artifact:** [October 28 Mentor Alignment Playbook](MENTOR_ALIGNMENT_PLAYBOOK.md) provides the short product walkthrough, prioritized discovery questions, team-call/backup checklist, evidence capture, and post-meeting assimilation/entry review. It organizes preparation without adding Knowles truth or starting Phase 6; the requirements ledger and affected contracts remain the authorities.
+**Current meeting-preparation artifact:** [Mentor Alignment Playbook](MENTOR_ALIGNMENT_PLAYBOOK.md) provides the short product walkthrough, prioritized discovery questions, team-call/backup checklist, evidence capture, and post-meeting assimilation/entry review. Detailed organizational facts and provenance remain in the [context](../CAPSIGHT_CONTEXT.md#organizational-status--reconciled-october-24-2026). Preparation adds no manufacturing truth and starts no Phase 6; the requirements ledger and affected contracts remain the authorities.
 
 ## 5. Current Implementation Gates
 
@@ -129,7 +129,7 @@ Use the ledger's [assimilation procedure](KNOWLES_REQUIREMENTS.md#assimilation-p
 
 **Knowles Truth Assimilation + Alignment Preparation**
 
-Continue assimilating received evidence and refining validation questions/evidence capture for October 28 across:
+Continue assimilating received evidence and refining validation questions/evidence capture for continued alignment across:
 
 1. Request Intake & Completeness
 2. Capacity calculation truth

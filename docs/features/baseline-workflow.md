@@ -49,7 +49,7 @@ Baseline establishes the reference planning condition. Scenarios later explore a
 
 ## Open Questions
 
-Exact planning fields, requiredness, units, default applicability, formulas, rounding, dependencies, exceptions, reference/profile compatibility, and the sanitized golden example await Knowles validation. CapSight Implementation Phase 5 is active as received evidence is assimilated and continues incrementally. October 28, 2026 is the current first major Knowles/KEP live kick-off/alignment checkpoint, postponed from October 14; it does not guarantee completion of domain truth. Field classification and the relevant validated reference truth must precede corresponding implementation, regardless of calendar date.
+Exact planning fields, requiredness, units, default applicability, formulas, rounding, dependencies, exceptions, reference/profile compatibility, and the sanitized golden example await Knowles validation. CapSight Implementation Phase 5 is active as received evidence is assimilated and continues incrementally. The [project context](../../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status) records current kickoff scheduling; alignment does not guarantee completion of domain truth. Field classification and the relevant validated reference truth must precede corresponding implementation, regardless of calendar date.
 
 ## Do Not Assume
 

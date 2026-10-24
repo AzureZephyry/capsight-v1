@@ -1,6 +1,6 @@
 # CapSight Context — Locked Project Direction
 
-_Last updated: October 7, 2026_
+_Last updated: October 24, 2026_
 
 > **V1 STATUS:** All “locked” decisions in this document are authoritative working decisions for **CapSight V1**, not irreversible commitments. If higher-authority Knowles evidence contradicts a V1 decision, update the relevant Markdown contract and decision ledger. The newest validated truth wins.
 
@@ -77,7 +77,7 @@ Do not implement unresolved Knowles formulas, meanings, defaults, units, depende
 
 Use `docs/KNOWLES_REQUIREMENTS.md` as the authoritative ledger for Knowles-derived operational requirements, confirmed-source provenance, open validation questions, and affected contracts. CapSight Implementation Phase 5A completed preparation of this ledger and the calculation capture structure; Phase 5 is now **CURRENT / ACTIVE** as received operational evidence is assimilated, with no validated calculation rules yet.
 
-Authoritative operational evidence is already arriving; assimilation continues incrementally before and after the October 28, 2026 live kick-off/alignment checkpoint, postponed from October 14. Reconcile each confirmed statement into the ledger and affected feature/domain contract, and into `docs/CALCULATION_REFERENCE.md` for calculation truth, before corresponding implementation. Meeting notes alone are not implementation authority. Independently validated areas may proceed with their prerequisites satisfied while other items remain explicitly OPEN.
+Authoritative operational evidence is already arriving; assimilation continues incrementally before and after live alignment checkpoints. See [section 4](#4-official-engineering-hackathon-timeline-and-organizational-status) for the current kickoff schedule and organizational status. Reconcile each confirmed statement into the ledger and affected feature/domain contract, and into `docs/CALCULATION_REFERENCE.md` for calculation truth, before corresponding implementation. Meeting notes alone are not implementation authority. Independently validated areas may proceed with their prerequisites satisfied while other items remain explicitly OPEN.
 
 ### Persistence / Database
 
@@ -194,18 +194,18 @@ The user supplied authoritative content from Knowles' **Production Capacity Requ
 
 The presentation confirms centralized data use, accuracy from validated/updated data, transparency, scalability, time efficiency, and **Real-Time Assessment** as rapid adjustment of capacity and production requirements to match shop-floor conditions. Exact field semantics, units, default applicability, calculations, feedback workflow, and technical real-time mechanism remain OPEN. This evidence confirms existence/business intent, not a schema or calculation rule. Source limits and precise validation questions are recorded in [docs/KNOWLES_REQUIREMENTS.md](docs/KNOWLES_REQUIREMENTS.md); the underlying deck file, slide locators, named validator, and separate validation date were not supplied.
 
-## 4. Official Engineering Hackathon Timeline and October 28 Checkpoint
+## 4. Official Engineering Hackathon Timeline and Organizational Status
 
-Official announced timeline, reconciled with the newer team communication postponing the kickoff (communication date not supplied):
+Official announced timeline, reconciled as of October 24, 2026 with KnowLarps organizational announcements and project-lead follow-up confirmation (individual communication dates not supplied):
 
 | Engineering Hackathon phase | Activity | Date | Attendees | Venue |
 | --- | --- | --- | --- | --- |
-| Engineering Hackathon Phase 1 | Event Kick-off and Detailed Project Alignment | **October 28, 2026** — postponed from October 14, 2026 (superseded kickoff date) | CITU: Department Heads/In-Charge and Selected Students; KEP: Managers and Mentors | KEP Training Room and General Office |
+| Engineering Hackathon Phase 1 | Event Kick-off and Detailed Project Alignment | **November 4, 2026 — Wednesday**; rescheduled from October 28, after the original October 14 date (both superseded kickoff dates) | CITU: Department Heads/In-Charge and Selected Students; KEP: Managers and Mentors | KEP Training Room and General Office |
 | Engineering Hackathon Phase 2 | Mentorship, Research and Concept Development; Project Execution and Evaluations, Validations | October 2026 to March 2027 | CITU: Students/Teams; KEP: Managers and Mentors | Offsite and Onsite depending on Mentor and Students alignment |
 | Engineering Hackathon Phase 3 | Project Presentation, Awards and Recognition | March 2027; final date is for alignment | CITU: Department Heads/In-Charge and Selected Students; KEP: Managers and Mentors | KEP Training Room and General Office |
 | Engineering Hackathon Phase 4 | Internship Program — for eligible students from top 3 Winning Team | May 2027 to July 2027 | CITU: Eligible Students of Top 3 Winning Team; KEP: Managers and Mentors | KEP Office and Production Areas |
 
-October 28, 2026 is now **the first major Knowles/KEP live kick-off/alignment checkpoint**. The newer postponement supersedes October 14 as the kickoff date; no change to the other announced event dates is established. October 28 does not guarantee that every required formula, field definition, unit, rounding rule, dependency, scenario variable, calculation profile rule, or golden example will be fully validated on that date.
+November 4, 2026 is now **the first major Knowles/KEP live kick-off/alignment checkpoint**. The October 24 reconciliation records the rescheduling from October 28; October 14 and October 28 remain scheduling history. No change to the other announced event dates is established. November 4 does not guarantee that every required formula, field definition, unit, rounding rule, dependency, scenario variable, calculation profile rule, or golden example will be fully validated on that date.
 
 Actual calculation implementation remains gated by authoritative Knowles operational truth, regardless of calendar date. Validation may continue throughout the Engineering Hackathon mentorship/development period from October 2026 to March 2027.
 
@@ -229,6 +229,17 @@ Priority discovery targets during active evidence assimilation and continued ali
 - technical meaning of “Real-Time Assessment.”
 
 Until the relevant authoritative operational truth is validated, **the real calculation engine must not be implemented from guesses**.
+
+### Organizational status — reconciled October 24, 2026
+
+Source: KnowLarps organizational announcements and project-lead follow-up confirmation supplied by the user. These organizational facts introduce no validated manufacturing definitions, formulas, units, rounding, Capacity Gap equations, or scenario-calculation dependencies; CapSight Implementation Phase 5 remains **CURRENT / ACTIVE**.
+
+- **Representatives unchanged:** Ali Xander Paclibar and Christan Jade Barnayha remain the selected KnowLarps representatives.
+- **Release / waiver / quitclaim:** both representatives have submitted their required documents. Approval, notarization, and full processing are not established by that submission status.
+- **Wildcat Innovation Labs (WIL):** available for business-idea validation, pitch strategy, pitch-deck review, mock presentations, and related mentoring. KnowLarps has **not yet pursued a WIL consultation**. This business/presentation support is distinct from Knowles/KEP engineering-domain validation.
+- **Introductions / expected attendance:** Sir Ralph P. Laviste was introduced as head of WIL. Organizers indicated Ma'am Cheryl Pantaleon is expected at the rescheduled kickoff; this is an announced expectation, not verified attendance.
+
+Use [the mentor-alignment playbook](docs/MENTOR_ALIGNMENT_PLAYBOOK.md) for active preparation. Organizational announcements do not unlock Phase 6 or the Capacity Engine.
 
 ---
 
@@ -447,7 +458,7 @@ This protects the Knowles calculation model from presentation and framework chan
 
 - Centralized persistence is a requirement.
 - Database technology and schema are **not yet locked**.
-- Final manufacturing-schema design waits for the validated field/domain model; the October 28 alignment checkpoint does not guarantee its availability.
+- Final manufacturing-schema design waits for the validated field/domain model; a scheduled alignment checkpoint does not guarantee its availability. See [section 4](#4-official-engineering-hackathon-timeline-and-organizational-status) for the current schedule.
 
 ### API strategy
 
@@ -2250,7 +2261,7 @@ Safe implementation work includes:
 Do **not** invent Knowles manufacturing fields or real capacity formulas to make the app appear complete.
 
 ### Knowles truth assimilation and operational validation gate
-CapSight Implementation Phase 5 is active as received authoritative operational evidence is assimilated and continues incrementally as more material is validated. October 28, 2026 is the current first major Knowles/KEP live kick-off/alignment checkpoint, postponed from October 14. The checkpoint does not guarantee completion; calendar dates do not unlock calculation implementation.
+CapSight Implementation Phase 5 is active as received authoritative operational evidence is assimilated and continues incrementally as more material is validated. See [section 4](#4-official-engineering-hackathon-timeline-and-organizational-status) for the current alignment schedule. The checkpoint does not guarantee completion; calendar dates do not unlock calculation implementation.
 
 CapSight Implementation Phase 5A completed alignment readiness: the requirements ledger and rule capture structure were prepared without calculation truth. Phase 5 now records the received presentation evidence and refined questions in `docs/KNOWLES_REQUIREMENTS.md`; `docs/CALCULATION_REFERENCE.md` records discovery concepts but no validated calculation rules. Phase 5 remains incomplete and may stay partially open while independently validated areas advance through their existing prerequisites. Current focus is **Knowles Truth Assimilation + Alignment Preparation**; Phases 6–18 remain provisional after Phase 5 as recorded in `docs/CAPSIGHT_EXECUTION_STATE.md`.
 

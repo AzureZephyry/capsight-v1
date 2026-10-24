@@ -74,7 +74,7 @@ On October 1, 2026, verification against two existing Assessments advanced one r
 
 ## Future mentor demo
 
-See [Mentor Demo Deployment](docs/MENTOR_DEMO_DEPLOYMENT.md) for the later manual procedure: an approved `main` checkpoint on `demo/mentor-review`, a protected Vercel Preview, and a separate managed PostgreSQL demo database. Local `capsight_dev` remains local. Repository readiness does not create a deployment or advance CapSight Implementation Phase 5.
+See [Mentor Demo Deployment](docs/MENTOR_DEMO_DEPLOYMENT.md) for the previously verified protected mentor-demo history and original setup plan. That historical verification does not establish present live availability. Local `capsight_dev` remains local; Phase 5 remains active.
 
 ## Contributing
 

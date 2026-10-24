@@ -80,11 +80,13 @@ Establish Baseline as the reference Planning State and distinguish request readi
 
 CapSight Implementation Phase 5 is **CURRENT / ACTIVE** as received authoritative operational evidence is assimilated and continues incrementally as more material is validated. The supplied **Production Capacity Requirement Calculator** presentation (September 30, 2026) confirms intake items, workflow responsibilities, and system intent; exact field semantics and calculation rules remain OPEN in [KNOWLES_REQUIREMENTS.md](KNOWLES_REQUIREMENTS.md).
 
-The newer team communication postpones kick-off/project alignment from October 14 to **October 28, 2026**, now **the first major Knowles/KEP live kick-off/alignment checkpoint**. Assimilation is already active; it does not begin only on October 28. The checkpoint does not guarantee that all required calculation truth will be validated that day. Validation may continue throughout Engineering Hackathon Phase 2, October 2026 to March 2027. Actual calculation implementation is gated by authoritative Knowles operational truth, regardless of calendar date.
+Current kickoff scheduling and organizational provenance are maintained in the [project context](../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status). Assimilation is already active and does not wait for the meeting. Alignment does not guarantee that all required calculation truth will be validated that day. Validation may continue throughout Engineering Hackathon Phase 2, October 2026 to March 2027. Actual calculation implementation is gated by authoritative Knowles operational truth, regardless of calendar date.
 
 CapSight Implementation Phase 5 may remain partially open while development continues on independently validated areas. Corresponding documentation and dependencies must be reconciled before implementation; unresolved truth required by a change still blocks that change. The calendar does not complete this phase automatically.
 
 ### CapSight Implementation Phase 5A — Knowles Alignment Readiness
+
+**Historical scheduling context — as recorded at the October 7, 2026 checkpoint:**
 
 Completed readiness preparation for Engineering Hackathon Phase 1, **Event Kick-off and Detailed Project Alignment**, originally announced for October 14, 2026 and now postponed to October 28. That preparation established capture/reconciliation structures without assimilating new operational truth or implementing application features; active Phase 5 now uses those structures for received evidence.
 

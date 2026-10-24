@@ -1,10 +1,10 @@
-# October 28 Mentor Alignment Playbook
+# November 4 Mentor Alignment Playbook
 
 ## Meeting objective
 
 Leave with a corrected understanding of Knowles' work, evidence for the next implementation decisions, and named follow-ups for what remains open. Use a short CapSight walkthrough to support operational and calculation discovery.
 
-**Checkpoint:** October 28, 2026 — the first major Knowles/KEP live kick-off/alignment checkpoint, superseding October 14. Complete domain truth is not guaranteed that day. **CapSight Implementation Phase 5 — Knowles Truth Assimilation remains CURRENT / ACTIVE** and may continue afterward. Engineering Hackathon phases are separate from CapSight Implementation phases.
+**Checkpoint:** November 4, 2026 — Wednesday, the current announced Knowles/KEP live kick-off/alignment date. See the [project context](../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status) for scheduling history and organizational provenance. This playbook was originally prepared for October 28. Complete domain truth is not guaranteed on the meeting date. **CapSight Implementation Phase 5 — Knowles Truth Assimilation remains CURRENT / ACTIVE** and may continue afterward. Engineering Hackathon phases are separate from CapSight Implementation phases.
 
 Desired outcomes, as time and evidence allow:
 
@@ -153,7 +153,7 @@ Confidence applies to the specific statement, not the whole topic. A verbal expl
 
 ## Team roles
 
-Assign people in the internal call; final attendance is not established in the repository.
+**Selected representatives unchanged:** Ali Xander Paclibar and Christan Jade Barnayha. Both have submitted the required release/waiver/quitclaim documents; approval, notarization, and full processing have not been confirmed. Assign the meeting responsibilities in the internal call; selection does not establish actual attendance in advance.
 
 | Responsibility | During / after the meeting |
 | --- | --- |
@@ -162,21 +162,22 @@ Assign people in the internal call; final attendance is not established in the r
 | Evidence scribe | Captures wording/provenance, tracks open questions and artifacts, reads back critical answers. |
 | Project lead / post-meeting owner | Consolidates raw evidence and coordinates repository reconciliation and implementation review. |
 
-**If two students attend:** combine demo lead with workflow questioning; combine calculation questioning with evidence capture. Pause while the questioner records a rule/example, and have the demo lead help read back the answer. Agree who owns consolidation before leaving.
+**Two-person role plan:** combine demo lead with workflow questioning; combine calculation questioning with evidence capture. Pause while the questioner records a rule/example, and have the demo lead help read back the answer. Agree who owns consolidation before leaving.
 
-**Suggested assignment only, if Ali and Christan remain the representatives:** Ali — demo/UI-product walkthrough and workflow clarification; Christan — calculation/domain questions and formula/example capture. Their team membership is documented; their final attendance and this meeting assignment are not confirmed.
+**Suggested meeting assignments, not confirmed assignments:** Ali — demo/UI-product walkthrough and workflow clarification; Christan — calculation/domain questions and formula/example capture. Their representative selection is confirmed; the proposed split still needs team agreement.
 
 ## Team call and demo backup
 
-### Decide in the internal call before October 28
+### Decide in the internal call before November 4
 
-- [ ] Confirm the final two representatives and any team-game participant requirement/status; both remain unconfirmed here.
+- [ ] Confirm attendance/logistics with the selected representatives, Ali and Christan. Team-game participant requirement/status remains unconfirmed.
 - [ ] Assign laptop operation, calculation questions, note-taking/read-back, and the post-meeting consolidation owner.
-- [ ] Choose local demo or an already prepared protected shared deployment; check the [existing demo guide](MENTOR_DEMO_DEPLOYMENT.md) if using the latter. Shared deployment readiness does not mean deployment exists.
+- [ ] Choose local demo or the previously verified protected hosted demo; check the [deployment record](MENTOR_DEMO_DEPLOYMENT.md) if using the latter. The October 24 documentation reconciliation does not revalidate present hosted availability or access.
 - [ ] Choose the laptop/device and confirm the database/network arrangements for that choice.
 - [ ] Select the safe blank Assessment and rehearse the short path; decide whether creation adds useful value.
 - [ ] Choose screenshots or another lightweight fallback if the app/database fails.
 - [ ] Agree which Priority 1 questions to ask first and who follows up on unanswered items.
+- [ ] Decide whether to pursue optional [WIL business/presentation support](../CAPSIGHT_CONTEXT.md#organizational-status--reconciled-october-24-2026); the context records its scope and consultation status.
 
 ### Before leaving
 
@@ -195,7 +196,7 @@ Assign people in the internal call; final attendance is not established in the r
 - Record suggestions as suggestions until authority, scope, and dependencies are reconciled; do not make immediate delivery promises.
 - Do not invent a missing formula, lead the mentor toward an answer, or display unfinished calculations as implemented.
 - Keep architecture/testing detail brief unless asked; use the time for operational examples.
-- Do not treat October 28 as the only validation opportunity or collect confidential artifacts without permission.
+- Do not treat November 4 as the only validation opportunity or collect confidential artifacts without permission.
 - If mentor evidence contradicts our interpretation, preserve the correction and its source. Confirm authority/applicability and reconcile using the source hierarchy; higher-authority validated Knowles evidence governs the contracts.
 
 ## Post-meeting assimilation and implementation review
@@ -229,4 +230,4 @@ Assess the proposed calculation scope after assimilation, not from the meeting d
 - [ ] At least one authorized worked/golden example, or equivalent validation evidence, establishes accepted inputs/context and expected outputs; provenance and remaining limitations are recorded.
 - [ ] Relevant requirements/contracts and calculation reference are reconciled, with compatible reference/profile context and no unresolved dependency required by the proposed work.
 
-If a material prerequisite remains unresolved, **Phase 5 continues for that work**. Do not declare the domain complete because one example or subset is understood. Phase 6 starts only after sufficient calculation truth is validated and its scope reviewed; Capacity Engine implementation follows the Phase 7 gate. October 28 starts neither automatically.
+If a material prerequisite remains unresolved, **Phase 5 continues for that work**. Do not declare the domain complete because one example or subset is understood. Phase 6 starts only after sufficient calculation truth is validated and its scope reviewed; Capacity Engine implementation follows the Phase 7 gate. November 4 starts neither automatically.

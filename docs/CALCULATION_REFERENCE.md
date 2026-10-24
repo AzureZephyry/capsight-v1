@@ -3,7 +3,7 @@
 ## Status
 CapSight Implementation Phase 5 is active; the Phase 5A rule capture structure remains prepared. Received deck evidence now informs discovery below. **No validated calculation rules are recorded. Do not populate from assumptions.**
 
-This document receives Knowles-validated terminology, units, formulas, variables, dependencies, defaults, exceptions, rounding rules, and calculation evidence incrementally as authoritative operational material is validated. Its structure is not calculation truth. October 28, 2026 is the current first major Knowles/KEP live kick-off/alignment checkpoint, postponed from October 14; it is not a guarantee that required rules or evidence will be complete. Assimilation is already active and validation may continue throughout the October 2026–March 2027 mentorship period.
+This document receives Knowles-validated terminology, units, formulas, variables, dependencies, defaults, exceptions, rounding rules, and calculation evidence incrementally as authoritative operational material is validated. Its structure is not calculation truth. The [project context](../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status) records current kickoff scheduling; alignment does not guarantee that required rules or evidence will be complete. Assimilation is already active and validation may continue throughout the October 2026–March 2027 mentorship period.
 
 ## Discovery Status — Confirmed Concepts, OPEN Mathematics
 

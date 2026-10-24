@@ -8,7 +8,7 @@ CapSight Implementation Phase 5 — Knowles Truth Assimilation is **CURRENT / AC
 
 Confirmed information below comes from existing authoritative project documentation and the supplied Knowles presentation content. High-level intake information items and business responsibilities are confirmed; their exact field map and rules remain OPEN. No validated formulas or Knowles golden sample are recorded yet. OPEN items are validation requirements; CLARIFICATION items first need their meaning or relevance established. Neither status authorizes implementation.
 
-Engineering Hackathon Phase 1 is **Event Kick-off and Detailed Project Alignment**, postponed from October 14 to **October 28, 2026**, the current **first major Knowles/KEP live kick-off/alignment checkpoint**. Complete domain truth is not guaranteed that day. Evidence assimilation is already active; unresolved items remain open afterward, and validation may continue during Engineering Hackathon Phase 2, October 2026 to March 2027. The event timeline and date supersession remain in [CAPSIGHT_CONTEXT.md, section 4](../CAPSIGHT_CONTEXT.md). Engineering Hackathon phases and CapSight Implementation phases are separate sequences.
+Current kickoff scheduling, organizational status, and rescheduling provenance are maintained in [CAPSIGHT_CONTEXT.md, section 4](../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status). Alignment does not guarantee complete domain truth. Evidence assimilation is already active; unresolved items remain open afterward, and validation may continue during Engineering Hackathon Phase 2, October 2026 to March 2027. Engineering Hackathon phases and CapSight Implementation phases are separate sequences.
 
 ## Authority and Source Hierarchy
 
@@ -26,12 +26,22 @@ Keep only operational requirements, clarification questions, provenance, and aff
 
 ## Received Authoritative Evidence
 
-Assimilated into this ledger on October 7, 2026:
+### Knowles operational/manufacturing evidence
+
+Assimilated on October 7, 2026:
 
 | Source | Source date | Scope / provenance |
 | --- | --- | --- |
 | Knowles presentation: **Production Capacity Requirement Calculator** | September 30, 2026 | User-designated authoritative operational evidence. Supplied presentation content establishes CAPEX Assessment Flow, intake information items, assessment/solution/submission responsibilities, and system-quality intent. The deck file, slide locators/version, named validator, and separate validation date were not supplied; do not invent them or infer mathematical rules. |
-| Newer team communication postponing kick-off/project alignment | Communication date not supplied | User-supplied explicit postponement to October 28, 2026 supersedes the originally announced October 14 kickoff date. It does not establish complete domain validation or change the other event dates. |
+
+### Organizer/logistics evidence — not manufacturing validation
+
+Preserve scheduling provenance separately from operational requirements. The initial postponement was recorded at the October 7 checkpoint; the later organizational confirmation was reconciled October 24. Reconciliation dates do not establish the dates of the underlying communications. These sources establish logistics only, not manufacturing authority or calculation readiness.
+
+| Source | Source date | Scope / provenance |
+| --- | --- | --- |
+| Newer team communication postponing kick-off/project alignment | Communication date not supplied | Historical record from the October 7 checkpoint: user-supplied explicit postponement to October 28, 2026 superseded the originally announced October 14 kickoff date. It did not establish complete domain validation or change the other event dates. |
+| KnowLarps organizational announcements and project-lead follow-up confirmation — reconciled October 24, 2026 | Individual communication dates not supplied | Subsequent rescheduling confirmation and organizational status are recorded in the [project context](../CAPSIGHT_CONTEXT.md#4-official-engineering-hackathon-timeline-and-organizational-status). Organizer/logistics evidence supplies no new validated calculation formulas, variable definitions, units, rounding, Capacity Gap equations, or scenario-calculation dependencies. Phase 5 remains active. |
 
 In the evidence and validation tables below, **Deck (September 30, 2026)** refers to the supplied content of that named presentation, with the provenance limits above. Confirmation is limited to the stated existence, flow, or business intent; it does not confirm field/schema design or calculation rules.
 
@@ -208,7 +218,7 @@ Mathematical definitions, units, rounding, defaults/applicability, exceptions, r
 ### Other Retained Clarifications
 
 - **U/S:** this term was not found in the existing authoritative context/contracts. First ask whether Knowles uses it and whether it is relevant to CapSight; if relevant, record its exact meaning, unit, source, and affected field/rule. It is not an approved input, unit, or formula variable.
-- Which authoritative workbook/reference versions, walkthrough material, and sanitized examples can be supplied for each open area? The October 28 alignment checkpoint does not guarantee delivery of any particular artifact.
+- Which authoritative workbook/reference versions, walkthrough material, and sanitized examples can be supplied for each open area? Alignment does not guarantee delivery of any particular artifact.
 
 Earlier context entries that left database/ORM choice or automatic-versus-manual calculation triggers open must be read with later approved decisions: Stage 16 establishes the PostgreSQL/Prisma direction, and Stage 13/D049 makes authoritative Calculation Runs intentional. These are existing implementation decisions, not outstanding Knowles formula questions. Live preview feasibility and Knowles-specific workflow details remain open in their contracts.
 
@@ -230,6 +240,6 @@ Do not code directly from unreconciled meeting notes, screenshots, sample consta
 
 ## Current Implementation Impact
 
-CapSight Implementation Phase 5A completed the capture structure and reconciliation procedure. Phase 5 is now actively assimilating the supplied deck's operational evidence and refining questions for October 28. This pass changes documentation only; it supplies no validated calculation rules and does not implement application features.
+CapSight Implementation Phase 5A completed the capture structure and reconciliation procedure. Phase 5 is actively assimilating the supplied deck's operational evidence and refining questions for continued alignment. This pass changes documentation only; it supplies no validated calculation rules and does not implement application features.
 
 The CapSight Implementation Phase 4 Baseline remains a readiness shell. Persisted Assessment identity, request completeness/validation, revision protection, routing, and separate request/planning/calculation gates are preserved. Confirmed intake labels and workflow purpose can inform a separate implementation-impact review; they do not yet authorize exact editable fields, default application, or schemas. Manufacturing schema, formulas, Calculation Runs, scenario rules, trace implementation, Reality fields, roles, and integrations remain gated by their relevant validated requirements and roadmap prerequisites.
