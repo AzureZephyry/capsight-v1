@@ -1,6 +1,6 @@
 # CapSight Execution State
 
-_Current source checkpoint: October 25, 2026 — Immersive Engineering finalization; release promotion blocked by the Next.js security gate._
+_Current source checkpoint: October 25, 2026 — Immersive Engineering finalized; bounded Next.js security remediation locally verified. CI and hosted promotion require separate verification after this source checkpoint._
 
 ## Purpose
 
@@ -63,7 +63,7 @@ Calculation correctness is **not validated**, and no validated calculation rules
 
 ### Approved visual/interaction milestone — October 25, 2026
 
-**Release status: NO-GO for push/Production promotion.** The fresh dependency audit identifies an applicable Next.js Server Actions denial-of-service advisory in the existing 16.3.8 runtime. A separately reviewed security upgrade and renewed verification are required; local UI test success does not clear this gate. See the [deployment guide](MENTOR_DEMO_DEPLOYMENT.md#current-authorized-release-policy--october-25-2026). No dependency fix or hosted deployment is claimed.
+**Initial finalization status — historical:** push/Production promotion was held because the 16.3.8 runtime was affected by the Next.js Server Actions denial-of-service advisory. The separately authorized security remediation below supersedes that framework hold; it does not itself establish CI or hosted release success. See the [deployment guide](MENTOR_DEMO_DEPLOYMENT.md#current-authorized-release-policy--october-25-2026).
 
 **Immersive Engineering**, from Visual Lab Experiment 05, Variant B, is integrated across Shared Workspace, How CapSight Works and the six real Assessment sections. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) governs local editorial/technical typography, CapSight palette/materials, upright orbital selection and bounded lighting, connected explanations, native topic disclosures and shared working/loading chrome. No third-party skill runtime or animation dependency was installed. Experiments remain outside the repository.
 
@@ -71,7 +71,9 @@ The implementation-pass evidence is **25 Vitest / 10 database-free Chromium test
 
 Source changes are presentation/font/test changes; persistence operations, schema, dependencies, domain/application readiness and engineering gates remain unchanged. Every open calculation prerequisite stays visible independently of annotation selection. This unnumbered milestone **does not complete Phase 5 or Phase 17** and unlocks no calculation feature.
 
-**Finalization recheck — October 25, 2026:** `npm run verify` passed (typecheck, lint, format, 25 Vitest tests and production build); `npm run test:e2e` passed all 10 Chromium tests. Another 80 layout/theme checks passed without document overflow or hidden active navigation. Fresh safe local creation/reopen/history/six-section checks passed; a second deliberate local test record was retained. These functional results do **not** clear the separate Next.js security gate; push and Production promotion remain held. Hosted review was read-only, with existing visible record identity/state/date evidence unchanged.
+**Finalization recheck — historical, earlier October 25, 2026:** `npm run verify` passed (typecheck, lint, format, 25 Vitest tests and production build); `npm run test:e2e` passed all 10 Chromium tests. Another 80 layout/theme checks passed without document overflow or hidden active navigation. Fresh safe local creation/reopen/history/six-section checks passed; a second deliberate local test record was retained. These functional results did **not** clear the separate Next.js security gate; push and Production promotion were held. Hosted review was read-only, with existing visible record identity/state/date evidence unchanged.
+
+**Authorized security remediation — later October 25, 2026:** Next.js and matching `eslint-config-next` were updated from **16.3.8 to 16.4.3**, with matching `@next` lock entries; React/React DOM **19.2.8** and `sharp` **0.35.5** remain unchanged. The three October 14 Next.js advisories are absent from the renewed audit. Remaining findings are documented, not silently repaired or declared harmless in every context. `npm run verify` passed all checks and 25 Vitest tests; all 10 Chromium tests and 80 layout/theme checks passed. Real local creation, six-section navigation, reload/reopen and Back/Forward passed; all nine pre-existing local rows were unchanged, with one new blank verification record retained. Twelve local server trace manifests contained none of the remaining affected tooling/CLI packages. No application source, schema, migration, engineering gate or Visual Lab file changed in this patch. This is pre-promotion evidence; actual GitHub CI and protected Production deployment must be verified against the resulting commit before release success is reported.
 
 ## 4. Current Active Focus
 

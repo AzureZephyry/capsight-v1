@@ -76,7 +76,7 @@ On October 1, 2026, verification against two existing Assessments advanced one r
 
 ## Mentor demo and permanent branches
 
-**October 25 release gate: NO-GO.** Fresh advisory review found an applicable Next.js Server Actions denial-of-service issue in the current runtime. The visual candidate may be checked locally, but push/Production promotion is held for a separately reviewed security update and renewed verification. [The deployment guide](docs/MENTOR_DEMO_DEPLOYMENT.md#current-authorized-release-policy--october-25-2026) records the evidence; the older GREEN review is historical.
+**October 25 security remediation:** Next.js and `eslint-config-next` are pinned to **16.4.3**, replacing 16.3.8; locked `sharp` remains **0.35.5**. The three October 14 Next.js advisories no longer appear in the fresh audit. Remaining findings are not claimed fixed: full audit reports **6 high / 3 moderate**, and `--omit=dev` reports **4 high / 1 moderate**. [The deployment guide](docs/MENTOR_DEMO_DEPLOYMENT.md#current-authorized-release-policy--october-25-2026) records applicability, verification and release safeguards. The earlier NO-GO and GREEN reviews are historical; actual CI and hosted release success require separate verification for the patched commit.
 
 The permanent branches are `main` (development and accepted history) and `demo/mentor-review` (protected Vercel Production mentor demonstration). Release only an explicitly approved, verified `main` checkpoint by safe fast-forward of the demo branch after CI passes. Never force-push or change Production Branch settings as a shortcut. Ordinary development pushes do not authorize Production release; temporary contribution branches do not change this permanent-branch policy.
 
