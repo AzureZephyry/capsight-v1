@@ -2,6 +2,8 @@
 
 CapSight is an in-progress capacity assessment application. The current implementation contains a small Assessment persistence slice. Request Context fields and capacity calculations await validated Knowles requirements.
 
+**Current UI/UX direction:** Immersive Engineering, approved from Visual Lab Experiment 05, Variant B, is integrated into Shared Workspace, How CapSight Works and the six real Assessment sections. The orbital story, connected readiness explanations, editorial typography and Light/Dark materials follow [the design system](docs/DESIGN_SYSTEM.md). Experiments remain outside this repository; no design skill or animation library is a runtime dependency. Phase 5 — Knowles Truth Assimilation — remains **CURRENT / ACTIVE**, and calculations remain gated.
+
 ## Local setup
 
 ### Verify a clean checkout without PostgreSQL
@@ -72,9 +74,15 @@ When persistence verification is explicitly needed, run `node scripts/verify-ass
 
 On October 1, 2026, verification against two existing Assessments advanced one record from revision 1 to 2 and rejected the repeated expected revision 1 with `conflict`. Direct PostgreSQL inspection confirmed revision 2, preserved incomplete/unvalidated state, and an unchanged second Assessment. Browser reload/reopen verification was not repeated during this concurrency check.
 
-## Future mentor demo
+## Mentor demo and permanent branches
 
-See [Mentor Demo Deployment](docs/MENTOR_DEMO_DEPLOYMENT.md) for the previously verified protected mentor-demo history and original setup plan. That historical verification does not establish present live availability. Local `capsight_dev` remains local; Phase 5 remains active.
+**October 25 release gate: NO-GO.** Fresh advisory review found an applicable Next.js Server Actions denial-of-service issue in the current runtime. The visual candidate may be checked locally, but push/Production promotion is held for a separately reviewed security update and renewed verification. [The deployment guide](docs/MENTOR_DEMO_DEPLOYMENT.md#current-authorized-release-policy--october-25-2026) records the evidence; the older GREEN review is historical.
+
+The permanent branches are `main` (development and accepted history) and `demo/mentor-review` (protected Vercel Production mentor demonstration). Release only an explicitly approved, verified `main` checkpoint by safe fast-forward of the demo branch after CI passes. Never force-push or change Production Branch settings as a shortcut. Ordinary development pushes do not authorize Production release; temporary contribution branches do not change this permanent-branch policy.
+
+See [Mentor Demo Deployment](docs/MENTOR_DEMO_DEPLOYMENT.md) for release safeguards, the dated pre-release live audit, rollback references and the preserved historical Preview-only plan. At the October 25 pre-release audit, Production tracked `demo/mentor-review`, Authentication covered all deployments, and `DATABASE_URL` was available in Production/Development but not Preview. A `main` Preview may show safe unavailable UI; Preview success does not establish Production database behavior. Local `capsight_dev` remains local; Phase 5 remains active.
+
+The integration baseline passed `npm run verify` (25 Vitest tests) and `npm run test:e2e` (10 database-free Chromium tests). Responsive/theme and local persisted journeys are separate checks; [execution state](docs/CAPSIGHT_EXECUTION_STATE.md) records evidence and limitations. Local file bytes, Git commits/pushes and OneDrive cloud synchronization are independent; a GitHub push does not prove OneDrive synchronization.
 
 ## Contributing
 

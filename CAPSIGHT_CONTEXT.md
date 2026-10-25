@@ -1,6 +1,6 @@
 # CapSight Context — Locked Project Direction
 
-_Last updated: October 24, 2026_
+_Last updated: October 25, 2026_
 
 > **V1 STATUS:** All “locked” decisions in this document are authoritative working decisions for **CapSight V1**, not irreversible commitments. If higher-authority Knowles evidence contradicts a V1 decision, update the relevant Markdown contract and decision ledger. The newest validated truth wins.
 
@@ -486,6 +486,8 @@ This protects the Knowles calculation model from presentation and framework chan
 - **Figma**
 - **Figma MCP / connector if practical and available**
 
+**Approved application direction — October 25, 2026:** **Immersive Engineering**, originating in Visual Lab Experiment 05, Variant B, is the project-lead-approved application-wide UI/UX direction. It covers Shared Workspace, How CapSight Works and all six Assessment sections, using CapSight's existing palette, locally hosted Plex/Source Serif typography, upright orbital geometry, bounded pointer lighting and connected editorial explanations. [DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md) governs its reusable patterns and motion/accessibility limits; [D150](docs/DECISIONS.md#d150--immersive-engineering-is-the-approved-application-wide-visual-direction) records the approval. The experiments remain outside this repository. This visual milestone introduces no manufacturing truth and does not advance Phase 5.
+
 ### Design philosophy
 
 - Custom CapSight visual identity
@@ -495,7 +497,7 @@ This protects the Knowles calculation model from presentation and framework chan
 ### Motion
 
 - Motion is desired.
-- Motion system / library will be planned later.
+- Current approved motion uses CSS, SVG and browser animation APIs; no motion library is installed. Future library adoption still requires justification and approval.
 - Motion must communicate cause, state, feedback, or context — not exist as decoration.
 
 ### AI design guardrails
@@ -625,6 +627,8 @@ Until authoritative Knowles material validates the domain model, do not:
 ---
 
 ## 15. Current Planning State
+
+**Historical early-planning snapshot:** these lists preserve that checkpoint, not the latest implementation position. Later stages resolve technology choices, and the October 25, 2026 Immersive Engineering approval resolves the current visual direction. Use [execution state](docs/CAPSIGHT_EXECUTION_STATE.md) and the relevant current contracts when resuming work.
 
 ### Approved / locked
 
@@ -2003,7 +2007,7 @@ Navigation follows the IE's work. Scenario Studio, Comparison, Solution Evaluati
 ### Design-system boundary
 CapSight maintains the useful levels **Primitives → CapSight Patterns → Product Features**. Semantic design tokens, consistent status language, reusable interaction patterns, and a coherent visualization grammar are approved directions.
 
-The final palette, typography, density, radius, shadow, surfaces, iconography, navigation styling, chart appearance, page composition, microinteractions, and motion personality remain OPEN until implementation. They will be designed collaboratively according to Prince's taste and the assistant's design recommendations, with Prince approving the direction.
+At the Stage 15 checkpoint, detailed aesthetics were left OPEN for implementation-time approval. The October 25, 2026 approval of Immersive Engineering now supplies the current application direction through [DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). Future refinements still require Prince's approval; chart appearance and Knowles-dependent information design remain open. This later approval does not rewrite the historical Stage 15 decision.
 
 ### Next planning stage
 **Stage 16 — Persistence Technology & Data-Access Implementation Strategy.**

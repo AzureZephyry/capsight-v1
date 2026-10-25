@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/presentation/theme-toggle/ThemeToggle";
+import { BrandMark } from "./BrandMark";
 import styles from "./ProductHeader.module.css";
 
 export function ProductNavigation({
@@ -27,21 +28,21 @@ export function ProductNavigation({
 
 export function ProductHeader({
   active,
+  contentId = "main-content",
 }: {
   active?: "workspace" | "how-it-works";
+  contentId?: string;
 }) {
   return (
     <>
-      <SkipToContent />
+      <SkipToContent target={contentId} />
       <header className={styles.header}>
         <Link
           className={styles.brand}
           href="/assessments"
           aria-label="CapSight workspace"
         >
-          <span className={styles.mark} aria-hidden="true">
-            <span />
-          </span>
+          <BrandMark className={styles.mark} />
           <span>CapSight</span>
         </Link>
         <ProductNavigation active={active} />

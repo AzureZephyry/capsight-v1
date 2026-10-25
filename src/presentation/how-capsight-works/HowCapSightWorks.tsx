@@ -27,19 +27,19 @@ export function HowCapSightWorks() {
             <a className={styles.textLink} href="#capabilities">
               Explore the capabilities <span aria-hidden="true">↓</span>
             </a>
-            <div className={styles.today}>
-              <p className={styles.kicker}>Available today</p>
-              <p>
-                Create, save and reopen blank Assessments. Review the request
-                gate and Baseline readiness. Required fields and calculation
-                rules are being confirmed with Knowles.
-              </p>
-              <Link className={styles.workspaceLink} href="/assessments">
-                Open Shared Workspace <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
           </div>
           <CapacityLoop />
+          <div className={styles.today}>
+            <p className={styles.kicker}>Available today</p>
+            <p>
+              Create, save and reopen blank Assessments. Review the request gate
+              and Baseline readiness. Required fields and calculation rules are
+              being confirmed with Knowles.
+            </p>
+            <Link className={styles.workspaceLink} href="/assessments">
+              Open Shared Workspace <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </div>
 
         <section

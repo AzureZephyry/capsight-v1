@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { getAssessmentLifecycle } from "@/application/get-assessment-lifecycle";
 import { getBaselineWorkflow } from "@/application/get-baseline-workflow";
 import type { CapacityAssessmentRecord } from "@/application/assessment-store";
@@ -108,14 +109,7 @@ export function AssessmentPage({
       <div className={styles.content}>
         <p className={styles.recordNotice}>
           <span className={styles.recordNoticeMark} aria-hidden="true" />
-          {section === "baseline" ? (
-            "Saved Assessment"
-          ) : (
-            <>
-              Saved Assessment · Technical ID:{" "}
-              <span className={styles.recordId}>{assessment.id}</span>
-            </>
-          )}
+          Saved Assessment
         </p>
         {section !== "overview" ? (
           <LifecycleIndicator
@@ -429,33 +423,41 @@ function RequestContext({
           <h3 id="intake-title">Confirmed intake information</h3>
           <p>Confirmed by Knowles · September 30, 2026</p>
           <ul className={styles.intakeList}>
-            <li>
-              <strong>Affected model line / PN</strong>
-            </li>
-            <li>
-              <strong>Routing with PDT</strong>
+            <IntakeTopic label="Affected model line / PN">
+              <p>
+                Field structure and validation requirements still need alignment
+                with Knowles.
+              </p>
+            </IntakeTopic>
+            <IntakeTopic label="Routing with PDT">
               <p>For a new PN.</p>
-            </li>
-            <li>
-              <strong>Volume and Volume Mix</strong>
-            </li>
-            <li>
-              <strong>Days/week scenario</strong>
+              <p>The definition of PDT remains under validation.</p>
+            </IntakeTopic>
+            <IntakeTopic label="Volume and Volume Mix">
+              <p>
+                Volume units and time basis, and Volume Mix representation,
+                still need validation.
+              </p>
+            </IntakeTopic>
+            <IntakeTopic label="Days/week scenario">
               <p>
                 Knowles states “Default: 6 days/week”. Applicability is still
                 being validated; no default is applied here.
               </p>
-            </li>
-            <li>
-              <strong>Supplier Tooling</strong>
-            </li>
-            <li>
-              <strong>Retained tool capacity</strong>
+            </IntakeTopic>
+            <IntakeTopic label="Supplier Tooling">
+              <p>
+                Field structure and validation requirements still need alignment
+                with Knowles.
+              </p>
+            </IntakeTopic>
+            <IntakeTopic label="Retained tool capacity">
               <p>
                 When using existing capacity from other models: how much tool
                 capacity should be retained.
               </p>
-            </li>
+              <p>Tool capacity measures still need validation.</p>
+            </IntakeTopic>
           </ul>
         </section>
         <section
@@ -477,10 +479,10 @@ function RequestContext({
       </section>
       <aside className={styles.gatePanel} aria-labelledby="gate-title">
         <p className={styles.kicker}>Current gate</p>
-        <h2 id="gate-title">Incomplete and unvalidated</h2>
+        <h2 id="gate-title">Request status</h2>
         <p>
-          This Assessment has no request information entered. Baseline planning
-          requires a complete and validated request.
+          Baseline planning requires a complete and validated request. The saved
+          completeness and validation states are shown below.
         </p>
         <div className={styles.gateStatus}>
           <span>Request completeness</span>
@@ -523,6 +525,23 @@ function RequestContext({
         </Link>
       </aside>
     </div>
+  );
+}
+
+function IntakeTopic({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <li>
+      <details>
+        <summary>{label}</summary>
+        <div>{children}</div>
+      </details>
+    </li>
   );
 }
 

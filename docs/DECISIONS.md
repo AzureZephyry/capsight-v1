@@ -597,3 +597,19 @@ The user approves repository readiness for a future Vercel Preview from `demo/me
 `npm run build` generates the ignored Prisma Client before compilation, independently of database connectivity and dependency caching. `db:migrate:deploy` applies reviewed, committed migrations only as a deliberate setup operation against a confirmed target; install, build, startup, and default CI do not migrate or seed. Existing verification and explicit CI stages remain. The [mentor demo guide](MENTOR_DEMO_DEPLOYMENT.md) records the later manual setup, access checks, and cleanup. This preparation creates no external resources and does not advance CapSight Implementation Phase 5.
 
 **Implementation clarification — October 24, 2026:** The project lead confirms a subsequently implemented, previously verified protected mentor demo with Production Branch Tracking set to `demo/mentor-review`. This observed configuration differs from the original Preview-oriented intent above. See the [deployment history](MENTOR_DEMO_DEPLOYMENT.md#deployment-history--reconciled-october-24-2026) for the reported milestones and provenance. Present live state was not revalidated. This records a later implementation, not a retroactive approval or a new/superseding hosting-policy decision.
+
+## D150 — Immersive Engineering is the approved application-wide visual direction
+
+**Status:** Active — approved October 25, 2026; resolves the earlier open aesthetic selection
+
+The project lead selects Visual Lab Experiment 05, Variant B, for the real CapSight application. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) owns the approved tokens, local Plex/Source Serif typography, upright orbit/bounded pointer light, connected explanations, readiness annotations, editorial materials and shared navigation/loading composition. Interface Skills, Hallmark, Taste Skill, UI UX Pro Max and Diagram Design informed the experiment; none is a runtime dependency. Original experiments remain outside the production repository.
+
+Preserve real IDs, saved state, server/domain authority, native routes/history, readiness, error/pending behavior, keyboard access and reduced-motion equivalence. Animation supplies no manufacturing evidence and never delays ordinary controls. Phase 5 remains CURRENT / ACTIVE; no Capacity Engine, scenario or calculation truth is approved by this milestone. Future aesthetic refinement remains subject to project-lead approval.
+
+## D151 — Two permanent branches separate accepted development from the protected mentor Production release
+
+**Status:** Active — explicit release authorization/policy recorded October 25, 2026; supersedes D149's Preview-only hosting target for this mentor deployment
+
+`main` holds development/accepted history. `demo/mentor-review` is the protected mentor demonstration branch and Vercel Production tracking branch. After auditing the complete branch difference, passing local verification/CI and receiving release authorization, advance the demo branch normally by fast-forward to the exact approved `main` SHA. Never force-push, rewrite history or change Production Branch settings to bypass the release path. Ordinary development pushes do not authorize Production promotion.
+
+Preserve Vercel Authentication, separate hosted demo data and environment scopes. Record the previous ready deployment/branch SHA before release, verify the new source/domain/READY status, and use read-only hosted smoke tests. Supported Vercel rollback restores a known-good deployment when needed; never force-reset Git. [MENTOR_DEMO_DEPLOYMENT.md](MENTOR_DEMO_DEPLOYMENT.md) owns operational checks and dated evidence. D149's original intent and historical clarification remain preserved. This policy does not decide final CapSight hosting, product authentication/roles or Knowles requirements.

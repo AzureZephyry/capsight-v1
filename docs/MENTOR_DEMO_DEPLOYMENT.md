@@ -1,6 +1,6 @@
 # Mentor Demo Deployment
 
-_Repository readiness: October 7, 2026. Deployment history reconciled October 24, 2026 from project-lead confirmation; present live state not revalidated._
+_Repository readiness: October 7, 2026. Historical deployment reconciled October 24; release policy and pre-promotion live audit recorded October 25, 2026._
 
 ## Purpose and isolation
 
@@ -14,6 +14,40 @@ Demonstrate the current CapSight checkpoint using a protected mentor demo and a 
 | Mentor demo — historical record | Vercel `capsight-mentor-demo`; Production Branch Tracking set to `demo/mentor-review` | Separate hosted PostgreSQL; manual create/read/persistence checks previously passed |
 
 Never copy the local database, local `.env.local`, real Knowles operational datasets, employee information, or real CAPEX records into this environment. Synthetic information may be used only if supported by a later approved feature; there is no seed or invented manufacturing data in this setup. Everyone granted deployment access shares the current Workspace and create capability; CapSight has no product login or roles.
+
+## Current authorized release policy — October 25, 2026
+
+**Current release gate: NO-GO — security review, October 25, 2026.** A fresh `npm audit` reports 10 findings (1 critical, 6 high, 3 moderate), including new Next.js runtime advisories. The October 7 GREEN conclusion above remains historical and does **not** clear this release. No advisory has been fixed and dependencies remain unchanged.
+
+The confirmed applicable blocker is [GHSA-p3m5-59mp-jv5r](https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r): Next.js 16.3.8 is affected, and CapSight uses App Router with the real `createAssessmentAction` Server Action. Crafted requests can exhaust CPU; the maintainer lists upgrading as the remedy, with 16.4.1 as a patched release. Vercel Authentication limits access but is not a framework patch. No exploit or destructive hosted test was attempted. Critical Image Optimization/typed-array cache advisories are also reported by package version; do not infer application RCE merely from that count or confuse inline SVG with a validated exploit path. CapSight has no `use cache` function or `next/image` import.
+
+Safe local documentation/verification and an approved local source checkpoint may proceed, but **do not push/promote this candidate** until a separately reviewed framework security update and renewed release checks clear the gate. Production branch/configuration and hosted data must remain unchanged while blocked. The rest of this section defines the authorized release procedure once its gates pass, not evidence of a completed release.
+
+[D151](DECISIONS.md#d151--two-permanent-branches-separate-accepted-development-from-the-protected-mentor-production-release) supersedes the original Preview-only target for this existing mentor deployment. The permanent branches are `main` (development/accepted history) and `demo/mentor-review` (protected Vercel Production mentor demonstration). Use the existing project and Production Branch setting. After explicit release approval, complete verification, push `main` normally, require its CI success and advance the demo branch by safe fast-forward to that exact SHA. Audit the **complete** demo-to-main difference; do not deploy a hand-picked hybrid. Never force-push, delete/recreate branches or change tracking as a shortcut.
+
+### Pre-promotion live audit — October 25, 2026
+
+This is a dated snapshot taken **before** releasing Immersive Engineering, not a claim that the source containing this record is already deployed:
+
+- Project `capsight-mentor-demo`, linked to `AzureZephyry/capsight-v1`; Production Branch **`demo/mentor-review`**.
+- Previous working Production deployment **`dpl_3rfRCn4AfA3XjWKqK2CbDZeMuuCo`**, READY, serving **`0b6f65c811afcfe05d2ae2cf1bcfb25c884369e1`** at [the Production domain](https://capsight-mentor-demo.vercel.app). Its historical build metadata names `main`; the independently verified current tracking setting is the demo branch.
+- Local/remote `main` matched `4d8b4b3364e250204c52229f6594b3e000fdea30`; local/remote demo matched the previous Production SHA. Their accepted gap was only the October 24 documentation reconciliation. No additional schema, dependency, environment or runtime requirement was found in that gap or the visual integration.
+- Next.js preset, project root, hosted Node **24.x**, default install/build settings. The committed build generates Prisma Client; it does not migrate/seed. No hosted migration is required for this release.
+- **Vercel Authentication enabled for all deployments**. An unauthenticated request redirected to Vercel sign-in; an authorized browser could read the existing Workspace/Assessment.
+- Application `DATABASE_URL` metadata was present for **Production and Development**, with **no Preview-scoped value**. Values were not printed, downloaded or changed. Other provider-created variable names do not expand the application's single-variable contract. A `main` Preview may correctly show safe unavailable UI; do not copy Production credentials into Preview to hide this limitation.
+- One existing hosted blank Assessment was read without creation/mutation: incomplete, unvalidated, revision 1. This is a bounded application-level read, not a full hosted database audit.
+
+### Release and recovery verification
+
+Run `npm run verify` and `npm run test:e2e`, inspect/stage only intended files, commit integration/documentation together and recheck live remote SHAs before each normal push. CI currently runs on `main`, not demo-only pushes. Promote the exact CI-successful commit only after ruling out unexpected divergence or branch movement.
+
+After the demo push, require Vercel's terminal READY state, correct project/source SHA/branch, Production target and domain assignment. Recheck Authentication and environment **metadata** without exposing values. Inspect deployment diagnostics, then use the authenticated Production URL for **read-only** Workspace, product-story, saved Assessment, six-section, theme, keyboard and readiness smoke tests. Compare existing visible identity/state/revision/date evidence; do not create, edit, delete or run the local concurrency probe against hosted data.
+
+Record the resulting deployment ID, exact SHA, domain and smoke-test outcome from live metadata after promotion. A Git push or local build alone is not deployment evidence. This source checkpoint deliberately does not predict its deployment ID or claim future CI/deployment success; promotion is currently blocked by the security gate above.
+
+The previous READY deployment above is the recovery target. If a serious regression occurs, use supported [Vercel rollback](https://vercel.com/docs/deployments/rollback-production-deployment), for example `vercel rollback dpl_3rfRCn4AfA3XjWKqK2CbDZeMuuCo`, with the verified project/account scope, then verify the Production alias and protection. Do not force-reset Git. Stop if the target is unavailable or recovery is ambiguous. Preserve evidence and never remove the known-good deployment during release.
+
+Local file bytes, Git commits, GitHub pushes and OneDrive synchronization are distinct. Verify local readability/tracking and remote SHAs directly; do not claim OneDrive cloud synchronization without independent evidence or change its settings.
 
 ## Deployment history — reconciled October 24, 2026
 
@@ -31,7 +65,7 @@ These are historical milestones, not claims that the present deployment, databas
 
 ## Original Preview-only setup plan — historical reference
 
-The numbered procedure below preserves the original Preview-only readiness plan. Its Preview branch/environment-scoping instructions describe that plan, **not the confirmed subsequent deployment configuration**. Do not relabel the recorded setup as a verified Preview configuration or use this historical plan to change the existing deployment. Branch creation, migration, and empty-database checks below are fresh-setup references, not steps to replay against the existing demo. Any future live-state review or deployment operation is a separate task.
+The numbered procedure below preserves the original Preview-only readiness plan. Its Preview branch/environment-scoping instructions describe that plan, **not the current policy above or the confirmed subsequent deployment configuration**. Do not relabel the recorded setup as a verified Preview configuration or use this historical plan to change the existing deployment. Branch creation, migration and empty-database checks below are fresh-setup references, not steps to replay against the existing demo. Future operations still require their own explicit authorization.
 
 ## 1. Select an approved source checkpoint
 
@@ -95,7 +129,7 @@ Check build/runtime logs without copying credentials. A successful build alone d
 5. Open **How CapSight Works** and return to Workspace.
 6. Switch Light/Dark, navigate, reload, and reopen the browser: expect the selected theme to persist.
 
-These are the original plan's manual hosted smoke checks; the historical deployment passed the create/read/persistence checks recorded above. The last recorded automated test baseline is **25 passing Vitest tests** and **8 passing database-free Playwright tests**; these do not claim remote persistence coverage and were not rerun for the October 24 reconciliation. Use blank Assessments only; do not run the revision-mutating local concurrency script as a demo smoke test.
+These are the original plan's manual hosted smoke checks; the historical deployment passed the create/read/persistence checks recorded above. The October 24 record had **25 Vitest / 8 database-free Playwright tests passing**, not rerun for that reconciliation. The later integration baseline is **25 Vitest / 10 Playwright Chromium tests**, with release verification recorded separately; neither count proves hosted persistence. For the existing deployment follow the current policy's **read-only** smoke checks, not this fresh-setup creation sequence. Never run the revision-mutating concurrency script as a hosted smoke test.
 
 ## 6. Share access and retire the demo
 

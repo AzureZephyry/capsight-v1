@@ -200,6 +200,8 @@ The main planning sequence is capped at 18 stages. After approved Stages 14–18
 ### Visual-design authority
 Stage 14 does **not** lock CapSight's final aesthetic. Visual choices — palette, typography, density, radius, shadow, iconography, component styling, and motion character — will be chosen collaboratively during implementation according to **Prince's taste and the assistant's design judgment**, with Prince approving the direction before it becomes authoritative. Functional, responsive, accessibility, traceability, and consistency requirements remain binding regardless of aesthetic direction.
 
+**Later implementation approval — October 25, 2026:** Immersive Engineering (Experiment 05, Variant B) is now the approved application-wide visual direction; [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) governs its tokens, typography, shared presentation patterns and finite motion. The original Stage 14 approval process above is historical context. The integration preserves server/domain authority, layer boundaries, persistence, routes and calculation gates.
+
 
 ## Information Architecture, Navigation & Design-System Application — V1
 
@@ -251,7 +253,7 @@ CapSight
 - CapSight should pursue a distinctive, crafted engineering-product identity rather than a generic SaaS/template appearance.
 
 ### Visual-design boundary
-Exact visual design remains intentionally OPEN until implementation and will be decided collaboratively according to **Prince's taste and the assistant's design recommendations**, with Prince approving the direction. Palette, typography, density, radius, shadow, surfaces, navigation treatment, iconography, chart appearance, page composition, microinteractions, and motion character are not locked by Stage 15.
+Stage 15 originally left detailed aesthetics OPEN for implementation-time approval. The later Immersive Engineering approval supplies the current application direction through [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md). Future chart/data-specific choices and refinements remain subject to validated requirements and Prince's approval; this visual milestone does not change the product architecture or advance Phase 5.
 
 These rules apply identically to both separate codebases implementing the single CapSight V1 specification.
 

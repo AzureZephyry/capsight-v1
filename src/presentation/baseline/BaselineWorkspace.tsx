@@ -4,6 +4,7 @@ import type {
   BaselineWorkflow,
   RequestReadiness,
 } from "@/domain/baseline-workflow";
+import { EvidenceLedger } from "@/presentation/selection-connection/EvidenceLedger";
 import styles from "./BaselineWorkspace.module.css";
 
 const requestLabels: Record<RequestReadiness["status"], string> = {
@@ -95,74 +96,62 @@ export function BaselineWorkspace({
             Planning access and calculation readiness are checked separately.
           </p>
         </div>
-        <dl className={styles.readinessList}>
-          <div className={styles.readinessRow}>
-            <dt>Request Context</dt>
-            <dd>
-              <strong
-                className={
-                  workflow.request.status === "ready"
-                    ? styles.availableStatus
-                    : styles.blockedStatus
-                }
-              >
-                {requestLabels[workflow.request.status]}
-              </strong>
-              <p>
-                Completeness and validation establish whether capacity planning
-                can begin.
-              </p>
-            </dd>
-          </div>
-          <div className={styles.readinessRow}>
-            <dt>Planning context</dt>
-            <dd>
-              <strong
-                className={
-                  workflow.planning.status === "blocked"
-                    ? styles.blockedStatus
-                    : styles.availableStatus
-                }
-              >
-                {workflow.planning.status === "blocked"
-                  ? "Waiting for Request Context"
-                  : "Available for planning"}
-              </strong>
-              <p>
-                Baseline planning follows a complete, validated request. Its
-                input definitions and validation rules must also be confirmed.
-              </p>
-            </dd>
-          </div>
-          <div className={styles.readinessRow}>
-            <dt>Calculation readiness</dt>
-            <dd>
-              <strong
-                className={
-                  workflow.calculation.status === "blocked"
-                    ? styles.blockedStatus
-                    : styles.availableStatus
-                }
-              >
-                {workflow.calculation.status === "blocked"
-                  ? "Not ready to calculate"
-                  : "Prerequisites satisfied"}
-              </strong>
-              {workflow.calculation.status === "blocked" ? (
-                <ul className={styles.blockerList}>
-                  {workflow.calculation.blockers.map((blocker) => (
-                    <li key={blocker}>{blockerCopy[blocker]}</li>
-                  ))}
-                </ul>
-              ) : (
+        <EvidenceLedger
+          label="Baseline readiness explanations"
+          items={[
+            {
+              label: "Request Context",
+              status: requestLabels[workflow.request.status],
+              heading: "Begin with the request.",
+              content: (
                 <p>
-                  Readiness is confirmed. Calculation execution will be
-                  introduced with the validated Capacity Engine.
+                  Completeness and validation establish whether capacity
+                  planning can begin. Request information must be complete and
+                  validated before Baseline planning.
                 </p>
-              )}
-            </dd>
+              ),
+            },
+            {
+              label: "Planning context",
+              status:
+                workflow.planning.status === "blocked"
+                  ? "Waiting for Request Context"
+                  : "Available for planning",
+              heading: "A reference with an agreed meaning.",
+              content: (
+                <p>
+                  Baseline planning follows a complete, validated request. Its
+                  input definitions and validation rules must also be confirmed.
+                </p>
+              ),
+            },
+            {
+              label: "Calculation readiness",
+              status:
+                workflow.calculation.status === "blocked"
+                  ? "Not ready to calculate"
+                  : "Prerequisites satisfied",
+              heading: "Calculation has its own prerequisites.",
+              content: (
+                <p>
+                  {workflow.calculation.status === "blocked"
+                    ? "Planning access does not establish calculation readiness. Each open prerequisite below must be resolved with authoritative Knowles material."
+                    : "Readiness is confirmed. Calculation execution will be introduced with the validated Capacity Engine."}
+                </p>
+              ),
+            },
+          ]}
+        />
+        {workflow.calculation.status === "blocked" ? (
+          <div className={styles.openGates}>
+            <h3>Open calculation prerequisites</h3>
+            <ul className={styles.blockerList}>
+              {workflow.calculation.blockers.map((blocker) => (
+                <li key={blocker}>{blockerCopy[blocker]}</li>
+              ))}
+            </ul>
           </div>
-        </dl>
+        ) : null}
       </section>
 
       <section

@@ -59,6 +59,8 @@ No example manufacturing values, guessed input fields, lifecycle overrides, date
 
 The page identifies Baseline as the reference planning state, places the first request blocker and Request Context action first, then shows Request, Planning Context, and Calculation Readiness as separate labeled rows. Future calculation behavior is explained in prose; empty result cards and inactive calculation buttons are omitted.
 
+The approved Immersive Engineering presentation makes those readiness rows selectable controls linked to an explanatory annotation. The server still supplies their actual statuses. All open calculation prerequisites remain in a separate visible list regardless of selection; changing the selected explanation never changes readiness, calculates or persists data. Shared materials/motion follow [DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md), including static reduced-motion relationships.
+
 Baseline alone uses a compact lifecycle line with the current stage and a same-Assessment link to Overview's full lifecycle. This avoids repeating the full strip above a growing engineering workspace while preserving orientation, saved identity, and navigation. Overview now presents the full operational-flow reference and saved-state orientation; other contextual routes retain the full lifecycle strip. Narrow layouts stack the readiness rows and next action while keeping their information visible. Existing theme tokens, focus states, and reduced-motion behavior apply.
 
 ## Technical Boundaries

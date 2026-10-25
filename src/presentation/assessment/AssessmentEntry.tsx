@@ -29,14 +29,28 @@ export function AssessmentEntry({ children }: { children: ReactNode }) {
       <ProductHeader active="workspace" />
       <main className={styles.main} id="main-content" tabIndex={-1}>
         <div className={styles.introduction}>
-          <p className={styles.kicker}>Capacity intelligence · Shared work</p>
-          <h1>
-            Shared Workspace<span className={styles.titleDot}>.</span>
-          </h1>
-          <p className={styles.intro}>
-            Find saved capacity work, see its first open gate, and pick up where
-            you left off.
-          </p>
+          <div>
+            <p className={styles.kicker}>Capacity intelligence · Shared work</p>
+            <h1>
+              Shared Workspace<span className={styles.titleDot}>.</span>
+            </h1>
+            <p className={styles.intro}>
+              Find saved capacity work, see its first open gate, and pick up
+              where you left off.
+            </p>
+          </div>
+          <aside className={styles.orientation} aria-label="Discover CapSight">
+            <svg viewBox="0 0 240 110" fill="none" aria-hidden="true">
+              <circle cx="120" cy="138" r="106" />
+              <circle cx="120" cy="138" r="78" />
+              <path d="M 32 79 A 106 106 0 0 1 207 79" />
+              <path d="M 120 32 V 80" />
+            </svg>
+            <p>One Assessment. A connected planning story.</p>
+            <Link href="/how-capsight-works">
+              Discover how CapSight works <span aria-hidden="true">↗</span>
+            </Link>
+          </aside>
         </div>
         {children}
       </main>

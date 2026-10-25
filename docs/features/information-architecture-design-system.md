@@ -82,12 +82,14 @@ Empty workspaces explain the Assessment and offer creation without example recor
 
 `/how-capsight-works` is a separate explanation experience in product navigation, alongside Workspace. These links sit in the broader header; the six numbered Assessment workflow steps remain unchanged. The explanation page presents the designed operational loop **Calculate → Explain → Simulate → Compare → Validate → Adjust**, distinct from the tagline **Calculate. Explain. Simulate. Validate. Decide.**
 
-An “Available today” section describes saved blank Assessments and readiness review. Decision Trace, Scenario Studio, Change Explanation, Version-Aware Profiles, and Reality Loop are explained as planned capabilities with their prerequisites; the page does not simulate calculations or actual observations. The six-step loop uses keyboard/touch-accessible buttons and a selected explanation. Its desktop circular composition becomes an ordered two-column sequence on phones. Feature explanations use editorial sections rather than repeated feature cards. Motion is limited to tactile controls and a 220 ms explanation reveal, with reduced-motion alternatives.
+An “Available today” section describes saved blank Assessments and readiness review. Decision Trace, Scenario Studio, Change Explanation, Version-Aware Profiles, and Reality Loop are explained as planned capabilities with their prerequisites; the page does not simulate calculations or actual observations. The approved Immersive Engineering integration retains upright orbital controls at phone widths, stacks the explanatory note below the orbit and connects it through the margin. Wide layouts compose premise, orbit and explanation together. Finite selected arcs/paths, a reference-ring transition and bounded pointer light follow the [design system](../DESIGN_SYSTEM.md); reduced motion preserves the same information. Feature explanations remain editorial sections rather than repeated feature cards.
 
-Both experiences preserve light/dark tokens, native links/buttons, visible focus, text labels for status, and narrow layouts. Theme persistence/system preference, advanced discovery, analytics/reporting, and Knowles-dependent features remain deferred.
+Both experiences preserve light/dark tokens, native links/buttons, visible focus, text labels for status, and narrow layouts. Explicit theme preference persistence is implemented with Light as the default; system-theme defaulting remains deferred. Advanced discovery, analytics/reporting and Knowles-dependent features remain deferred.
 
 ## Assessment Context
 Once an Assessment is opened, its context remains visible while the IE moves through Request/Planning Context, Baseline, Scenarios, Comparison, Solution Evaluation, Reality, and reporting/handoff surfaces.
+
+The current six-section implementation uses a sticky shared header/context and horizontal rail, with the active section kept visible on narrow widths. Loading uses the same visual shell; native Next links retain real Assessment IDs and browser history. Saved notices omit technical UUIDs from normal visible content. Request topic disclosures and selectable Baseline explanations are presentation interactions; every open calculation prerequisite remains visible and authoritative readiness is unchanged.
 
 Baseline remains the reference planning state and should not be presented as just another scenario.
 
@@ -132,20 +134,18 @@ The same domain state should use consistent terminology and visual semantics acr
 Charts representing required vs available capacity, scenario differences, plan vs actual, and resource gaps should eventually share a consistent CapSight information and interaction grammar. Exact chart styling remains OPEN and must still obey the approved responsive, touch, accessibility, and motion constraints.
 
 ## Visual-Design Authority
-The final CapSight aesthetic is intentionally not locked at Stage 15. Palette, typography, density, corner treatment, shadows/elevation, surfaces, navigation styling, chart appearance, iconography, page composition, microinteractions, and motion personality will be designed collaboratively during implementation according to **Prince's taste and the assistant's design recommendations**, with Prince approving the direction.
+Stage 15 intentionally left detailed aesthetics open. The project lead subsequently approved **Immersive Engineering**, originating in Experiment 05, Variant B, for the real application on October 25, 2026. [DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md) now governs that direction. Later refinements and unimplemented chart/data-specific designs still require approval and validated information needs.
 
 Figma may serve as the visual source of truth for approved UI direction, with implementation design tokens aligned to it.
 
 CapSight should pursue a distinctive, crafted engineering-product identity and avoid defaulting to a generic AI/SaaS dashboard-template appearance.
 
 ## Still OPEN
-- exact top-level navigation visual treatment;
-- exact assessment sub-navigation treatment;
-- exact mobile navigation pattern;
+- refinement of the approved navigation treatment based on device/accessibility review;
 - exact reporting navigation prominence;
 - exact reference/profile governance navigation visibility;
 - exact workspace KPIs and visualizations;
-- exact visual identity, palette, typography, density, radius, shadow, iconography, and motion character;
+- future refinements to the approved visual identity and unimplemented feature components;
 - exact chart library and chart styling;
 - exact Figma-to-code workflow details.
 

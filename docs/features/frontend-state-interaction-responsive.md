@@ -83,6 +83,8 @@ Do not overwhelm users by exposing all technical detail at once.
 
 CapSight's visual identity will be shaped during implementation according to **Prince's taste and the assistant's design judgment**, with Prince approving the direction before visual decisions become authoritative.
 
+**Later approval — October 25, 2026:** the current application-wide direction is Immersive Engineering, from Experiment 05, Variant B. [DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md) governs its implementation; the original Stage 14 process remains historical context. Approval of the visual direction supplies no calculation truth.
+
 This includes final choices for:
 - colors;
 - typography;
@@ -114,7 +116,7 @@ The visual direction may evolve while the web app is being built. However, it mu
 - Exact conflict reconciliation UX.
 - Whether temporary live Scenario calculation is implemented.
 - Exact table/chart responsive behavior once real Knowles data shapes are known.
-- Final aesthetic/design system choices during implementation.
+- Further refinements and unimplemented feature-specific choices within the approved design direction.
 
 ## Technical Boundaries
 - React/client state does not own calculation/domain truth.
@@ -140,3 +142,5 @@ Stage 14 remains the approved V1 frontend interaction architecture. The implemen
 Product Hardening adds persisted Assessment loading, safe Next.js route/root error boundaries, and retry actions alongside the existing Workspace loading/create/unavailable feedback. Create remains an explicit server mutation; an immediate form guard prevents repeat submissions before React renders the disabled pending control. Failures never claim a save succeeded, and missing work remains distinct from unavailable work. Assessment navigation, readiness, and unresolved Knowles requirements are unchanged.
 
 The current Workspace, explanation page, and Assessment sections have been checked at approximately 320, 375, 768, 1024, and 1440px in both themes, including keyboard navigation and reduced motion. The Browser / E2E Verification Foundation establishes Playwright/Chromium checks for database-independent product pages at 320px and 1440px, theme persistence, keyboard controls, navigation, and safe recovery. Persisted Assessment journeys remain outside that suite. Full draft/edit/save/conflict interaction, calculation freshness, and chart/table behavior remain open implementation work.
+
+The Immersive Engineering integration keeps server-rendered saved state and existing actions. Client state is limited to selection/explanation, theme and navigation/motion presentation. Pointer lighting is bounded and fine-pointer-only, supporting animation is finite/cancellable, and reduced motion retains all controls and content. Assessment loading retains the header/context and section rail without claiming the data is already saved. Native Request Context disclosures and readiness annotations do not mutate records or unlock gates. Its integration verification added 375/320px and short-landscape coverage across all eight surfaces, and regressions for clean hydration, reduced-motion keyboard equivalence and pointer/rapid-selection behavior. Remaining physical-device, browser, screen-reader and performance limits are explicit in the design system.

@@ -1,6 +1,6 @@
 # CapSight Execution State
 
-_Current checkpoint: October 24, 2026_
+_Current source checkpoint: October 25, 2026 — Immersive Engineering finalization; release promotion blocked by the Next.js security gate._
 
 ## Purpose
 
@@ -59,13 +59,25 @@ The persisted journey was a bounded local check; its temporary resources were cl
 
 Calculation correctness is **not validated**, and no validated calculation rules are recorded. Scenario Studio, Solution Evaluation, and Reality currently provide gated contextual routes, not implemented domain workflows or results.
 
-**Mentor demo status:** `demo/mentor-review` was created and pushed, and a protected hosted mentor demo was previously verified, as confirmed by the project lead. See the [deployment history](MENTOR_DEMO_DEPLOYMENT.md#deployment-history--reconciled-october-24-2026) for milestones and the distinction from the original Preview-only plan. Present live state was not revalidated for this checkpoint. Local development data remains separate; Phase 5 remains **CURRENT / ACTIVE**, with the same Knowles validation gates.
+**Mentor demo source/release policy:** `main` holds development/accepted history; protected Vercel Production tracks `demo/mentor-review`. Release only an explicitly approved, verified `main` SHA by safe fast-forward after CI passes. The [deployment guide](MENTOR_DEMO_DEPLOYMENT.md) records the October 25 pre-release live audit, previous known-good deployment, Authentication/environment scope and rollback procedure. That dated snapshot establishes what was observed before promotion, not success of a future release. Local development data remains separate; Phase 5 remains **CURRENT / ACTIVE**, with the same Knowles gates.
+
+### Approved visual/interaction milestone — October 25, 2026
+
+**Release status: NO-GO for push/Production promotion.** The fresh dependency audit identifies an applicable Next.js Server Actions denial-of-service advisory in the existing 16.3.8 runtime. A separately reviewed security upgrade and renewed verification are required; local UI test success does not clear this gate. See the [deployment guide](MENTOR_DEMO_DEPLOYMENT.md#current-authorized-release-policy--october-25-2026). No dependency fix or hosted deployment is claimed.
+
+**Immersive Engineering**, from Visual Lab Experiment 05, Variant B, is integrated across Shared Workspace, How CapSight Works and the six real Assessment sections. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) governs local editorial/technical typography, CapSight palette/materials, upright orbital selection and bounded lighting, connected explanations, native topic disclosures and shared working/loading chrome. No third-party skill runtime or animation dependency was installed. Experiments remain outside the repository.
+
+The implementation-pass evidence is **25 Vitest / 10 database-free Chromium tests passing, with typecheck/lint/format/build passing**, plus 80 route/viewport/theme checks at desktop, tablet, 375px, 320px and short landscape. Real local creation, six-section navigation, reload/reopen and Back/Forward passed; seven pre-existing local records were unchanged and one deliberate local test record was retained. Fresh release verification and read-only hosted smoke tests are separate. Physical devices, Safari/Firefox, NVDA/VoiceOver and low-end performance profiling remain unverified.
+
+Source changes are presentation/font/test changes; persistence operations, schema, dependencies, domain/application readiness and engineering gates remain unchanged. Every open calculation prerequisite stays visible independently of annotation selection. This unnumbered milestone **does not complete Phase 5 or Phase 17** and unlocks no calculation feature.
+
+**Finalization recheck — October 25, 2026:** `npm run verify` passed (typecheck, lint, format, 25 Vitest tests and production build); `npm run test:e2e` passed all 10 Chromium tests. Another 80 layout/theme checks passed without document overflow or hidden active navigation. Fresh safe local creation/reopen/history/six-section checks passed; a second deliberate local test record was retained. These functional results do **not** clear the separate Next.js security gate; push and Production promotion remain held. Hosted review was read-only, with existing visible record identity/state/date evidence unchanged.
 
 ## 4. Current Active Focus
 
 **CURRENT FOCUS: KNOWLES TRUTH ASSIMILATION + ALIGNMENT PREPARATION**
 
-Assimilate received evidence, refine unresolved questions, and prepare for November 4. Major Knowles-dependent web-app implementation is intentionally held until the evidence required by each change is validated and reconciled into the affected contracts. Work continues on bug fixes, regressions, and already-validated requirements. CapSight remains active; speculative domain implementation is held while validation proceeds. This reconciliation changes documentation only; potential implementation unlocks require a separate review.
+Assimilate received evidence, refine unresolved questions, and prepare for November 4. Major Knowles-dependent web-app implementation is intentionally held until the evidence required by each change is validated and reconciled into the affected contracts. Work continues on bug fixes, regressions, validated requirements and separately approved visual work. The October 24 reconciliation changed documentation only; the later visual milestone changes presentation without engineering invention. Potential domain implementation unlocks still require separate review.
 
 **Current meeting-preparation artifact:** [Mentor Alignment Playbook](MENTOR_ALIGNMENT_PLAYBOOK.md) provides the short product walkthrough, prioritized discovery questions, team-call/backup checklist, evidence capture, and post-meeting assimilation/entry review. Detailed organizational facts and provenance remain in the [context](../CAPSIGHT_CONTEXT.md#organizational-status--reconciled-october-24-2026). Preparation adds no manufacturing truth and starts no Phase 6; the requirements ledger and affected contracts remain the authorities.
 
